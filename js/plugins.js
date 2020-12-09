@@ -1,6 +1,6 @@
 /* global Fluid, CONFIG, ClipboardJS */
 
-HTMLElement.prototype.wrap = function(wrapper) {
+HTMLElement.prototype.wrap = function (wrapper) {
   this.parentNode.insertBefore(wrapper, this);
   this.parentNode.removeChild(this);
   wrapper.appendChild(this);
@@ -8,7 +8,7 @@ HTMLElement.prototype.wrap = function(wrapper) {
 
 Fluid.plugins = {
 
-  typing: function(text) {
+  typing: function (text) {
     if (!window.Typed) { return; }
 
     var typed = new window.Typed('#subtitle', {
@@ -17,48 +17,48 @@ Fluid.plugins = {
         text + '&nbsp;'
       ],
       cursorChar: CONFIG.typing.cursorChar,
-      typeSpeed : CONFIG.typing.typeSpeed,
-      loop      : CONFIG.typing.loop
+      typeSpeed: CONFIG.typing.typeSpeed,
+      loop: CONFIG.typing.loop
     });
     typed.stop();
     var subtitle = document.getElementById('subtitle');
     if (subtitle) {
       subtitle.innerText = '';
     }
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('.typed-cursor').addClass('h2');
       typed.start();
     });
   },
 
-  initTocBot: function() {
+  initTocBot: function () {
     var toc = $('#toc');
     if (toc.length === 0 || !window.tocbot) { return; }
     var boardCtn = $('#board-ctn');
     var boardTop = boardCtn.offset().top;
 
     window.tocbot.init({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
+      tocSelector: '#toc-body',
+      contentSelector: '.markdown-body',
+      headingSelector: CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass: 'tocbot-link',
+      activeLinkClass: 'tocbot-active-link',
+      listClass: 'tocbot-list',
       isCollapsedClass: 'tocbot-is-collapsed',
       collapsibleClass: 'tocbot-is-collapsible',
-      collapseDepth   : CONFIG.toc.collapseDepth || 0,
-      scrollSmooth    : true,
-      headingsOffset  : -boardTop
+      collapseDepth: CONFIG.toc.collapseDepth || 0,
+      scrollSmooth: true,
+      headingsOffset: -boardTop
     });
     if ($('.toc-list-item').length > 0) {
       toc.css('visibility', 'visible');
     }
   },
 
-  wrapImageWithFancyBox: function() {
+  wrapImageWithFancyBox: function () {
     if (!$.fancybox) { return; }
 
-    $('.markdown-body :not(a) > img, .markdown-body > img').each(function() {
+    $('.markdown-body :not(a) > img, .markdown-body > img').each(function () {
       var $image = $(this);
       var imageLink = $image.attr('data-src') || $image.attr('src');
       var $imageWrapLink = $image.wrap(`
@@ -72,15 +72,17 @@ Fluid.plugins = {
       }
 
       var imageTitle = $image.attr('title') || $image.attr('alt');
+      /*  禁用显示图片标题的功能 disable image caption
       if (imageTitle) {
         $imageWrapLink.append(`<p class="image-caption">${imageTitle}</p>`);
         $imageWrapLink.attr('title', imageTitle).attr('data-caption', imageTitle);
       }
+      */
     });
 
     $.fancybox.defaults.hash = false;
     $('.fancybox').fancybox({
-      loop   : true,
+      loop: true,
       helpers: {
         overlay: {
           locked: false
@@ -89,12 +91,12 @@ Fluid.plugins = {
     });
   },
 
-  registerAnchor: function() {
+  registerAnchor: function () {
     if (!window.anchors) { return; }
 
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
+      visible: CONFIG.anchorjs.visible
     };
     if (CONFIG.anchorjs.icon) {
       window.anchors.options.icon = CONFIG.anchorjs.icon;
@@ -107,7 +109,7 @@ Fluid.plugins = {
     window.anchors.add(res.join(', '));
   },
 
-  registerCopyCode: function() {
+  registerCopyCode: function () {
     function getBgClass(ele) {
       if (ele.length === 0) {
         return 'copy-btn-dark';
@@ -123,7 +125,7 @@ Fluid.plugins = {
     copyHtml += '<i class="iconfont icon-copy"></i><span>Copy</span>';
     copyHtml += '</button>';
     var blockElement = $('.markdown-body > pre, .markdown-body > div.code-wrapper > pre, .markdown-body > figure.highlight td.code pre');
-    blockElement.each(function() {
+    blockElement.each(function () {
       const pre = $(this);
       if (pre.find('code.mermaid').length > 0) {
         return;
@@ -131,16 +133,16 @@ Fluid.plugins = {
       pre.append(copyHtml);
     });
     var clipboard = new ClipboardJS('.copy-btn', {
-      target: function(trigger) {
+      target: function (trigger) {
         return trigger.previousElementSibling;
       }
     });
     $('.copy-btn').addClass(getBgClass(blockElement));
-    clipboard.on('success', function(e) {
+    clipboard.on('success', function (e) {
       e.clearSelection();
       var tmp = e.trigger.outerHTML;
       e.trigger.innerHTML = 'Success';
-      setTimeout(function() {
+      setTimeout(function () {
         e.trigger.outerHTML = tmp;
       }, 2000);
     });
