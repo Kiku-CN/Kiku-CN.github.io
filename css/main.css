@@ -1775,14 +1775,6 @@ post-custom {
 .about-icons > a > i {
   font-size: 1.5rem;
 }
-h1,
-h2,
-h3,
-h4,
-h5 {
-  text-align: center;
-  font-size: 1.2rem !important;
-}
 .category:not(:last-child) {
   margin-bottom: 1rem;
 }
