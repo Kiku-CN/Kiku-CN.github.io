@@ -205,18 +205,16 @@
 
 <div class="mt-1">
   
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
 
   
 
   
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
   
 </div>
 
@@ -375,7 +373,7 @@
 <li>开发完毕后在 GitHub 上创建一个新的 Pull Request。</li>
 <li>等上游审核完毕后，就可以把代码合并进原来的项目了</li>
 </ol>
-<h3 id="使用-ssh-免密码连接到远程操控"><a href="#使用-ssh-免密码连接到远程操控" class="headerlink" title="使用 ssh 免密码连接到远程操控"></a>使用 ssh 免密码连接到远程操控</h3><ol>
+<h3 id="使用-SSH-连接到远程仓库"><a href="#使用-SSH-连接到远程仓库" class="headerlink" title="使用 SSH 连接到远程仓库"></a>使用 SSH 连接到远程仓库</h3><ol>
 <li>先使用<code>cd ~</code>切换到当前用户目录，然后输入命令<code>ssh-keygen -t rsa -C &quot;HP-OMEN&quot;</code>，按三次回车确认，会在用户目录生成一个.shh的文件夹，里面存放了公钥和私钥。 -C 后面的参数是生成的秘钥的的注释（comment to identify the key），相当于是这串钥匙的名字，可以任意，不一定为邮箱。</li>
 <li>使用命令<code>cat ~/.ssh/id_rsa.pub</code>打开公钥文件，复制整行，粘贴进GitHub 中。的个人 setting 页面，左侧找到 SSH and GPG keys 选项，点击 New SSH KEy 按钮，进去粘贴公钥，并命名，完成公钥绑定。<br><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img/img/20201209104618.png" srcset="/img/loading.gif" alt="image-20201125173736244"></li>
 <li>使用命令<code>ssh -T git@github.com</code>测试是否配置成功。第一次连接到陌生主机需要输入 yes 后回车确认，配置成功后可以使用 ssh 的方式来访问远程仓库。<br><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img/img/20201209104619.png" srcset="/img/loading.gif" alt="image-20201125174610157"></li>
@@ -395,8 +393,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#查看工作目录的状态；</span><br>git status<br><br><span class="hljs-comment">#查看工作目录的状态的精简信息，s=summary，总结，b=braanch，分支</span><br>git status  -sb<br><br><span class="hljs-comment">#让 git 开始管理当前目录并初始化</span><br>git init<br><br><span class="hljs-comment">#将指定文件提交到暂存区；用通配符「*」可以把当前目录下所有文件添加到暂存区</span><br>git add &lt;file name&gt;...<br><br><span class="hljs-comment">#将当前目录的所有文件到暂存区，效果同 git add *</span><br>git add .<br><br><span class="hljs-comment">#提交整个暂存区到本地仓库，message 这次提交的备注信息，必须输入,没有直接输入，则会自动打开一个空文本用来输入备注信息</span><br>git commit -m &lt;message&gt;<br><br><span class="hljs-comment">#查看历史提交日志</span><br>git <span class="hljs-built_in">log</span><br><br><span class="hljs-comment">#显示当前分支的版本提交历史，但每次提交以一行显示</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br><br><span class="hljs-comment">#显示当前分支的版本提交历史，但每次提交以一行显示，并且 commit-id 只显示前面 7 位 </span><br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#显示整个仓库所有分支的最近提交历史，还包括每个提交距离工作分支的距离，每次提交以一行显示，并且 commit-id 只显示前面 7 位 </span><br>git reflog<br><br><span class="hljs-comment">#将本地库的指针指定指向 commit-id 这次提交，重置这次暂存区与工作区，不指定 commit 默认与最近一次 commit 保持一致；</span><br>git reset --hard [commit-id]<br><br><span class="hljs-comment">#恢复某个commit的指定文件到暂存区和工作区</span><br>git checkout &lt;commit id&gt; &lt;file&gt;<br><br><span class="hljs-comment">#恢复暂存区的所有文件到工作区</span><br>git checkout .<br><br><span class="hljs-comment">#恢复暂存区的指定文件到工作区</span><br>git checkout &lt;file&gt;<br><br><span class="hljs-comment">#将工作区和暂存区的进行按行比较，显示暂存区和工作区的差异</span><br>git diff<br><br><span class="hljs-comment">#显示工作区与当前 HEAD 分支之间的差异</span><br>git diff HEAD<br><br><span class="hljs-comment">#列出所有本地分支，分支前面的「*」代表当前所在分支</span><br>git brach<br><br><span class="hljs-comment">#新建一个分支，但依然停留在当前分支</span><br>git branch &lt;branch-name&gt;<br><br><span class="hljs-comment">#新建一个指向指定 commit 的分支，</span><br>git branch &lt;branch-name&gt; &lt;commit-id&gt;<br><br><span class="hljs-comment">#切换到指定分支，并更新工作区</span><br>git checkout &lt;branch-name&gt;<br><br><span class="hljs-comment">#合并指定分支到当前分支,使用前应该配合 checkout 切换到合适的分支</span><br>git merge &lt;branch-name&gt;<br><br><span class="hljs-comment">#查看远程仓库，还可以用来看仓库的别名</span><br>git remote -v<br><br><span class="hljs-comment">#给远程某一个仓库添加地址别名,只在当前仓库配置中生效</span><br>git remote add &lt;<span class="hljs-built_in">alias</span>&gt; &lt;url&gt;<br><br><span class="hljs-comment"># 取回远程仓库的变化，并与指定分支合并</span><br>git pull [url | <span class="hljs-built_in">alias</span>] &lt;branch name&gt;<br><br><span class="hljs-comment">#从远程克隆一个项目和它的整个代码历史</span><br>git <span class="hljs-built_in">clone</span> [url]<br><br><span class="hljs-comment">#将本地指定分支往远程仓库推送</span><br>git push [url | <span class="hljs-built_in">alias</span>] &lt;branch name&gt;<br><br><br><span class="hljs-comment">#把远程仓库的内容拉取到本地创建一个副本仓库，这个仓库是远程仓库的一个拷贝，区别仅仅是已经下载到本地而已，不会自动更新工作区，需要手动使用 merge 命令来手动把本地仓库的某个分支和已经下载到本地的远程仓库副本的某个分支合并在一起达到 pull 的效果。pull = fetch + merge，工作中最好先fetch 下来，使用 diff 比较检查两个分支再 merge，而不是直接pull。</span><br>git fetch [url | <span class="hljs-built_in">alias</span>] <br><br><span class="hljs-comment">#如果在本地已经有了仓库，并且里面有一些文件，想把远程仓库的文件添加进来，由于两个仓库没有共同的祖先，需要进行无关联拉取。</span><br>git pull [url | <span class="hljs-built_in">alias</span>]  master --allow-unrelated-histories<br><br><span class="hljs-comment">#删除指定的远程分支</span><br>git push origin --delete master<br><br><span class="hljs-comment">#冒号前不指定本地分支，就推送一个空的本地分支到远程分支，也可以达到上面一条删除的效果</span><br>git push origin :master<br></code></pre></td></tr></table></figure>
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV185411L7xs">B站视频教程：赵姗姗教你玩转Git</a></li>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ">狂神聊git</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV185411L7xs">赵姗姗教你玩转Git</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰：常用 Git 命令清单</a></li>
 </ol>
 
@@ -416,13 +414,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</a>
+                      <a class="hover-with-bg" href="/tags/IDEA/">IDEA</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+                      <a class="hover-with-bg" href="/tags/SSH/">SSH</a>
                     
                   </div>
                 
@@ -434,6 +432,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/12/11/Hexo/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用 Hexo 搭建个人博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -553,8 +557,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
