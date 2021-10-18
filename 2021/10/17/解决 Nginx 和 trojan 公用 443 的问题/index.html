@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img/img/20201209084347.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-17 00:00" pubdate>
+        2021年10月17日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <h1 id="trojan-和-Nginx-公用-443-端口"><a href="#trojan-和-Nginx-公用-443-端口" class="headerlink" title="trojan 和 Nginx 公用 443 端口"></a>trojan 和 Nginx 公用 443 端口</h1><p>由于 trojan 默认工作在服务器的 443 端口，而 Nginx 的 HTTPS 服务端口也在 443，如果此时想同时使用两种服务。那么要么更改 trojan 默认端口，要么更改 Nginx 的 HTTPS 端口。如果选择更改 HTTPS 端口那么所有 URL 都要补充上端口号，既麻烦也不美观。那么更改 trojan 的默认监听端口可行吗？</p>
+<p>trojan 的工作机制是客户端使用 TLS 对要代理的流量进行加密伪装成 HTTPS 流量发送给 trojan 服务端，trojan 服务端工作在 443 端口，对 TLS 加密的数据解密后进行流量识别，如果流量是 trojan 协议并且检查合法（检查 trojan 密码是否正确），说明来自正确的 trojan 客户端，对流量代理转发。如果流量不是 trojan 协议，说明不是来自 trojan 客户端的数据，则转发到则转发到服务端本地的 80 端口，而 80 端口则提前配置好一个 HTTP 伪装站点，向客户端响应 HTML 页面。</p>
+<p>之前的代理协议例如 Shadowsocks、VMess，思路普遍都是使用各种复杂的加密，来避免流量特征被 GFW 识别，而 trojan 选择的是把 trojan 服务伪装成一个提供 HTTPS Web 服务的站点，流量在 GFW 看来和普通的 HTTPS 流量没什么区别，进而来躲避 GFW 的审查和封锁。 trojan 相比之前的协议传输效率更高（只有一层加密），抗封锁效果反而更好。</p>
+<p>个人理解对 trojan 的伪装可以体现在下面几个方面</p>
+<ol>
+<li>  TCP 端口号和 HTTPS 一样工作在 443 端口。</li>
+<li>  和普通 HTTPS 流量一样使用 TLS 协议进行加密。</li>
+<li>  如果用户（可能是探针）使用 HTTPS 协议来访问 trojan server，用户看到的是预先准备好的伪装 Web 站点，和普通 Web 站点没有任何区别。</li>
+</ol>
+<p>因此 trojan 工作在 443 端口也是伪装的一部分，可以增加服务的隐蔽性，因此建议不要更改 trojan 的默认工作端口。</p>
+<p><strong>注意：没有谁能确认 GFW 真正的工作机制，有的人改了 trojan 端口用的好好的，有的人没改还是被封，没有准确的统计数据来说明 trojan 使用 443 端口是否能真正减少封禁的几率。并且使用 trojan 协议在 443 端口也不代表永远不会被封禁，就可以高枕无忧、一劳永逸了。每种协议新出的时候大家都是充满了乐观，但是 GFW 的检测手段也在不断进化，有可能 GFW 已经检测出流量异常只不过没下手罢了。如果滥用节点，比如拿来开机场，或者发表一些敏感言论，被封禁的风险就会大大增加，甚至请你过去喝茶。此外特殊敏感时期的无差别封禁也有可能误伤到你的 VPS。</strong></p>
+<p>那么有没有让 trojan 和 Nginx 公用 443 端口的办法呢？一番搜索之后得到了肯定的答案——利用 TLS 握手阶段的 SNI 信息进行在 4 层进行转发。关于 SNI 转发的工作原理请看程小白的这篇文章 <a target="_blank" rel="noopener" href="https://www.chengxiaobai.com/trouble-maker/trojan-shared-443-port-scheme">Trojan 共用 443 端口方案</a>。</p>
+<p>前置环境：已经使用 <a target="_blank" rel="noopener" href="https://github.com/Jrohy/trojan">Jrohy 的一键脚本</a> 安装了 trojan 和 trojan web 管理程序，trojan 所使用的域名为 <code>free.kiku.vip</code>， 访问 <a target="_blank" rel="noopener" href="https://free.kiku.vip/">https://free.kiku.vip</a> 看到的 trojan web 管理面板。搭建可以看</p>
+<p>![image-20211017193404608](解决 Nginx 和 trojan 公用 443 的问题 images/image-20211017193404608.png)</p>
+<p>想要达到的目标：<code>free.kiku.vip</code> 还是用用来使用 trojan 代理服务，直接访问 <a target="_blank" rel="noopener" href="https://free.kiku.vip/">https://free.kiku.vip</a> 看到的是伪装站点，访问 <a target="_blank" rel="noopener" href="https://free.kiku.vip/admin">https://free.kiku.vip/admin</a> 才是 trojan web 管理面板。除了 <code>free.kiku.vip</code> 外的 <code>*.kiku.vip</code> 访问到正常的 HTTPS 服务，如果通过 HTTP 协议访问则强制跳转到 HTTPS。服务端除了 80 和 443 端口，其余端口关闭。</p>
+<p>![image-20211017193845759](解决 Nginx 和 trojan 公用 443 的问题 images/image-20211017193845759.png)</p>
+<p>具体的配置步骤：</p>
+<ol>
+<li><p>为 Nginx 设置 SNI 识别转发，如果是通过宝塔安装的 Nginx，配置文件路径在：<code>/www/server/nginx/conf/nginx.conf</code>。<br>  在配置文件的 events 和 http 模块之间添加下面的内容。</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 流量转发核心配置</span><br><span class="hljs-section">stream</span> &#123;<br>    <span class="hljs-comment"># 这里就是 SNI 识别，将域名映射成一个配置名</span><br>    <span class="hljs-attribute">map</span> $ssl_preread_server_name $backend_name &#123;<br>        *.kiku.vip web;<br>        free.kiku.vip trojan;<br>        <span class="hljs-comment"># 域名都不匹配情况下的默认值</span><br>        <span class="hljs-attribute">default</span> web;<br>    &#125;<br><br>    <span class="hljs-comment"># web，配置转发详情</span><br>    <span class="hljs-attribute">upstream</span> web &#123;<br>        <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:4431</span>;<br>    &#125;<br>    <span class="hljs-comment"># trojan，配置转发详情</span><br>    <span class="hljs-attribute">upstream</span> trojan &#123;<br>        <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:4432</span>;<br>    &#125;<br><br>    <span class="hljs-comment"># 监听 443 并开启 ssl_preread</span><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> reuseport;<br>        <span class="hljs-attribute">listen</span> [::]:<span class="hljs-number">443</span> reuseport;<br>        <span class="hljs-attribute">proxy_pass</span>  $backend_name;<br>        <span class="hljs-attribute">ssl_preread</span> <span class="hljs-literal">on</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  也可以直接在宝塔面板 Nginx 管理中直接修改配置。</p>
+<p>  ![image-20211017175843811](解决 Nginx 和 trojan 公用 443 的问题 images/image-20211017175843811.png)</p>
+</li>
+<li><p>修改 trojan 的监听地址和端口号以及如果识别为非 trojan 流量的回落端口号，trojan配置文件路径为 <code>/usr/local/etc/trojan/config.json</code> 。<br>  下面是配置文件的关键内容：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;run_type&quot;</span>: <span class="hljs-string">&quot;server&quot;</span>,<br>    <span class="hljs-attr">&quot;local_addr&quot;</span>: <span class="hljs-string">&quot;127.0.0.1&quot;</span>,<br>    <span class="hljs-attr">&quot;local_port&quot;</span>: <span class="hljs-number">4432</span>,<br>    <span class="hljs-attr">&quot;remote_addr&quot;</span>: <span class="hljs-string">&quot;127.0.0.1&quot;</span>,<br>    <span class="hljs-attr">&quot;remote_port&quot;</span>: <span class="hljs-number">82</span>,<br><br>    ......<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>free.kiku.vip</code> 的站点的 Nginx 配置文件，文件路径为 <code>/www/server/panel/vhost/nginx/free.kiku.vip.conf</code>。<br>  下面是配置文件的完整内容：</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs nginx">server<br>&#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">127.0.0.1:82</span>;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br><br>    <span class="hljs-attribute">server_name</span> free.kiku.vip;<br>    <span class="hljs-attribute">index</span> index.php index.html index.htm default.php default.htm default.html;<br>    <span class="hljs-attribute">root</span> /www/wwwroot/free.kiku.vip;<br><br>    <span class="hljs-comment"># 80 端口的访问强制跳转到 https 443</span><br>    <span class="hljs-attribute">if</span> ($server_port =  <span class="hljs-number">80</span>)&#123;<br>        <span class="hljs-attribute">rewrite</span><span class="hljs-regexp"> ^(/.*)$</span> https://$host<span class="hljs-variable">$1</span> <span class="hljs-literal">permanent</span>;<br>    &#125;<br><br>    <span class="hljs-comment"># 后台管理页面,通过 free.kiku.vip/admin 访问</span><br>    <span class="hljs-attribute">location</span> /admin &#123;<br>        <span class="hljs-attribute">proxy_pass</span>   http://localhost:81/;<br>    &#125;<br><br>    <span class="hljs-comment"># 由于 trojan web 前端的部分资源是写在二进制中的，这些资源的访问路径固定</span><br>    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~* ^/(static|common|auth|trojan)/</span> &#123;<br>        <span class="hljs-attribute">proxy_pass</span>  http://localhost:81;<br>        <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> Upgrade $http_upgrade;<br>        <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">&quot;Upgrade&quot;</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> Host $host;<br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  也可以选择直接在宝塔面板中修改站点的配置文件。</p>
+<p>  ![image-20211017175540571](解决 Nginx 和 trojan 公用 443 的问题 images/image-20211017175540571.png)</p>
+</li>
+<li><p>修改 <code>kiku.vip</code> 的站点的 Nginx 配置文件，文件路径为 <code>/www/server/panel/vhost/nginx/kiku.vip.conf</code>。<br>  下面是配置文件的关键内容：</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs nginx">server<br>&#123;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">4431</span> ssl http2;<br>    <span class="hljs-attribute">server_name</span> kiku.vip;<br>    <br>    <span class="hljs-comment"># http 强制跳转到 https</span><br>    <span class="hljs-attribute">if</span> ($server_port !<span class="hljs-regexp">~ 443)</span>&#123;<br>        <span class="hljs-attribute">rewrite</span><span class="hljs-regexp"> ^(/.*)$</span> https://$host<span class="hljs-variable">$1</span> <span class="hljs-literal">permanent</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改 trojan web 管理面板的监听端口号为 81，trojan web 的配置文件路径为 <code>/etc/systemd/system/trojan-web.service</code> 。<br>  下面是配置文件的完整内容，和原版配置区别在于第 9 行结尾使用 <code>-p</code> 指定了端口号。</p>
+  <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs txt">[Unit]<br>Description=trojan-web<br>Documentation=https://github.com/Jrohy/trojan<br>After=network.target network-online.target nss-lookup.target mysql.service mariadb.service mysqld.service docker.service<br><br>[Service]<br>Type=simple<br>StandardError=journal<br>ExecStart=/usr/local/bin/trojan web -p 81<br>ExecReload=/bin/kill -HUP \$MAINPID<br>Restart=on-failure<br>RestartSec=3s<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置完毕后重启 Nginx 和 trojan，让配置生效。</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">service nginx restart<br>trojan restart<br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>  <a target="_blank" rel="noopener" href="https://trojan-gfw.github.io/trojan/">trojan 官方文档</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://github.com/Jrohy/trojan/wiki">trojan 多用户管理部署程序 Wiki</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.chengxiaobai.com/trouble-maker/trojan-shared-443-port-scheme">Trojan 共用 443 端口方案</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://www.v2rayssr.com/trojanwordpress.html">Trojan+Nginx+WordPress个人博客，共用443端口！所有访问全部开启HTTPS，Trojan终极伪装！</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://github.com/jinwyp/one_click_script#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95-advanced-usage-%E4%B8%8E%E7%8E%B0%E6%9C%89%E7%BD%91%E7%AB%99%E5%85%B1%E5%AD%98">一键安装 trojan v2ray xray. Install v2ray / xray (VLESS) and trojan (trojan-go) script</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/cate1/">cate1</a>
+                    
+                      <a class="hover-with-bg" href="/categories/cate1/cate2/">cate2</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/trojan/">trojan</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTP/">HTTP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/HTTPS/">HTTPS</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Nginx/">Nginx</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/14/%E4%BD%BF%E7%94%A8%20SSH%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA/">
+                        <span class="hidden-mobile">使用 SSH 客户端登录远程主机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
