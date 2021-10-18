@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>使用 SSH 客户端登录远程主机 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img/img/20201209084347.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用 SSH 客户端登录远程主机">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-14 10:00" pubdate>
+        2021年10月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.6k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用 SSH 客户端登录远程主机</h1>
+            
+            <div class="markdown-body">
+              <h1 id="使用-SSH-客户端登录远程主机"><a href="#使用-SSH-客户端登录远程主机" class="headerlink" title="使用 SSH 客户端登录远程主机"></a>使用 SSH 客户端登录远程主机</h1><h2 id="发起连接"><a href="#发起连接" class="headerlink" title="发起连接"></a>发起连接</h2><p>Linux 发行版  和最新的 Windows 10 都自带了 OpenSSH 客户端，以 Windows 10为例，OpenSSH 客户端程序位于<code>C:\Windows\System32\OpenSSH\ssh.exe</code> 这个路径下，该路径已经被添加到系统环境变量 PATH 中，因此在终端中可以直接使用 <code>ssh</code> 命令来运行 SSH 客户端。在 <code>ssh</code> 命令后面接 <code>-V</code> 参数来查看 SSH 客户端版本号。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -V<br></code></pre></td></tr></table></figure>
+
+<p>SSH 客户端最常用的功能就是用来登录远程的服务器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh hostname<br></code></pre></td></tr></table></figure>
+
+<p><code>hostname</code> 用来指定主机名，可以是域名、主机的 IP 地址、也可以是配置文件中的主机别名。默认使用当前客户端的用户名（也就是当前 Windows 所使用的的用户名）去登录远程主机。</p>
+<p>可以在主机名前面用指定要登录的用户名，用 <code>@</code> 符号分隔。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh username@hostname<br></code></pre></td></tr></table></figure>
+<p>也可以使用 <code>-l</code> 参数来指定要登录的用户名，和上面等效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh hostname -l username <br></code></pre></td></tr></table></figure>
+
+<p>SSH 客户端默认连接服务器的 22 端口（SSH 服务端程序的默认监听端口），<code>-p</code> 参数可以指定其他端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh hostname -p 2222<br></code></pre></td></tr></table></figure>
+
+<p>当客户端向服务端发起 SSH 连接请求时，SSH 服务端会将 <code>/etc/ssh</code> 目录下的 Host Key 公钥发回客户端，用来认证服务端的身份信息。</p>
+<p>如果用户是第一次连接到该主机，SSH 客户端会提示用户确认服务端的公钥指纹。</p>
+<p>如果选择信任该公钥，会将主机名和对应的公钥都储存在本机的 <code>~/.ssh/known_hosts</code> 文件中。以后再连接该主机时，如果主机发回的公钥和文件中的不符，则提示可能遭受中间人攻击并断开连接（HTTPS 用 CA 证书中心解决了该问题）。</p>
+<p>如果确认是远程主机因为某些原因，例如重装系统或者重装 SSH 服务而重新生成了 Host Key公钥，那就需要在本地主机上使用以下命令将原来的公钥信息删除，或者手动打开 <code>~/.ssh/known_hosts</code> 文件删除对应的项。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -R hostname 	# hostname 是发生公钥变更的主机名。<br></code></pre></td></tr></table></figure>
+
+<p>删除了原来的公钥信息后，重新执行 ssh 命令连接远程服务器，重新确认服务端的公钥指纹，就可以发起连接请求了。</p>
+<p>发起连接请求后 SSH 客户端会和服务端是进行版本协商、算法协商、秘钥交换，其中又用到了对称加密、非对称加密和密钥交换的各种算法（思路有和 HTTPS 中的 SSL/TLS 协议类似的地方，都是用非对称加密来交换对称秘钥，真正的消息内容都是使用的都是基于对称加密的的临时回话密钥（Session Key）进行加密，如果全程都使用非对称加密效率太低）。只需要知道 SSH 连接成功后建立了安全通道，具体的连接过程在此不深究。</p>
+<p>客户端就与服务器建立连接 SSH 连接成功后，ssh 就会要求用户输入所要登录账户的密码，输入用户密码验证正确以后，就可以得到远程服务器的 Shell 环境了。</p>
+<h2 id="公钥登录"><a href="#公钥登录" class="headerlink" title="公钥登录"></a>公钥登录</h2><h3 id="原理步骤"><a href="#原理步骤" class="headerlink" title="原理步骤"></a>原理步骤</h3><p>公钥免密登录步骤是：</p>
+<ol>
+<li>  用户根据非对称加密算法，生成一对密钥对。</li>
+<li>  提前将密钥对中的公钥放置在远程主机用户目录下的 <code>~/.ssh/authorized_keys</code> 文件中。</li>
+<li>   SSH 客户端指定某用户发起登录请求。</li>
+<li>  SSH 服务端收到该用户的登录请求，SSH 服务端生成一个随机数，使用指定用户的用户目录下的 <code>~/.ssh/authorized_keys</code> 文件中的公钥列表中一个公钥加密，将加密后的数据给客户端。</li>
+<li>  客户端使用密钥对中的私钥对这段随机数解密，解密结果和 Session ID 使用 MD5 算法生成摘要发回给服务端。如果私钥解密的数据发回服务器的时候如果被中间人劫持因为 Session  ID 也可以</li>
+<li>  SSH 服务端用之前生成的随机数同样加上 Session ID 计算 MD5 hash 值，如果和客户端发过来的摘要匹配成功，就说明请求者拥有公钥所对应的私钥，即可以以该用户登录，不再需要输入密码。如果不匹配则回到第 4 步中使用公钥文件中的剩余公钥重复这个过程。如果所有的公钥都失败，则说明公钥登录失败，会提示用户输入密码登录。</li>
+<li>  SSH 服务端遍历登录请求中指定用户的用户目录下的 <code>~/.ssh/authorized_keys</code> 文件中的公钥来解密，如果有一条公钥的解密结果和服务端之前发出的数据一致，如果该文件中的所有公钥的解密结果都匹配不上则显示输入密码登录。</li>
+</ol>
+<p>（其实还有 Session ID 等其他信息）数字签名，然后发回给服务端。</p>
+<p>关于第 4 步中发送的随机数到底是直接发送还是使用 <code>authorized_keys</code> 中的公钥将加密后再发送的有不少的争议。</p>
+<p>阮一峰的文章说的直接发送，但是要在第 5 步对响应给服务端的数据进行数字签名，如果第 5 步服务端使用公钥解签得到的摘要和原本的摘要一致也能证明认证用户的身份。</p>
+<blockquote>
+<p>  所谓”公钥登录”，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。——阮一峰：SSH原理与运用（一）：远程登录</p>
+</blockquote>
+<p>个人觉得阮提出的方法效率会更高，因为 <code>~/.ssh/authorized_keys</code> 文件中可以存放多个公钥，每一行都是一个公钥，服务端并不知道应该用哪个公钥来加密随机数，最差结果就是所有公钥都要按照上面的流程尝试一边，效率显然不如直接发送然后在服务端遍历公钥列表来解密私钥签名信息对比效率高。并且哪怕是随机数被中间人偷听了也无所谓，中间人没有真正的私钥能对随机数据进行正确签名的。</p>
+<p>具体是哪一种也没去看底层代码验证过，无论是公钥加密，私钥解密，还是私钥签名，公钥解签，都能证明你是私钥的拥有者即可。</p>
+<p>虽然个人很信任阮大，但是因为持后一种说法人太多，并且差了不少英文文章都是这样说，还是采纳了后一种说法。</p>
+<p><strong>注意：很多人的文章说用户在发起登录请求会把公钥发送给服务端，这样服务端就知道用哪个公钥加密了，但是经过实验在本地主机删除了公钥文件也可以成功登录，说明并不存在发送公钥的行为。</strong></p>
+<h3 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h3><p>首先要使用 <code>ssh-keygen</code> 命令，生成一对密钥对。<code>-t</code> 是用来指定非对称加密使用的算法，可选 dsa 或者 rsa，默认值是 rsa。<code>-b</code> 是用来指定秘钥的二进制位数，<code>-b </code>至少应该是 <code>1024</code>，更安全一些可以设为 <code>2048</code> 或者更高。<code>-b</code> 至少应该是 <code>1024</code>，更安全一些可以设为 <code>2048</code> 或者更高。<code>-C</code> 参数可以为密钥文件指定新的注释，建议的格式为 <code>username@hostname</code>。<code>-f</code>参数指定生成的秘钥文件路径和名称。这些参数包括注释都是可选的，如果省略就使用默认值。</p>
+<p><strong>注意：如果之前使用过 Github 的 SSH 免密登录功能，该目录下会有生成过的秘钥对，可以直接使用这套秘钥对来进行免密登录。当然也可以再创建新的密钥对，但是注意用 <code>-f</code> 参数指定秘钥文件路径和名称，不要把原来的秘钥文件覆盖了，否则 GitHub 的免密登录会失败。</strong></p>
+<p>输入下面的命令就会在 SSH 的配置目录 <code>~/.ssh</code> 下生成名为 <code>id_rsa</code>（私钥）和<code>id_rsa.pub</code>（公钥）秘钥对文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -b 4096 -C &quot;root@kiku.vip&quot;<br></code></pre></td></tr></table></figure>
+
+<p>在生成秘钥的过程中会询问是否要为私钥设定密码（passphrase，为了和用户密码 password 区别），如果设定密码则在使用私钥前还要输入密码对私钥解锁，虽然和密码口令登录一样时要输入密码，但是更加安全。如果为了方便，不想设定密码，直接输入两次回车就好。</p>
+<h3 id="上传公钥"><a href="#上传公钥" class="headerlink" title="上传公钥"></a>上传公钥</h3><p>免密登录能成功的前提是用户已经将提前将秘钥对中的公钥添加到远程主机的 <code>~/.ssh/authorized_keys</code> 文件中，因此生成密钥对以后，还得把公钥必须上传到服务器，才能使用公钥登录。</p>
+<p>要以哪个用户的身份登录到服务器，密钥就必须保存在该用户主目录的<code>~/.ssh/authorized_keys</code>文件。</p>
+<p>下面提供三种上传公钥到远程主机上的方法：</p>
+<ol>
+<li><p>如果购买的是大厂云服务器，可以直接在控制台中上传公钥。以腾讯轻量应用服务器为例：<br>  首先要在控制台中创建秘钥：<br>  ![image-20211014162335502](Untitled images/image-20211014162335502.png)<br>  ![image-20211014162545603](Untitled images/image-20211014162545603.png)<br>  然后将秘钥绑定到我们远程主机上。<br>  <strong>注意：腾讯云控制台上传的公钥只能绑定在 root 用户下，并且绑定后将不能再通过密码方式 SSH 登录。</strong><br>  ![image-20211015175759714](Untitled images/image-20211015175759714.png)</p>
+</li>
+<li><p>手动将本地的公钥文件写入到远程主机上。<br>  在远程主机执行下面的命令。</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir ~/.ssh  <br>chmod 700 ~/.ssh<br>vi ~/.ssh/authorized_keys<br>chmod 600 ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+
+<p>  第 1、2 行是在用户的主目录下创建 <code>.ssh</code> 的目录并设置权限为只有该用户可以访问，第 3 行打开信任的公钥文件，将公钥粘贴进去然后保存退出，第 4 行更改公钥文件的权限只有所有者有读写权限。如果权限设置不对，SSH 服务器可能会拒绝读取该文件。</p>
+<p>  <strong>注意：该文件中可以存放多个公钥，每一行都是一个公钥，为了不影响其他客户端的登录应该把公钥追加到末尾，而不是直接覆盖。并且最后在后面添加一个换行，防止下次添加的公钥接在了同一行后面。</strong></p>
+<p>  也可以使用在本地主机运行下面的命令将公钥上传到远程主机，其中<code>~/.ssh/id_rsa.pub</code> 替换成本地公钥存放的位置， <code>username@hostname </code> 要替换成你所要登录的用户名和主机名。</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cat ~/.ssh/id_rsa.pub | ssh user@host &quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&quot;<br></code></pre></td></tr></table></figure>
+
+<p>  但是还是要登录远程主机，执行下面的命令修改目录和文件的权限才能成功。</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">chmod 700 ~/.ssh<br>chmod 600 ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>ssh-copy-id</code> 命令：自动上传公钥，Linux 上自带的 OpenSSH 自带一个 <code>ssh-copy-id</code> 命令，可以自动将公钥拷贝到远程服务器的<code>~/.ssh/authorized_keys</code>文件。<br>  用户在本地 Linux 计算机执行下面的命令，就可以把本地的公钥拷贝到服务器。 <code>-i</code> 参数指定上传的公钥文件。</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> ssh-copy-id -i key_file user@host</span><br></code></pre></td></tr></table></figure>
+
+<p>  <strong>注意：Windows 10 的自带的 OpenSSH 并没有 <code>ssh-copy-id</code> 工具，因此无法使用该命令，网上有一些第三方对的实现，可用性没有测试过，建议 Windows 使用前面两种方法，</strong></p>
+</li>
+</ol>
+<p>上传成功后使用下面命令就可以顺利免密登录，不用再输入密码。可以使用 <code>-i</code> 参数指定使用的私钥文件，默认使用的私钥文件为 <code>~/.ssh/id_rsa</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh admin@kiku.vip -p 2222 -i ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>SSH 客户端的相关配置文件在本地主机的 <code>~/.ssh</code> 目录下，使用 <code>ssh-keygen</code> 命令生成的密钥对，还有信任主机列表 <code>known_hosts</code> 文件都在该目录下。</p>
+<p>而 <code>~/.ssh/config</code> 文件是 SSH 客户端配置文件，如果该目录下不存在该文件，可以手动创建一个名为 <code>config</code> 无后缀格式的纯文本文件。</p>
+<p>使用 SSH 客户端配置文件，可以按照不同服务器，列出各自的连接参数，从而不必每一次登录都输入重复的参数。下面是一个例子，例子里面的缩进格式并不是必需的，只是为了视觉上区分不同主机的设置。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Host</span> *<br>     <span class="hljs-attribute">Port</span> <span class="hljs-number">2222</span><br>     <span class="hljs-comment"># 断开时重试连接的次数</span><br>     <span class="hljs-attribute">ServerAliveCountMax</span> <span class="hljs-number">5</span><br>     <span class="hljs-comment"># 每隔 60 秒自动发送一个空的请求以保持连接</span><br>     <span class="hljs-attribute">ServerAliveInterval</span> <span class="hljs-number">60</span><br>     <br><span class="hljs-attribute">Host</span> bloghost<br>    <span class="hljs-attribute">HostName</span> kiku.vip<br>    <span class="hljs-attribute">User</span> root<br>    <span class="hljs-attribute">Port</span> <span class="hljs-number">2222</span><br>    <span class="hljs-attribute">IdentityFile</span> ~/.ssh/bloghost<br></code></pre></td></tr></table></figure>
+
+<p><code>Host *</code>表示对所有主机生效，后面的 <code>Port 2222 </code> 表示以后连接所有服务端都使用 2222 端口而不是默认的 22 端口，这样就不用在每次登录时都使用 <code>-p</code> 特别指定端口了。</p>
+<p>SSH 客户端连接服务端长时间不操作会终止回话断开连接，下次连接又要发起登录请求，后面的两行可以保持长时间连接。</p>
+<p><code>Host bloghost</code> 表示新的一项主机设置，真正连接主机名由下面的 <code>HostName</code> 决定，<code>bloghost</code> 可以理解为 <code>kiku.vip</code> 这个主机名的别名，如果使用 <code>ssh</code> 连接的是配置文件中的别名，就会套用后面指定的参数。例如 <code>ssh bloghost</code> 就相当于下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh kiku@kiku.vip -p 2222 -i ~/.ssh/id_rsa<br></code></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><p>  <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html">阮一峰：SSH原理与运用（一）：远程登录</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://wangdoc.com/ssh/index.html">网道：SSH 教程</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Tf4y1x7vo">B 站：2.1.2 SSH工作原理</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://ccstudio.org/linux/part1/remote.html#41-ssh%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8">ssh基础使用</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/33461b619d53">图解 SSH 原理</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108161141">每天都在用 SSH，你知道 SSH 的原理吗？</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc4252#section-7">rfc4252：Public Key Authentication Method: “publickey”</a></p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html#chal">How Key Challenges Work</a></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/cate1/">cate1</a>
+                    
+                      <a class="hover-with-bg" href="/categories/cate1/cate2/">cate2</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SSH/">SSH</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%89%E5%85%A8/">安全</a>
+                    
+                      <a class="hover-with-bg" href="/tags/VPS/">VPS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/26/%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9B%BE%E5%BA%8A/">
+                        <span class="hidden-mobile">使用阿里云 OSS 服务搭建博客图床</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

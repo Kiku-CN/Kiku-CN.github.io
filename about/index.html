@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>关于 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img/img/20201209084316.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="关于">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+            <div class="about-avatar">
+              <img src="/img/avatar.jpg" srcset="/img/loading.gif"
+                   class="img-fluid" alt="avatar">
+            </div>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="text-center">
+  <div class="about-info">
+    <div class="about-name">Kiku</div>
+    <div class="about-intro">在等 世上唯一契合灵魂</div>
+    <div class="about-icons">
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://github.com/Kiku-CN" class="
+           hint--bottom hint--rounded"
+           aria-label=最近在码
+        >
+          <i class="iconfont icon-github-fill" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/91267819" class="
+           hint--bottom hint--rounded"
+           aria-label=最近在学
+        >
+          <i class="iconfont icon-bilibili-fill" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://music.163.com/#/user/home?id=371362171" class="
+           hint--bottom hint--rounded"
+           aria-label=最近在听
+        >
+          <i class="iconfont icon-music" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://www.douban.com/people/164612834/statuses" class="
+           hint--bottom hint--rounded"
+           aria-label=最近在看
+        >
+          <i class="iconfont icon-douban-fill" aria-hidden="true"></i>
+          
+        </a>
+      
+        
+        
+        
+        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/kiku-24" class="
+           hint--bottom hint--rounded"
+           aria-label=最近在赞
+        >
+          <i class="iconfont icon-zhihu-fill" aria-hidden="true"></i>
+          
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+<article class="mt-5 markdown-body text-center">
+  <h3 id="✈航空爱好者✈"><a href="#✈航空爱好者✈" class="headerlink" title="✈航空爱好者✈"></a>✈航空爱好者✈</h3><h3 id="🖥曾经的网瘾少年🖥"><a href="#🖥曾经的网瘾少年🖥" class="headerlink" title="🖥曾经的网瘾少年🖥"></a>🖥曾经的网瘾少年🖥</h3><h3 id="👨‍💻正在学习写代码👨‍💻"><a href="#👨‍💻正在学习写代码👨‍💻" class="headerlink" title="👨‍💻正在学习写代码👨‍💻"></a>👨‍💻正在学习写代码👨‍💻</h3><h3 id="⚽踢球很菜，看球很爱⚽"><a href="#⚽踢球很菜，看球很爱⚽" class="headerlink" title="⚽踢球很菜，看球很爱⚽"></a>⚽踢球很菜，看球很爱⚽</h3><h3 id="♌二十世纪最后的狮子座♌"><a href="#♌二十世纪最后的狮子座♌" class="headerlink" title="♌二十世纪最后的狮子座♌"></a>♌二十世纪最后的狮子座♌</h3><h3 id="📂严重知识囤积收藏癖📂"><a href="#📂严重知识囤积收藏癖📂" class="headerlink" title="📂严重知识囤积收藏癖📂"></a>📂严重知识囤积收藏癖📂</h3><h3 id="📽看电影品百味人生📽"><a href="#📽看电影品百味人生📽" class="headerlink" title="📽看电影品百味人生📽"></a>📽看电影品百味人生📽</h3><h3 id="🎧不听歌会死星人🎧"><a href="#🎧不听歌会死星人🎧" class="headerlink" title="🎧不听歌会死星人🎧"></a>🎧不听歌会死星人🎧</h3><h3 id="📱数码产品发冷友📱"><a href="#📱数码产品发冷友📱" class="headerlink" title="📱数码产品发冷友📱"></a>📱数码产品发冷友📱</h3><h3 id="🔞不知名老司机🔞"><a href="#🔞不知名老司机🔞" class="headerlink" title="🔞不知名老司机🔞"></a>🔞不知名老司机🔞</h3><h3 id="🚀半个伪军迷🚀"><a href="#🚀半个伪军迷🚀" class="headerlink" title="🚀半个伪军迷🚀"></a>🚀半个伪军迷🚀</h3><h3 id="⏳拖延症晚期⏳"><a href="#⏳拖延症晚期⏳" class="headerlink" title="⏳拖延症晚期⏳"></a>⏳拖延症晚期⏳</h3><h3 id="🚶母胎-Solo🚶"><a href="#🚶母胎-Solo🚶" class="headerlink" title="🚶母胎 Solo🚶"></a>🚶母胎 Solo🚶</h3><h3 id="📝恋旧或许长情📝"><a href="#📝恋旧或许长情📝" class="headerlink" title="📝恋旧或许长情📝"></a>📝恋旧或许长情📝</h3><h3 id="🧬不规则矛盾综合体🧬"><a href="#🧬不规则矛盾综合体🧬" class="headerlink" title="🧬不规则矛盾综合体🧬"></a>🧬不规则矛盾综合体🧬</h3><h3 id="😳敏感多疑，轻微社恐😳"><a href="#😳敏感多疑，轻微社恐😳" class="headerlink" title="😳敏感多疑，轻微社恐😳"></a>😳敏感多疑，轻微社恐😳</h3><h3 id="😵选择困难综合症，伪完美主义者😵"><a href="#😵选择困难综合症，伪完美主义者😵" class="headerlink" title="😵选择困难综合症，伪完美主义者😵"></a>😵选择困难综合症，伪完美主义者😵</h3><h3 id="💤间歇性踌躇满志，持续性混吃等死💤"><a href="#💤间歇性踌躇满志，持续性混吃等死💤" class="headerlink" title="💤间歇性踌躇满志，持续性混吃等死💤"></a>💤间歇性踌躇满志，持续性混吃等死💤</h3><h3 id="💢反抗任性，自诩胆大，又渴望安稳💢"><a href="#💢反抗任性，自诩胆大，又渴望安稳💢" class="headerlink" title="💢反抗任性，自诩胆大，又渴望安稳💢"></a>💢反抗任性，自诩胆大，又渴望安稳💢</h3><h3 id="💭总是理性，偶尔文青，内心戏十足💭"><a href="#💭总是理性，偶尔文青，内心戏十足💭" class="headerlink" title="💭总是理性，偶尔文青，内心戏十足💭"></a>💭总是理性，偶尔文青，内心戏十足💭</h3><h3 id="⚰不见棺材不落泪，不撞南墙不回头⚰"><a href="#⚰不见棺材不落泪，不撞南墙不回头⚰" class="headerlink" title="⚰不见棺材不落泪，不撞南墙不回头⚰"></a>⚰不见棺材不落泪，不撞南墙不回头⚰</h3><h3 id="😐佛系淡定，宠辱不惊😐"><a href="#😐佛系淡定，宠辱不惊😐" class="headerlink" title="😐佛系淡定，宠辱不惊😐"></a>😐佛系淡定，宠辱不惊😐</h3><h3 id="••••••"><a href="#••••••" class="headerlink" title="••••••"></a>••••••</h3>
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
