@@ -250,12 +250,12 @@
             <h1 style="display: none">VPS 初体验（五）将 Hexo 静态博客一键部署到 VPS</h1>
             
             <div class="markdown-body">
-              <p>使用 Hexo 配合免费的 Github 的仓库和 Github Pages 可以快速在互联网上<a href="">搭建自己的个人博客</a>。但是因为 GitHub Pages 在国内的访问速度太差，为了得到更好的访问体验，可以选择将博客部署到自己的 VPS 上。最直接的方法就是手动将生成的博客静态文件手动使用 FTP 上传到 Nginx 上的博客站点目录下，但是这样每次更新都要手动 FTP 上传显得麻烦且不优雅。</p>
+              <p>使用 Hexo 配合免费的 Github 的仓库和 Github Pages 可以快速在互联网上<a target="_blank" rel="noopener" href="https://kiku.vip/2020/12/21/Hexo/">搭建自己的个人博客</a>。但是因为 GitHub Pages 在国内的访问速度太差，为了得到更好的访问体验，可以选择将博客部署到自己的 VPS 上。最直接的方法就是手动将生成的博客静态文件手动使用 FTP 上传到 Nginx 上的博客站点目录下，但是这样每次更新都要手动 FTP 上传显得麻烦且不优雅。</p>
 <p>而 Hexo 本身提供了快速方便的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/one-command-deployment.html">一键部署功能</a>，支持包括 Git、Netlify、SFTP 等多种部署方式。虑到稳定性和同步速度，最终选择了使用 Git 方式部署到 VPS。</p>
 <p>首先需要在 VPS 上准备一个 Git 裸仓库作为 Hexo 的部署仓库。当运行 <code>hexo deploy</code> 命令时，会自动使用 <code>git push</code> 将博客的静态文件上传到 VPS 的 Git 仓库中。</p>
 <p><strong>注意：裸仓一般都是用来当做远程的中心公共仓库，专门用来存储和同步分发，裸仓库可以被正常 <code>clone</code> 和 <code>push</code> ，但是裸仓没有 worktree 的，不能像普通仓库那样进行 <code>commit</code> 等 Git 操作。</strong></p>
 <p>光把博客静态文件上传到仓库还不够，还需要拷贝到 Nginx 的博客站点目录一下才能被 HTTP(S) 访问。为此需要使用到 <a target="_blank" rel="noopener" href="https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a> 功能，当服务器端的 Git 裸仓收到 git push 之后，会自动触发 Git Hooks 中的 <code>post-receive</code> 脚本，该脚本将 Git 裸仓中的文件拷贝到 Nginx 的博客站点目录下。这样就可以真正达到了 <code>hexo deploy</code> 命令全程自动部署的效果。</p>
-<p>![<a target="_blank" rel="noopener" href="http://www.liuxinggang.com/archives/gethook_hexo_vps.html">使用Git Hook自动部署Hexo到个人VPS</a>](Hexo 部署到 VPS images/2755175395.png)</p>
+<p>![<a target="_blank" rel="noopener" href="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192157666.png">使用Git Hook自动部署Hexo到个人VPS</a>](Hexo 部署到 VPS images/2755175395.png)</p>
 <ol>
 <li><p>  在宝塔面板已经创建好 kiku.vip 站点作为博客入口，站点的根目录为 <code>/www/wwwroot/kiku.vip</code>。</p>
 </li>
@@ -294,10 +294,7 @@
 
 </li>
 </ol>
-<p>前前后后花了接近半个月的时间在 VPS 上，才终于把服务器折腾成自己想要的效果。在这个过程中学到了不少网络和服务器相关的知识，见识了中文互联网环境背后的那一面，发现了不少优质的博客。将这段经历总结成 5 篇博客，VPS 折腾暂告一段，接下来全力准备找工作了。</p>
-<ol>
-<li></li>
-</ol>
+<p>前前后后花了接近半个月的时间在 VPS 上，才终于把服务器折腾成自己想要的效果。在这个过程中学到了不少网络和服务器相关的知识，见识了中文互联网环境背后的那一面，发现了不少优质的博客。最好将自己的折腾过程总结成为 5 篇博客，VPS 折腾暂告一段，接下来全力准备找工作了。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li>  <a target="_blank" rel="noopener" href="http://www.liuxinggang.com/archives/gethook_hexo_vps.html">使用Git Hook自动部署Hexo到个人VPS</a></li>
 <li>  <a target="_blank" rel="noopener" href="https://moelove.info/2016/12/04/Git-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E5%92%8C%E8%A3%B8%E4%BB%93%E5%BA%93/">Git 本地仓库和裸仓库</a></li>
@@ -320,13 +317,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/SSH/">SSH</a>
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
                     
                       <a class="hover-with-bg" href="/tags/VPS/">VPS</a>
                     
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
-                    
                       <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SSH/">SSH</a>
                     
                   </div>
                 

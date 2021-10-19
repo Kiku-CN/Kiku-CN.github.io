@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>写给自己看的中文排版规范 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/20210226195522.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="写给自己看的中文排版规范">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-26 22:58" pubdate>
+        2020年12月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">写给自己看的中文排版规范</h1>
+            
+            <div class="markdown-body">
+              <p>在使用 Markdown + Typora 写作的过程中，时常对一些排版上的细节感到困惑，特别是频繁出现的汉字与字母数字等西文混排的情形让我纠结不已。参考了网上的一些排版建议，再结合自己的审美和习惯最终总结了这个规范。希望借此规范，让自己在写作时有章可循，使文章的排版风格尽量统一。</p>
+<p>Markdown 的初衷是为了把作者从复杂的排版中解放出来，但这并不意味着可以完全不顾文字的排版格式。统一的段落间隔、中西混排时的适当留白、标点符号的规范使用，处理好这些排版细节，可以让文章看起来更加整体连贯，没有割裂感。不仅提高读者的阅读体验，也是作者认真细心的表现。</p>
+<p>再次提醒，本规范只是用来指导自己写博客，如果是论文写作或者刊物出版，请以文末参考链接中的国家标准和教育部指导草案为准。</p>
+<h2 id="标题和段落"><a href="#标题和段落" class="headerlink" title="标题和段落"></a>标题和段落</h2><ol>
+<li>标题层级数建议不超过四级，同时谨慎使用四级标题，尽量避免出现，保持层级的简单，防止出现过于复杂的章节。</li>
+</ol>
+<ul>
+<li>一级标题：文章的标题。</li>
+<li>二级标题：文章主要部分的大标题。</li>
+<li>三级标题：二级标题下面一级的小标题。</li>
+<li>四级标题：三级标题下面某一方面的小标题。</li>
+</ul>
+<p>以 Markdown 语法为例。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 一级标题</span><br><br><span class="hljs-section">## 二级标题</span><br><br><span class="hljs-section">### 三级标题</span><br><br><span class="hljs-section">#### 四级标题</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>一级标题下，不能直接出现三级标题。</li>
+</ol>
+<p>以 Markdown 语法为例：下面的文章结构，缺少二级标题。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 一级标题</span><br><br><span class="hljs-section">### 三级标题</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>文章的参考来源以二级标题形式放在文末，有多个参考链接应该使用有序列表，但是列表项的先后排序不代表参考的比例或者推荐程度。</li>
+<li>不是用缩进来区分段落，而是使用空行将段落隔开。在 Typora 中使用回车换段会自动在段与段之间加入空行。</li>
+<li>想在段落后插入图片，应使用软换行另起一行再粘贴图片，而不是直接在段落的最后粘贴图片。在 Typora 中，你可以通过 <code>Shift + Enter</code> 完成一次软换行。</li>
+<li>插入大段的原文摘录应该使用 Markdown 的引用块格式。  </li>
+<li>插入大段代码应该使用代码块格式，最好补充代码块的语言让代码能正确地显示高亮，代码块中的代码注释行可以省略结尾标点。</li>
+<li>在行内插入代码语句、文件路径、终端命令、键盘按键应该使用 <code>ˋ</code> 半角重音号括起来以加区分。</li>
+<li>在列表有很多条目时使用有序列表以计数，即使这些条目没有逻辑上的先后顺序。每个条目都应该有结尾标点。</li>
+</ol>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><ol>
+<li><p>英文字母和数字都使用半角的 ASCII 字符，空格使用半角空格。</p>
+</li>
+<li><p>在字母数字汉字三者混排的交界处要有间距，间距可能是空格字符也可以是全角标点。</p>
+</li>
+<li><p>全角中文字符与半角英文字符之间，应有一个半角空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：本文介绍如何快速启动Windows系统。<br><br>正确：本文介绍如何快速启动 Windows 系统。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>全角中文字符与半角阿拉伯数字之间，应有一个半角空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：2011年5月15日，我订购了5台笔记本电脑与10台平板电脑。<br><br>正确：2011 年 5 月 15 日，我订购了 5 台笔记本电脑与 10 台平板电脑。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>半角英文字符和半角阿拉伯数字之间，应有一个半角空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：微软确认 Windows10 将是最后一代 Windows。<br><br>错误：微软确认 Windows 10 将是最后一代 Windows。<br></code></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h2 id="数值与单位"><a href="#数值与单位" class="headerlink" title="数值与单位"></a>数值与单位</h2><ol>
+<li><p>数值的运算符之间应该有空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：1+2=3<br><br>正确：1 + 2 = 3<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>数字与单位之间应该有空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：我有一块 20TB 的硬盘，鬼知道我是怎么用完的。<br><br>正确：我有一块 20 TB 的硬盘，鬼知道我是怎么用完的。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>度的标志、百分号、货币标志、表正负数符号和数字之间不用添加空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：17 °, 100 %，$ 10, - 23，<br><br>正确：17°, 100%，$10, -23，<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>数值为千位以上，建议添加千分号（半角逗号）。对于 4 位以下的数值，千分号是选用的，比如<code>1000</code>和<code>1,000</code>都可以接受。对于 4 位以上的数值，千分号是必须的。</p>
+<figure class="highlight m"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs m">正确：实收资本为 ￥<span class="hljs-number">1</span>,<span class="hljs-number">258</span>,<span class="hljs-number">000</span> 人民币。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>表示数值范围时，用波浪号连接。带有单位或百分号时，两个数字建议都要加上单位或百分号。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：132～234kg、67～89%<br><br>正确：132kg～234kg、67%～89%<br></code></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="标点符号"><a href="#标点符号" class="headerlink" title="标点符号"></a>标点符号</h2><ol>
+<li><p>正文是中文，原则上都应该使用中文全角标点，遵守中文标点的习惯用法。但是在中文句子内所夹用的英文句子或英文语段内部使用英文半角标点加空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：乔布斯说过：“Stay hungry，stay foolish。”<br><br>正确：乔布斯说过：“Stay hungry, stay foolish.”。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>中文句子内所夹用的英文句子或英文语段内部需要使用括号或者引号时，用英文半角标点标示。括号、引号前后加空格，中间内容无空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：Put coins or bills into the slots（the small slot for coins and the bigger one for bills）.<br><br>正确：Put coins or bills into the slots (the small slot for coins and the bigger one for bills).<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>中文句子中夹用了英文词句，但并非处于完整的英文句子或英文语段内部时，用中文全角标点标示，括号、引号前后不需要空格。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：你就可以通过ATM(Automatic Teller Machine)存取款。<br><br>正确：你就可以通过ATM（Automatic Teller Machine）存取款。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>省略号使用占两个全角字符空间的下置省略号，实质上是两个并排的英文省略号而不是六个英文句点。通常中文输入法全角标点状态下的键入 <code>Shift + 6</code> 即可输入。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：中国设计还有太长路要走…<br>错误：中国设计还有太长路要走······<br><br>正确：中国设计还有太长路要走……<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>破折号使用占两个全角字符空间的长横线，实质上是两个并排的英文破折号（TWO-EM DASH），少数字体在两个长横线之间会出现空隙。通常中文输入法全角标点状态下的键入 <code>Shift + -</code> 既可输入。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown">错误：中国设计还有太长路要走⸺加油罢。<br>错误：中国设计还有太长路要走──加油罢。<br>错误：中国设计还有太长路要走--加油罢。<br><br>正确：中国设计还有太长路要走——加油罢。<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>知乎上有很多人推荐使用直角引号，但个人还是更钟爱弯引号。弯引号的输入更加方便，使用场景更多。况且个人也没觉得直角引号比弯引号美观多少，反而觉得左右对称的弯引号更加清晰明了。</p>
+</li>
+<li><p>标点符号的重要性：标点符号除了停顿断句，还传达着语气、语调等具体的含义。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218637.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>根据内容合理使用句号，避免当断不断，一路逗号走到底。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218638.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218639.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>叹号叠用不应该超过三个。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218640.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218641.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>同时包含疑问和感叹两种语气时，可以同时使用问号和叹号，但是注意问号居前，叹号居后。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218642.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218644.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>书名号出现嵌套时双书名号和单书名号交替使用，双引号和单引号也是同理。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218645.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218646.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>多个独立成段的引文，只在每段开头使用前引号，并且在最后一段结尾使用后引号。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218647.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218648.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>标有引号或者书名号的并列词语分割已经非常清晰，不需要增加顿号进行分隔。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218649.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218650.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>但如果有更多符号穿插其中，比如书名号之后有括注，就需要使用合适的符合进行连接和分隔。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218651.png" srcset="/img/loading.gif" alt="Image"><br>正确：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218652.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+<li><p>点号不能出现在一行的开头，标号的前半部分不能出现在行尾，后半部分不能出现在行首，连接号间隔号也不能出现在行首，分隔号无论收尾都不能出现。可以通过将标点挤在上一行的尾部（推入），或者将上一行末尾的文字推到下一行的头部（推出）来避免。使用 Typora 会自动帮我们自动推出。<br>错误：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218653.png" srcset="/img/loading.gif" alt="Image"></p>
+</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20506092">Hindy：写给大家看的中文排版指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AX4y1u7Ag">B 站视频：设计师与标点符号 -oooooohmygosh</a></li>
+<li><a target="_blank" rel="noopener" href="https://w3c.github.io/clreq/">W3C：中文排版需求 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ruanyf/document-style-guide">阮一峰：中文技术文档的写作规范</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.moe.gov.cn/ewebeditor/uploadfile/2015/01/13/20150113091548267.pdf">国家标准GB/T15834——2011《标点符号用法》</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.moe.gov.cn/ewebeditor/uploadfile/2015/01/13/20150113092346124.pdf">教育部：夹用英文的中文文本的标点符号用法（草案）</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%B4%E8%AF%B4/">说说</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Markdown/">Markdown</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Typora/">Typora</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8E%92%E7%89%88/">排版</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java 设计模式学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/21/Hexo/">
+                        <span class="hidden-mobile">使用 Hexo 搭建个人博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1246 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>计算机组成原理学习笔记 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192138767.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机组成原理学习笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-30 12:00" pubdate>
+        2020年8月30日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      11.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机组成原理学习笔记</h1>
+            
+            <div class="markdown-body">
+              <h2 id="第-１章-计算机系统概论"><a href="#第-１章-计算机系统概论" class="headerlink" title="第 １章 计算机系统概论"></a>第 １章 计算机系统概论</h2><h3 id="1-1-计算机系统简介"><a href="#1-1-计算机系统简介" class="headerlink" title="1.1 计算机系统简介"></a>1.1 计算机系统简介</h3><ul>
+<li><p>计算机系统组成：</p>
+<ul>
+<li>硬件：计算机的实体，如主机、外设等</li>
+<li>软件：由具有各类特殊功能的信息（程序）组成，分为应用软件，系统软件</li>
+</ul>
+</li>
+<li><p>计算机体系结构和计算机组成的区别：</p>
+<ul>
+<li>计算机体系结构研究的是程序员所见到的计算机系统的属性概念性的结构与功能特性，具体来说就是指令系统、数据类型、寻址技术、I/O 机理</li>
+<li>计算机组成研究的是如何实现计算机体系结构所体现的属性，例如如何实现乘法指令</li>
+</ul>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226305.png" srcset="/img/loading.gif" alt="image-20200902032458386"></p>
+</li>
+</ul>
+<h3 id="1-2-计算机的基本组成"><a href="#1-2-计算机的基本组成" class="headerlink" title="1.2 计算机的基本组成"></a>1.2 计算机的基本组成</h3><ul>
+<li><p>冯· 诺依曼计算机的基本特点：按地址访问并顺序执行指令。主要原理核心思想是存储程序和程序控制。主要特点</p>
+<ol>
+<li>计算机由五大部件组成：运算器、控制器、存储器、输入设备、输出设备</li>
+<li>指令和数据以同等地位存放于存储器内，并可按地址访问。</li>
+<li>指令和数据用二进制表示</li>
+<li> 指令由操作码和地址码组成。操作码表示操作的性质、地址码表示操作数在存储器中的位置。</li>
+<li>指令在存储器中按顺序存放。通常，指令时顺序执行的。在特殊情况下，可根据运算结果或指定的条件来改变运算顺序。</li>
+<li>以运算器为中心，输入输出设备和存储器之间的数据传送通过运算器完成。（早期的冯诺依曼计算机以运算器为中心,而现代计算机已变为以存储器为中心）</li>
+</ol>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226306.png" srcset="/img/loading.gif" alt="早期的冯诺依曼计算机以运算器为中心"></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226307.png" srcset="/img/loading.gif" alt="现代计算机已变为以存储器为中心"></p>
+</li>
+<li><p>现代计算机硬件框图<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226308.png" srcset="/img/loading.gif" alt="image-20200902034653719"><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226309.png" srcset="/img/loading.gif" alt="image-20200831175528325"></p>
+</li>
+<li><p>存储器的基本组成<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226310.png" srcset="/img/loading.gif" alt="image-20200902035911495"></p>
+<ul>
+<li>存储体：由若干个存储单元构成</li>
+<li>存储单元：也叫存储存放一串二进制代码，每个存储单元赋予一个地址号，按地址寻访</li>
+<li>存储字：存储单元中二进制代码的组合，和存储单元意思相近</li>
+<li>存储字长：存储单元中二进制代码的位数存储字长：存储单元中二进制代码的位数，按字编址时，机器字长=存储字长。假如按字节编址，存储器一个存储单元大小为1个字节。现在的计算机都是按字节编址了。</li>
+<li>MAR：主存地址寄存器，连接地址总线，可以反映存储单元的个数</li>
+<li>MDR：主存数据寄存器，连接数据总线，可以反映存储字长</li>
+</ul>
+<p>例如某个储存器 MAR = 4 位，MDR = 8 位，存储单元个数 16（2 ^ 4），存储字长 8</p>
+</li>
+<li><p>运算器的基本组成<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226311.png" srcset="/img/loading.gif" alt="image-20200902040801669"></p>
+<ul>
+<li>ALU（Arithmetic&amp;logical Unit）：算术逻辑单元(arithmetic and logic unit) 是能实现多组算术运算和逻辑运算的组合逻辑电路。ALU是组合逻辑电路，要保存就需要用到时序逻辑电路</li>
+<li>ACC（Accumulator）：累加寄存器，专门用来存放操作数或运算结果。两个操作数中的指令的通常一个操作书在累加器A中，运算完成后累加器A中便可得到运算结果两个操作数中的指令的通常一个操作书在累加器A中，运算完成后累加器A中便可得到运算结果。</li>
+<li>MQ（Multiple—Quotient Register）：乘商寄存器。主要负责数据的乘法与除法运算并可保存运算结果</li>
+</ul>
+</li>
+<li><p>控制器的基本组成</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226312.png" srcset="/img/loading.gif" alt="image-20200902041025531"></p>
+<ul>
+<li>PC（Program Counter）：程序计数器，存放当前欲执行指令在存储器的存放位置</li>
+<li>IR（Instruction Register）：指令寄存器，用来存放指令的，存放当前正在执行的指令，包括指令的操作码，操作数</li>
+<li>CU（Control Unit）：控制单元，是整个控制器的核心，分析指令，然后发出各种控制信号</li>
+</ul>
+</li>
+<li><p>指令执行过程，以取数指令为例：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226313.png" srcset="/img/loading.gif" alt="image-20200902041901334"></p>
+<ul>
+<li>取指令（1、2、3 、4）： PC MAR M MDR IR ,(PC)+1 PC</li>
+<li>分析指令 （5）：OP(IR) CU</li>
+<li>执行指令 （6、7、8、9）Ad(IR) MAR M MDR ACC</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-计算机硬件的主要技术指标"><a href="#1-3-计算机硬件的主要技术指标" class="headerlink" title="1.3 计算机硬件的主要技术指标"></a>1.3 计算机硬件的主要技术指标</h3><ul>
+<li>机器字长: CPU 一次能处理数据的位数。一般和 CPU 中的通用寄存器位数以及数据总线宽度相等(也就是字长)。</li>
+<li>总线宽度：数据总线一次能并行传送的最大信息的位数</li>
+<li>主频 f：指CPU内核工作的时钟频率，即CPU内数字脉冲信号振荡的速率。主频 = 外频 × 倍频（外频：指CPU(内存)与主板之间同步的时钟频率(系统总线的工作频率)；倍频：CPU主频与外频之间的倍数）。</li>
+<li>时钟周期T：也称节拍周期，是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。f 与 T的关系互为倒数。</li>
+<li>CPI (Clock cycles Per Instruction)：执行一条指令(平均)需要的时钟周期数(即T周期的个数)<br>指令系统CPI = 程序中所有指令的时钟周期数之和 / 程序指令总数<pre><code>                  =  (程序中各类指令的CPI ×程序中该类指令的比例)</code></pre>
+</li>
+<li>MIPS (Million Instructions Per Second)：每秒钟CPU能执行的指令总条数 (单位：百万条/秒)<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226314.png" srcset="/img/loading.gif" alt="image-20200902045007880"><br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226315.png" srcset="/img/loading.gif" alt="image-20200902045142109"></li>
+<li>FLOPS：每秒浮点运算次数</li>
+<li>主存容量：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226316.png" srcset="/img/loading.gif" alt="image-20200902045453768"></li>
+</ul>
+<h2 id="第２章-计算机的发展及应用"><a href="#第２章-计算机的发展及应用" class="headerlink" title="第２章 计算机的发展及应用"></a>第２章 计算机的发展及应用</h2><h3 id="2-1-计算机的发展史"><a href="#2-1-计算机的发展史" class="headerlink" title="2.1 计算机的发展史"></a>2.1 计算机的发展史</h3><ul>
+<li>世界上第一台现代电子数字计算机埃尼阿克(ENIAC)，诞生于1946年的美国宾夕法尼亚大学，ENIAC 是继ABC（阿塔纳索夫-贝瑞计算机）之后的第二台电子计算机和第一台通用计算机。但ENIAC没有真正的存储器。ENIAC只在20个暂存器，冯诺依曼在此基础上提出了EDVAC方案，是第一台冯·诺伊曼结构的计算机。</li>
+<li>IBM在1964年4月推出了System/360系列机，这一系列是世界上首个指令集可兼容计算机。在此以前，每台计算机都有自己的指令集，计算机厂商要针对每种主机量身定做操作系统，而System/360的问世则让单一操作系统适用于整系列的计算机。IBM兼容机是指其他厂商生产的与IBM的PC机指令集兼容的计算机。</li>
+<li>电子管 –&gt; 晶体管（transistor） –&gt; 中小规模集成电路 –&gt; 大规模集成电路 –&gt; 超大规模集成电路</li>
+</ul>
+<h2 id="第３章-系统总线"><a href="#第３章-系统总线" class="headerlink" title="第３章 系统总线"></a>第３章 系统总线</h2><h3 id="3-1-总线的基本概念"><a href="#3-1-总线的基本概念" class="headerlink" title="3.1 总线的基本概念"></a>3.1 总线的基本概念</h3><ul>
+<li>总线：总线是连接各个部件的信息传输线，是各个部件共享的传输介质，同一时刻只有一对设备使用总线。</li>
+<li>以存储器为中心的双总线结构框图，增加了存储总线来让cpu和存储器直接交换信息，减轻了系统总线的负担，避免称为系统瓶颈。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226317.png" srcset="/img/loading.gif" alt="image-20200902153451295"></li>
+</ul>
+<h3 id="3-2-总线的分类"><a href="#3-2-总线的分类" class="headerlink" title="3.2 总线的分类"></a>3.2 总线的分类</h3><ul>
+<li>片内总线：芯片内部各部件之间的的总线，如CPU内部连接各寄存器及运算器之间的总线。</li>
+<li>系统总线：计算机各部件之间 的信息传输线<ul>
+<li>数据总线：双向 与机器字长、存储字长有关，但不一定等于字长，一个字可以分多次传输</li>
+<li>地址总线：单向 与存储地址、 I/O地址有关，和 MAR 位数相等</li>
+<li>控制总线：双向，存储器读、存储器写，总线允许、中断确认，中断请求、总线请求。</li>
+</ul>
+</li>
+<li>通信总线：用于 计算机系统之间 或 计算机系统与其他系统（如控制仪表、移动通信等）</li>
+<li>按照传输方式分类：<ul>
+<li>并行通信总线：同一时刻，可以传输多个bit位的信号，有多少个信号位就需要多少根信号线。并行通讯的效率高，但是对信号线路要求也很高，很容易产生干扰，反而传输速度不能很快。</li>
+<li>串行通信总线：同一时刻，只能传输一个bit位的信号，只需要一根信号线。串行通讯效率较低，但是对信号线路要求低，抗干扰能力强，传输速度可以很快。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-总线特性及性能指标"><a href="#3-3-总线特性及性能指标" class="headerlink" title="3.3 总线特性及性能指标"></a>3.3 总线特性及性能指标</h3><ul>
+<li><p>总线特性</p>
+<ul>
+<li>机械特性：尺寸、形状、管脚数 及 排列顺序  </li>
+<li>电气特性：传输方向 和有效的 电平 范围</li>
+<li>功能特性 ：每根传输线的 功能，如地址线，数据线，控制线，反馈线</li>
+<li>时间特性：信号的 时序 关系 </li>
+</ul>
+</li>
+<li><p>总线的性能指标 </p>
+<ul>
+<li>总线宽度  数据线 的根数 </li>
+<li>标准传输率 ：每秒传输的最大字节数（MBps）</li>
+<li>时钟同步/异步：  同步、不同步  </li>
+<li>总线复用：地址线 与 数据线 复用，8086的20根地址线和16根数据线复用，减少芯片的管脚数量。</li>
+<li>信号线数：地址线、数据线和控制线的 总和</li>
+<li>总线控制方式 ：突发、自动、仲裁、逻辑、计数  </li>
+<li>其他指标：负载能力</li>
+</ul>
+</li>
+<li><p>总线标准</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226318.png" srcset="/img/loading.gif" alt="image-20200902155842393"></p>
+</li>
+</ul>
+<h3 id="3-4-总线结构"><a href="#3-4-总线结构" class="headerlink" title="3.4 总线结构"></a>3.4 总线结构</h3><ul>
+<li>单总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226319.png" srcset="/img/loading.gif" alt="image-20200902181748879"></li>
+<li>双总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226320.png" srcset="/img/loading.gif" alt="image-20200902181828092"></li>
+<li>三总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226321.png" srcset="/img/loading.gif" alt="image-20200902182146428"></li>
+<li>三总线结构的又一形式<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226322.png" srcset="/img/loading.gif" alt="image-20200902182207115"></li>
+<li>四总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226324.png" srcset="/img/loading.gif" alt="image-20200902182232812"></li>
+<li>传统微型机总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226325.png" srcset="/img/loading.gif" alt="image-20200902182411141"></li>
+<li>VL-BUS局部总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226326.png" srcset="/img/loading.gif" alt="image-20200902182426697"></li>
+<li>PCI 总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226327.png" srcset="/img/loading.gif" alt="image-20200902182454749"></li>
+<li>多层 PCI 总线结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226328.png" srcset="/img/loading.gif" alt="image-20200902182509966"></li>
+</ul>
+<h3 id="3-5-总线控制"><a href="#3-5-总线控制" class="headerlink" title="3.5 总线控制"></a>3.5 总线控制</h3><ul>
+<li><p>主设备( 模块)： 对总线有 控制权</p>
+</li>
+<li><p>从设备( 模块) ：响应 从主设备发来的总线命令</p>
+</li>
+<li><p>总线判优控制两种方式：</p>
+<ul>
+<li>分布式</li>
+<li>集中式<ul>
+<li>链式查询<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226329.png" srcset="/img/loading.gif" alt="image-20200905141313399"></li>
+<li>计数器定时查询<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226330.png" srcset="/img/loading.gif" alt="image-20200905141324291"></li>
+<li>独立请求方式<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226331.png" srcset="/img/loading.gif" alt="image-20200905141337555"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总线传输周期</p>
+<ul>
+<li>申请分配阶段：主模块申请，总线仲裁决定 </li>
+<li>寻址阶段：主模块向从模块 给出地址 和 命令</li>
+<li>传输阶段：主模块和从模块 交换数据 </li>
+<li>结束阶段：主模块 撤消有关信息</li>
+</ul>
+</li>
+<li><p>总线通信的四种方式</p>
+<ul>
+<li>同步通信：由 统一时标 控制数据传送 ，一般在总线长度比较短，各个部件速度比较一致的时候使用，存在短板效应。<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226332.png" srcset="/img/loading.gif" alt="image-20200905144306412"></li>
+<li>异步通信：采用 应答方式 ，没有公共时钟标准。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226333.png" srcset="/img/loading.gif" alt="image-20200905144245167"></li>
+<li>半同步通信：同步、异步 结合，发送方 用系统 时钟前沿 发信号，接收方 用系统 时钟后沿 判断、识别。增加一条 “等待”响应信号。当从设备数据没有准备好时发出WAIT信号，数据准备好了再开始开始同步传输数据。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226334.png" srcset="/img/loading.gif" alt="image-20200905144820275"></li>
+<li>分离式通信：主模块申请占用总线发地址 、命令，使用完后放弃总线的使用权，从模块准备数据完毕后，从模块申请占用总线（身份转换为主设备），向主模块发数据。从模块准备数据是不占用总线的，这时候其他设备可以请求总线，充分挖掘系统总线每个瞬间的潜力。</li>
+</ul>
+</li>
+</ul>
+<h2 id="第-４章-存储器"><a href="#第-４章-存储器" class="headerlink" title="第 ４章 存储器"></a>第 ４章 存储器</h2><h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><ul>
+<li>存储器分类：<ul>
+<li>按存储介质分类：<ul>
+<li>半导体存储器：TTL，集成度低，功耗高，速度快，MOS反之</li>
+<li>磁表面存储器：磁头、载磁体（磁盘，磁带）</li>
+<li>磁芯储存器：硬磁材料、环状元件</li>
+<li>光盘存储器：激光、磁光材料·</li>
+</ul>
+</li>
+<li>按存取方式分类：<ul>
+<li>随机访问储存器（广义）：存取时间与物理位置无关<ul>
+<li>随机读取储存器（RAM）</li>
+<li>只读储存器（ROM）</li>
+</ul>
+</li>
+<li>串行访问存储器：存取时间与物理位置有关<ul>
+<li>顺序存取存储器：磁带</li>
+<li>直接（半顺序）存取存储器：磁盘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>按在计算机中的作用分类：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226335.png" srcset="/img/loading.gif" alt="image-20200905153116312"></li>
+</ul>
+</li>
+<li>存储器的层次结构：上一层次的存储器是低一层次的高速缓存。在应用程序员中所有层次存储器构成一个存储体系。寄存器不一定都在CPU内部，CPU内部的寄存器也不都是操作系统可见的。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226336.png" srcset="/img/loading.gif" alt="image-20200906082042487"></li>
+</ul>
+<h3 id="4-2-主存储器"><a href="#4-2-主存储器" class="headerlink" title="4.2 主存储器"></a>4.2 主存储器</h3><ul>
+<li><p>主存的基本组成：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226337.png" srcset="/img/loading.gif" alt="image-20200906095009256"></p>
+</li>
+<li><p>主存和 CPU 的联系：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226338.png" srcset="/img/loading.gif" alt="image-20200906095357113"></p>
+</li>
+<li><p>存储单元是可编址的最小单位，通常是一个字节8位，多字节数据存储分为大端和小端<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226339.png" srcset="/img/loading.gif" alt="image-20200906095633396"></p>
+</li>
+<li><p>半导体存储芯片的基本结构：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226340.png" srcset="/img/loading.gif" alt="image-20200906100017978"><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226341.png" srcset="/img/loading.gif" alt="image-20200906100111098"></p>
+</li>
+<li><p>半导体存储芯片的译码驱动方式：</p>
+<ul>
+<li>线选法：每次操作一个一行（通常构成一个存储单元），但是地址线译码器输出线数量很多<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226342.png" srcset="/img/loading.gif" alt="image-20200906100336893"></li>
+<li>重合法：每次操作一个位，但是减少了地址线译码器输出线数量<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226343.png" srcset="/img/loading.gif" alt="image-20200906100359220"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>静态 RAM (SRAM)：每一个基本单元电路（虚线框）需要6个晶体管构成一个SR锁存器（也就是RS双稳态触发器）<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226344.png" srcset="/img/loading.gif" alt="image-20200906101415995"></p>
+</li>
+<li><p>静态 RAM 芯片Intel 2114 ：存储容量1K × 4 位，RAM矩阵由64 × 64 基本单元组成。64行对应6根行地址线，64列分为4组，每组16列对应4根列地址线，这样可以一次选中四列，就构成了一个基本存储单元。<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226345.png" srcset="/img/loading.gif" alt="image-20200906102927159"></p>
+</li>
+<li><p>动态 RAM ( DRAM )：电容中的电量高于某个阈值（通常为50%）表示1，低于表示0</p>
+<ul>
+<li>三管动态 RAM ：下图左侧，每个基本单元电路需要三个晶体管一个电容，读出与原存信息相反，写入与输入信息相同。读写线分开。</li>
+<li>单管管动态 RAM：读出时数据线有电流 为 “1”，写入时 电容充电为 “1” 放电为 “0”</li>
+</ul>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226346.png" srcset="/img/loading.gif" alt="image-20200906104546147"></p>
+</li>
+<li><p>三管动态 RAM 芯片 (Intel 1103) ：不仅地址要进行译码，读写选择线也要译码。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226347.png" srcset="/img/loading.gif" alt="image-20200906104640349"></p>
+</li>
+<li><p>单管动态 RAM 4116 (16K × 1位 ) ：6根地址线先后给出行地址和列地址<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226348.png" srcset="/img/loading.gif" alt="image-20200906105008068"></p>
+</li>
+<li><p>动态 RAM 刷新：电容可能出现漏电，所以要对电容进行充放电刷新保证数据正确，刷新均是按行刷新，刷新方式有三种：</p>
+<ul>
+<li>集中刷新：存在死区（cpu这时不能读写主存），以128 × 128 存储芯片（存取周期为0.5 μs ）为例：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226349.png" srcset="/img/loading.gif" alt="image-20200906105420307"></li>
+<li>分散刷新：无死区，但是存储周期翻倍，并且一个刷新时间间隔内多次刷新同一行，有些浪费。以128 × 128 存储芯片（存取周期为1 μs ）为例：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226350.png" srcset="/img/loading.gif" alt="image-20200906105454667"></li>
+<li>异步刷新，分散刷新与集中刷新相结合，将刷新安排在指令译码阶段，不会出现 “死区”。以128 × 128 存储芯片（存取周期为0.5 μs ）为例：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226351.png" srcset="/img/loading.gif" alt="image-20200906105958188"></li>
+</ul>
+</li>
+<li><p>动态 RAM 和静态 RAM 的比较：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226352.png" srcset="/img/loading.gif" alt="image-20200906110248585"></p>
+</li>
+<li><p>存储器容量的扩展：</p>
+<ul>
+<li>位扩展 （增加存储单元长度（即字长））：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226354.png" srcset="/img/loading.gif" alt="image-20200906111044274"></li>
+<li>字扩展（增加存储字的数量），用高位地址线充当片选线：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226355.png" srcset="/img/loading.gif" alt="image-20200906111118195"></li>
+<li>字、位扩展：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226356.png" srcset="/img/loading.gif" alt="image-20200906111331269"></li>
+</ul>
+</li>
+<li><p>存储器与 CPU 的连接步骤：</p>
+<p>(1) 写出对应的二进制地址码  </p>
+<p>(2) 确定芯片的数量及类型  </p>
+<p>(3) 分配地址线  </p>
+<p>(4) 确定片选信号  </p>
+<p>(5) 确定片选逻辑</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226357.png" srcset="/img/loading.gif" alt="image-20200906111921050"></p>
+</li>
+<li><p>存储器的校验：编码的纠错 、检错能力与编码的最小距离（即码距：任意两个合法编码二进数位数的最小差异位数值）有关，码距越大，抗干扰能力越强，纠错能力越强，数据冗余越大，编码效率低，编码电路也相对复杂。</p>
+</li>
+<li><p>汉明码（海明校验）：汉明码采用非划分分组的奇偶校验：</p>
+<ul>
+<li><p>汉明码的组成至少需增添 k 位检测位 ，其中为k为满足下面的最小值，n为要传输的数据位数<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226358.png" srcset="/img/loading.gif" alt="image-20200906140001555"></p>
+</li>
+<li><p>检测位的位置在第2^ i-1 （i=1，2，…，r)位上，其余位依次放置被校验的数据位</p>
+</li>
+<li><p>只要数据位的位置二进制中某一位为1，则说明被对应位置检验位检测，例如：</p>
+<ul>
+<li>第一个检测位包含第 1，3，5，7，9，11，  ……位置的二进制编码为X…XXX1</li>
+<li>第二个检测位包含第 2，3，6，7，10，11，…… 位置的二进制编码为X…XX1X</li>
+<li>第三个检测位包含第 4，5，6，7，12，13，…… 位置的二进制编码为X…X1XX</li>
+<li>第四个检测位包含第 8，9，10，11，12，13，  位置的二进制编码为X…1XXX</li>
+</ul>
+</li>
+<li><p>求汉明码<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226359.png" srcset="/img/loading.gif" alt="image-20200906141040402"></p>
+</li>
+<li><p>汉明码的纠错（以偶校验的汉明码，最多一位出错为例，）：对每一个分组分别偶校验，如果指错字均为0，则说明没有出错，如果出错分组的交就是错误位置，如果只有一个分组出错说明是只是添加的该分组校验位出错，可不用纠错。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226360.png" srcset="/img/loading.gif" alt="image-20200906141513456"></p>
+</li>
+<li><p>汉明码只能检验和纠错1位，如果多位出现错误即使指错字均为0也不一定无措，并且不一定能区别一位错与两位错。</p>
+</li>
+</ul>
+</li>
+<li><p>多体并行系统：高位交叉可以用于容量的扩展，低位交叉可以提高带宽和访问速度</p>
+<ul>
+<li>高位交叉，顺序编址<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226361.png" srcset="/img/loading.gif" alt="image-20200906172451439"></li>
+<li>低位交叉，各个体轮流编址<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226362.png" srcset="/img/loading.gif" alt="image-20200906172512148"></li>
+<li>四体低位交叉存储器，存取周期为T，总线传输周期（地址信号通过总线传输的时延）为 τ ，为实现流水线方式存取，应满足 T ＝ 4 τ<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226363.png" srcset="/img/loading.gif" alt="image-20200906172619416"></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-3-高速缓冲存储器"><a href="#4-3-高速缓冲存储器" class="headerlink" title="4.3 高速缓冲存储器"></a>4.3 高速缓冲存储器</h3><ul>
+<li><p>程序局部性原理：是指程序在执行时呈现出局部性规律，即在一段时间内，整个程序的执行仅限于程序中的某一部分。相应地，执行所访问的存储空间也局限于某个内存区域，具体来说，局部性通常有两种形式：时间局部性和空间局部性。</p>
+<ul>
+<li>时间局部性：被引用过一次的存储器位置在未来会被多次引用（通常在循环中）。 </li>
+<li>空间局部性：如果一个存储器的位置被引用，那么将来他附近的位置也会被引用。</li>
+</ul>
+</li>
+<li><p>为了缓解 CPU 和主存（DRAM）的速度差异，避免 CPU “空等” 现象。根据程序局部性原理提出了告诉缓存，也就是读取内存的时候将将内存所在的内存块整个读进缓存，从而提高访问速度。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226364.png" srcset="/img/loading.gif" alt="image-20200907095754487"></p>
+</li>
+<li><p>存储墙：存储器提供数据的速度远远落后处理器处理数据的速度，存储器速度成为各类计算体系的最大瓶颈。</p>
+</li>
+<li><p>主存和缓存按块存储，块的大小相同，一般每块可取 4 ~ 8 个字，B 为块长，缓存共有 C 块，主存共有 M 块 M &gt;&gt; C。用 标记记录与某缓存块建立了对应关系的主存块号。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226365.png" srcset="/img/loading.gif" alt="image-20200908215254459"></p>
+</li>
+<li><p>Cache 的命中率：CPU 欲访问的信息在 Cache 中的 比率。命中率 与 Cache 的 容量 与 块长 有关，容量越大命中越高，块由小到大增大时,起初会因局部性原理使命中率提高;若继续增大,则命中率很可能下降。一般每块可取 4 ~ 8 个字，也可以取一个存取周期内从主存调出的信息长度，16体交叉 块长取 16 个存储字，4体交叉 块长取 4 个存储字。</p>
+</li>
+<li><p>主存系统的效率：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226366.png" srcset="/img/loading.gif" alt="image-20200908220140783"></p>
+</li>
+<li><p>Cache 的基本结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226367.png" srcset="/img/loading.gif" alt="image-20200908220551549"></p>
+</li>
+<li><p>Cache 的 读写 操作</p>
+<ul>
+<li>读<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226368.png" srcset="/img/loading.gif" alt="image-20200908220613720"></li>
+<li>写直达法（Write – through）：也叫写通过法，写操作时数据既写入Cache又写入主存，写操作时间就是访问主存的时间，Cache和主存一直保存一致，退出时，不需要对主存执行写操作，更新策略比较容易实现，但是可能对一个内存单元反复读写。</li>
+<li>写回法（Write – back）:写操作时只把数据写入 Cache 而不写入主存，Cache和内存不会保证一致，当 Cache 数据被替换出去时才写回主存，写操作时间就是访问 Cache 的时间，Cache块退出时，被替换的块需写回主存，增加了Cache 的复杂性。当有多处理器共用一个Cache时可能一个块在多个处理器的Cache都有副本，需要保证一致性。</li>
+</ul>
+</li>
+<li><p>主存的地址映射：近的采用直接映射，速度快，成本低，但是不灵活效率低。远的采用全相联映射，成本高，速度慢，但是效率高。直接和全相联是两个极端，组相联映射结合两种映射。</p>
+<ul>
+<li>直接映射：每个缓存块 i 可以和 若干 个 主存块 对应，每个主存块 j 只能和 一 个 缓存块 对应，i = j mod C。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226369.png" srcset="/img/loading.gif" alt="image-20200908221534594"></li>
+<li>全相联映射：主存 中的 任一块 可以映射到 缓存 中的 任一块<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226370.png" srcset="/img/loading.gif" alt="image-20200908221451816"></li>
+<li>组相联映射：某一主存块 j 按模 Q 映射到 缓存 的第 i 组中的 任一块，i = j mod Q。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226371.png" srcset="/img/loading.gif" alt="image-20200908221858244"></li>
+</ul>
+</li>
+<li><p>Cache替换算法</p>
+<ul>
+<li>先进先出 （ FIFO ）算法</li>
+</ul>
+<ol start="2">
+<li>近期最少使用（ LRU）算法</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-4-硬磁盘存储器"><a href="#4-4-硬磁盘存储器" class="headerlink" title="4.4 硬磁盘存储器"></a>4.4 硬磁盘存储器</h3><ul>
+<li><p>硬磁盘存储器结构<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226372.png" srcset="/img/loading.gif" alt="image-20200908222507712"></p>
+<ul>
+<li>磁盘控制器：磁盘控制器是主机与磁盘驱动器之间的接口。接收主机发来的命令，转换成磁盘驱动器的控制命令，控制磁盘驱动器读写，实现主机和驱动器之间的数据格式转换。</li>
+<li>磁盘驱动器：<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226373.png" srcset="/img/loading.gif" alt="image-20200908222500458"></li>
+</ul>
+</li>
+<li><p>磁盘的记录方式分两种：</p>
+<ul>
+<li>旧式—非分区记录方式（不同磁道扇区数相同），便于磁头管理，但是不利于空间利用，每个地方的访问数据速度一样，越里面数据越拥挤，位密度越高。 0 磁道被放在最外面，因为最低的存储密度带来了更高的可靠性。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226374.png" srcset="/img/loading.gif" alt="2b245760ca388dfa2d1c589be6434cb8_b"></li>
+<li>新式–分区记录（Zoned Recording）方式（不同磁道扇区数不同），方式空间利用率大大提高，但是不便于磁头移动管理。0 磁道也被放在最外面，因为外面的磁道访问速度会比内部的快，因此写入的方式是从外（最外圈为0号磁道）到内，先写满最外的磁道，接着再写里面的磁道。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226375.png" srcset="/img/loading.gif" alt="92b146b9fc003bf0a54e5127143c4a8e_b"></li>
+</ul>
+</li>
+<li><p>磁盘平均寻址时间：寻道时间 + 等待时间：</p>
+<ul>
+<li>寻道时间：找到磁道的时间叫做 寻址时间 seek time</li>
+<li>等待时间：磁头悬停在特定磁道上，找到寻址扇区的时间叫做 旋转延时 rotational delay</li>
+</ul>
+</li>
+</ul>
+<h2 id="第-５章-输入输出系统"><a href="#第-５章-输入输出系统" class="headerlink" title="第 ５章 输入输出系统"></a>第 ５章 输入输出系统</h2><h3 id="5-1-I-O-设备"><a href="#5-1-I-O-设备" class="headerlink" title="5.1 I/O 设备"></a>5.1 I/O 设备</h3><ul>
+<li><p>连接方式：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226376.png" srcset="/img/loading.gif" alt="image-20200909175705327"></p>
+<ul>
+<li>辐射式连接：早期多采用分散连接，每台设备都配有一套，控制线路和一组信号线，不便于增删设备<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226377.png" srcset="/img/loading.gif" alt="image-20200909180245357"></li>
+<li>总线连接：多个接口共用地址线、数据线、控制线，便于增删设备<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226378.png" srcset="/img/loading.gif" alt="image-20200909180238306"></li>
+</ul>
+</li>
+<li><p>I/O 接口的基本组成：</p>
+<ul>
+<li>地址线：也叫设备选择线，用 设备选择电路识别是否被选中</li>
+<li>命令线和状态线一起也叫控制线</li>
+<li>设备状态标记：反映设备状态<ul>
+<li>完成触发器 D</li>
+<li>工作触发器 B</li>
+<li>中断请求触发器 INTR</li>
+<li>屏蔽触发器 MASK</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226379.png" srcset="/img/loading.gif" alt="image-20200909175730719"></p>
+</li>
+<li><p>I/O 设备编址方式</p>
+<ul>
+<li> 统一编址，即把I/O端口当作内存单元对待，从整个内存空间中划出一个子空间给I/O端口，从整个内存空间中划出一个子空间给I/O端口，每一个I/O端口分配一个地址码，用访问存储器的指令对I/O端口进行操作。</li>
+<li>不统一编址，I/O端口编址和存储器的编址相互独立，即I/O端口地址空间和存储器地址空间分开设置，互不影响。采用这种编址方式，对I/O端口的操作使用专门的输入/输出指令(I/O指令)。使用I/O指令，程序清晰，很容易看出是I/O操作还是存储器操作</li>
+</ul>
+</li>
+<li><p>I/O设备与主机信息传送的控制方式：</p>
+<ul>
+<li><p>程序查询方式，CPU 和 I/O 串行工作，IO 准备时 CPU 踏步等待<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226380.png" srcset="/img/loading.gif" alt="image-20200909174212868"></p>
+</li>
+<li><p>程序中断方式：CPU 不检查IO设备的状态，不用踏步等待IO准备就绪。而是IO设备就绪后发出中断请求再调用中断服务程序来处理IO，达到 CPU 和 I/O 部分的并行工作，但是调用中断服务时还是会中断现行程序。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226381.png" srcset="/img/loading.gif" alt="image-20200909174606960"></p>
+</li>
+<li><p>DMA 方式：主存和 I/O 之间有一条直接数据通道，不需要中断现行程序，但是要占用总线一个或多个存储周期。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226382.png" srcset="/img/loading.gif" alt="image-20200909174831841"></p>
+</li>
+<li><p>三种方式的 CPU 工作效率比较：I/O系统的自治能力与来越强，达到 CPU 和 I/O 部分的并行工作，DMA 使 I/O 与主存之间的传送不再通过 CPU。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226383.png" srcset="/img/loading.gif" alt="image-20200909212239175"><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226384.png" srcset="/img/loading.gif" alt="image-20200909174909609"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-程序中断方式"><a href="#5-2-程序中断方式" class="headerlink" title="5.2 程序中断方式"></a>5.2 程序中断方式</h3><ul>
+<li><p>I/O 中断处理过程：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226385.png" srcset="/img/loading.gif" alt="image-20200909210525281"></p>
+</li>
+<li><p>中断服务程序流程</p>
+<ol>
+<li>保护现场：<ul>
+<li>程序断点的保护：中断隐指令完成</li>
+<li>寄存器内容的保护：进栈指令</li>
+</ul>
+</li>
+<li>中断服务：对不同的 I/O 设备具有不同内容的设备服务</li>
+<li>恢复现场：出栈指令</li>
+<li>中断返回：中断返回指令</li>
+</ol>
+</li>
+<li><p>主程序和服务程序抢占 CPU：宏观 上 CPU 和 I/O 并行 工作，微观 上 CPU 中断现行程序 为 I/O 服务<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226386.png" srcset="/img/loading.gif" alt="image-20200909211238020"></p>
+</li>
+</ul>
+<h3 id="5-3-DMA"><a href="#5-3-DMA" class="headerlink" title="5.3 DMA"></a>5.3 DMA</h3><ul>
+<li><p>DMA 与主存交换数据的三种方式：</p>
+<ul>
+<li>停止 CPU 访问主存，CPU 处于不工作状态或保持状态，未充分发挥 CPU 对主存的利用率<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226387.png" srcset="/img/loading.gif" alt="image-20200909212316221"></li>
+<li>周期挪用（或周期窃取）：若CPU 正在访存则等待。如果CPU 与 DMA同时请求访存，此时 CPU 将总线控制权让给 DMA。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226388.png" srcset="/img/loading.gif" alt="image-20200909212446595"></li>
+<li>DMA 与 CPU 交替访问：每一个 CPU 工作周期划分一段时间专供 DMA 访存，一段时间专供 CPU 访存，不需要 申请建立和归还 总线的使用权，但是不够灵活效率低。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226389.png" srcset="/img/loading.gif" alt="image-20200909212641226"></li>
+<li>DMA 接口</li>
+</ul>
+</li>
+<li><p>DMA 接口功能： </p>
+<ul>
+<li> 向 CPU 申请 DMA 传送</li>
+<li>处理总线 控制权的转交</li>
+<li>管理 系统总线、 控制 数据传送</li>
+<li>确定 数据传送的 首地址和长度，修正 传送过程中的数据 地址 和 长度</li>
+<li>DMA 传送结束时， 给出操作完成信号</li>
+</ul>
+</li>
+<li><p>DMA 接口组成：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226390.png" srcset="/img/loading.gif" alt="image-20200909212900595"></p>
+</li>
+<li><p>DMA 传送过程：预处理、数据传送、后处理<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226391.png" srcset="/img/loading.gif" alt="image-20200909214829999"></p>
+<ul>
+<li>预处理<ul>
+<li>通过几条输入输出指令预置如下信息</li>
+<li>通知 DMA 控制逻辑传送方向（入/ 出）</li>
+<li>设备地址 DMA 的 DAR</li>
+<li>主存地址 DMA 的 AR</li>
+<li>传送字数 DMA 的 WC</li>
+</ul>
+</li>
+<li>数据传送过程（输出为例）<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226392.png" srcset="/img/loading.gif" alt="image-20200909214109836"></li>
+<li>后处理：由中断服务程序完成，校验送入主存的数是否正确，是否继续用 DMA，测试传送过程是否正确，错则转诊断程序。</li>
+</ul>
+</li>
+<li><p>DMA 接口与系统的连接方式</p>
+<ul>
+<li>具有公共请求线的 DMA 请求，可以类比总线的链式查询<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226393.png" srcset="/img/loading.gif" alt="image-20200909215047587"></li>
+<li>独立的 DMA 请求，可以类比总线的独立请求<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226394.png" srcset="/img/loading.gif" alt="image-20200909215119474"></li>
+</ul>
+</li>
+<li><p>DMA 接口的类型：</p>
+<ul>
+<li>选择型：在物理上连接多个设备但是在逻辑上只允许连接 一个设备<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226395.png" srcset="/img/loading.gif" alt="image-20200909215227473"></li>
+<li>多路型：在物理上连接多个设备但是逻辑上允许连接多个设备同时工作<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226396.png" srcset="/img/loading.gif" alt="image-20200909215333506"><br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226397.png" srcset="/img/loading.gif" alt="image-20200909215403490"></li>
+</ul>
+</li>
+</ul>
+<h2 id="第-６章-计算机的运算方法"><a href="#第-６章-计算机的运算方法" class="headerlink" title="第 ６章 计算机的运算方法"></a>第 ６章 计算机的运算方法</h2><h2 id="第-７章-指令系统"><a href="#第-７章-指令系统" class="headerlink" title="第 ７章 指令系统"></a>第 ７章 指令系统</h2><h3 id="7-1-操作码"><a href="#7-1-操作码" class="headerlink" title="7.1 操作码"></a>7.1 操作码</h3><ul>
+<li>扩展操作码技术：操作码的位数随地址数的减少而增加，短操作码不能是长操作码的前缀，否则不能区分。高频指令用短操作码，低频指令用长操作码<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226398.png" srcset="/img/loading.gif" alt="image-20200909222823202"></li>
+</ul>
+<h3 id="7-2-操作数"><a href="#7-2-操作数" class="headerlink" title="7.2 操作数"></a>7.2 操作数</h3><ul>
+<li>数据在存储器中的存放方式<ul>
+<li>从任意位置开始存储<ul>
+<li>优点：不浪费存储资源</li>
+<li>缺点：除了访问一个字节之外，访问其它任何类型的数据，都可能花费两个存储周期的时间。读写控制比较复杂。</li>
+</ul>
+</li>
+<li>从一个存储字的起始位置开始访问：<ul>
+<li>优点：无论访问何种类型的数据，在一个周期内<br>均可完成，读写控制简单。</li>
+<li>缺点：浪费了宝贵的存储资源</li>
+</ul>
+</li>
+<li>边界对准方式——数据 存放的起始地址是数据长度的整数倍，本方案是前两个方案的折衷，在一个周期内<br>可以完成存储访问，空间浪费也不太严重。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-寻址方式"><a href="#7-3-寻址方式" class="headerlink" title="7.3 寻址方式"></a>7.3 寻址方式</h3><ul>
+<li>指令寻址:<ul>
+<li>顺序：PC寄存器自动加“1”，为下条指令地址</li>
+<li>跳跃：由转移指令指出</li>
+</ul>
+</li>
+<li>数据寻址：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226399.png" srcset="/img/loading.gif" alt="image-20200909220124934"><ul>
+<li>立即寻址：形式地址 A 就是操作数，指令执行阶段不访存，A 的位数限制了立即数的范围</li>
+<li>直接寻址：有效地址由形式地址直接给出，执行阶段访问一次存储器，A 的位数决定了该指令操作数的寻址范围，操作数的地址不易修改（必须修改A ）</li>
+<li>隐含寻址：某些指令的一个操作数存放在哪个寄存器中已经规定好了，指令字中少了一个地址字段，可缩短指令字长</li>
+<li>间接寻址：有效地址由形式地址间接提供，执行指令阶段 2 次访存</li>
+<li>寄存器寻址：有效地址即为寄存器编号，执行阶段不访存，只访问寄存器，执行速度快</li>
+<li>寄存器间接寻址：有效地址在寄存器中， 操作数在存储器中，执行阶段访存</li>
+<li>基址寻址：将CPU中基址寄存器的内容，加上指令格式中的形式地址而形成操作数的有效地址。基址寄存器可以是专用的基址寄存器或者采用给出的某一个通用寄存器作基址寄存器。形式地址 A 可变，基址寄存器内容不变，一般由操作系统确定。</li>
+<li>变址寻址：和基址寻址很类似。但是形式地址A不变，变址寄存器的内容可变。便于处理数组问题</li>
+<li>相对寻址：程序计数器PC的当前值为基地址，指令中的形式地址A（可正可负，补码表示）作为偏移量， A 的位数决定操作数的寻址范围，广泛用于转移指令</li>
+<li>堆栈寻址：执行push和pop指令后SP寄存器的 SP 的修改与主存编址方法有关，按字编址直接+1/-1就行，按字节编址的话和机器字长有关，机器字长为32时，+4/-4，机器字长为 64 时，+8/-8。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-4-CISC-和-RISC"><a href="#7-4-CISC-和-RISC" class="headerlink" title="7.4 CISC 和 RISC"></a>7.4 CISC 和 RISC</h3><ul>
+<li><p>CISC 的主要特征：</p>
+<ul>
+<li>系统指令 复杂庞大，各种指令使用频度相差大 </li>
+<li>指令 长度不固定、指令格式种类多、寻址方式多 </li>
+<li>访存 指令 不受限制 </li>
+<li>CPU 中设有 专用寄存器 </li>
+<li>大多数指令需要 多个时钟周期 执行完毕 </li>
+<li> 采用 微程序 控制器  </li>
+</ul>
+</li>
+<li><p>二八定律：典型程序中 80% 的语句仅仅使，用处理机中 20% 的简单指令。执行频度高的简单指令，因复杂指令的存在，执行速度无法提高</p>
+</li>
+<li><p>RISC 的主要特征</p>
+<ul>
+<li>选用使用频度较高的一些 简单指令，复杂指令的功能由简单指令来组合</li>
+<li>指令 长度固定、指令格式种类少、寻址方式少</li>
+<li>只有 LOAD / STORE 指令访存</li>
+<li>CPU 中有 多个 个 通用 寄存器</li>
+<li>采用 流水技术 一个时钟周期 内完成一条指令</li>
+<li>采用 组合逻辑 实现控制器</li>
+</ul>
+</li>
+<li><p>RISC 和CISC 的比较</p>
+<ol>
+<li>RISC 更能 充分利用 VLSI 芯片 的面积</li>
+<li>RISC 更能 提高计算机运算速度，指令数、指令格式、寻址方式少，，通用 寄存器多 ，采用 组合逻辑 ，便于实现 指令流水</li>
+<li>RISC 便于设计 ，可 降低成本 ，提高 可靠性</li>
+<li>RISC 不易 实现 指令系统兼容</li>
+</ol>
+</li>
+<li><p>现代处理器的发展趋势是 RISC 与CISC相结合</p>
+</li>
+</ul>
+<h2 id="第-８章-CPU-的结构和功能"><a href="#第-８章-CPU-的结构和功能" class="headerlink" title="第 ８章 CPU 的结构和功能"></a>第 ８章 CPU 的结构和功能</h2><h3 id="8-1-CPU-的结构"><a href="#8-1-CPU-的结构" class="headerlink" title="8.1 CPU 的结构"></a>8.1 CPU 的结构</h3><ul>
+<li><p>CPU 的功能：</p>
+<ul>
+<li>取指令</li>
+<li>分析指令</li>
+<li>执行指令，发出各种操作命令</li>
+<li>控制程序输入及结果的输出</li>
+<li>总线管理</li>
+<li>处理异常情况和特殊请求</li>
+</ul>
+</li>
+<li><p>CPU 的结构：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226400.png" srcset="/img/loading.gif" alt="image-20200910193928343"></p>
+</li>
+<li><p>控制器的功能：产生全部指令的微操作命令序列。可以分为两类控制器：组合逻辑设计（硬连线逻辑），微程序设计（存储逻辑）。</p>
+</li>
+<li><p>运算器的功能：实现算术运算和逻辑运算</p>
+</li>
+<li><p>寄存器：</p>
+<ul>
+<li>用户可见寄存器：通用寄存器，数据寄存器， 地址寄存器，条件码寄存器</li>
+<li>控制寄存器：控制 CPU 操作，MAR 、MDR 、IR </li>
+<li>状态寄存器：存放条件码，存放程序状态字</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-2-指-令-周-期"><a href="#8-2-指-令-周-期" class="headerlink" title="8.2 指 令 周 期"></a>8.2 指 令 周 期</h3><ul>
+<li><p>指令周期：取出并执行一条指令所需的全部时间，不同的指令的指令周期通常不同。至少可以分为取指周期和执行周期，还可能存在间址周期和中断周期。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226401.png" srcset="/img/loading.gif" alt="image-20200910195632976"><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226402.png" srcset="/img/loading.gif" alt="image-20200910195752936"></p>
+<ul>
+<li>取指周期：取指令、分析指令</li>
+<li>间址周期：根据指令中的形式地址得到效地址</li>
+<li>执行周期：根据不同指令发出各种操作命令</li>
+<li>中断周期：处理中断请求</li>
+</ul>
+</li>
+<li><p>取指周期数据流：</p>
+<ol>
+<li>PC 给出 指令地址并传送给 MAR，通过地址总线送给存储器</li>
+<li>CU 发出读操作信号，通过控制总线传送给存储器</li>
+<li>存储器执行读操作，将相应数据通过数据总线送到 MDR，然后再送给 IR</li>
+<li>CU 控制 PC + 1，下一条指令地址保存在 PC 里为取下一条指令做准备</li>
+</ol>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226403.png" srcset="/img/loading.gif" alt="image-20200910200255021"></p>
+</li>
+</ul>
+<ul>
+<li><p>间址周期数据流：</p>
+<ol>
+<li>MDR 和 IR 都有 指令的副本，假设从MDR寄存器取出指令的形式地址码部分传送给 MAR ，再通过地址总线送给存储器</li>
+<li>CU 发出读操作信号，通过控制总线传送给存储器</li>
+<li>存储器执行读操作，将有效地址通过数据总线送到 MDR，然后再送给 IR 组装成最终指令。可能存储器返回的仍然是一个形式地址，则需要多次间址得到有效地址。</li>
+</ol>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226404.png" srcset="/img/loading.gif" alt="image-20200910201105697"></p>
+</li>
+<li><p>中断周期数据流<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226405.png" srcset="/img/loading.gif" alt="image-20200909164707913"></p>
+</li>
+</ul>
+<ol>
+<li>CU 给出保存程序断点信息的的主存堆栈地址，通过MAR传给存储器，同时cu通过控制总线向存储器给出写命令</li>
+<li>PC 中断点地址通过MDR寄存器传给存储器</li>
+<li>CU给出中断服务程序入口地址，直接写入pc当中</li>
+</ol>
+<h3 id="8-3-指-令-流-水"><a href="#8-3-指-令-流-水" class="headerlink" title="8.3 指 令 流 水"></a>8.3 指 令 流 水</h3><ul>
+<li><p>并行的概念</p>
+<ul>
+<li>并行：两个或两个以上事件在 同一时间段 发生</li>
+<li>同时：两个或两个以上事件在 同一时刻 发生</li>
+</ul>
+</li>
+<li><p>并行性的等级</p>
+<ul>
+<li>过程级（程序、进程），粗粒度 ，操作系统软件实现</li>
+<li>指令级（指令之间）（指令内部），细粒度 ，硬件实现</li>
+</ul>
+</li>
+<li><p>指令流水线结构（以6段流水为例）：完成一条指令分 6 段， 每段需一个时钟周期，每个周期结束后需要锁存器将结果保存然后执行下一条指令中的该段操作，理想情况下，6 级流水 的速度是不采用流水技术的6 倍</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226406.png" srcset="/img/loading.gif" alt="image-20200910204046627"></p>
+</li>
+<li><p>指令流水原理：指令的串行执行总有一个部件 空闲，以二级流水为例， 若 取指 和 执行 阶段时间上 完全重叠并行，理想情况指令周期 减半，速度提高 1 倍 。</p>
+</li>
+<li><p>影响指令流水效率和性能的因素：</p>
+<ul>
+<li>复杂指令的执行时间可能大于取指时间，可以在取指令部件和执行指令部件中添加一个缓冲区。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226407.png" srcset="/img/loading.gif" alt="image-20200910202147824"></li>
+<li>控制冲突：条件转移指令对指令流水的影响有很大的影响，因为之前的指令可能更改了标志寄存器的值，影响条件判断的结果，所以必须等 上条 指令执行结束，才能确定 下条 指令的地址，可能使流水线断流，不能充满指令，用分支预测和冒险来减少时间损失。</li>
+<li>资源冲突：不同指令争用同一功能部件产生资源冲突，解决办法：指令存储器和数据存储器分开，指令预取技术 （适用于访存周期短的情况）</li>
+<li>数据冲突：不同指令因重叠操作，可能改变操作数的 读/ 写 访问顺序，解决办法：后推法和旁路技术</li>
+</ul>
+</li>
+<li><p>流水线性能：</p>
+</li>
+</ul>
+<ul>
+<li><p>吞吐率：单位时间内 流水线所完成指令 或 输出结果 的 数量</p>
+<p>  ![image-20200910202936151](计算机组成原理 images\image-20200910202936151.png)<br>  ![image-20200910202740337](计算机组成原理 images\image-20200910202740337.png)</p>
+</li>
+<li><p>加速比 ：m 段的 流水线的速度 与等功能的 非流水线的速度 之比<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226408.png" srcset="/img/loading.gif" alt="image-20200910202806693"></p>
+</li>
+<li><p>效率：流水线中各功能段的 利用率，值等于加速比除以m<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226409.png" srcset="/img/loading.gif" alt="image-20200910203305515"></p>
+</li>
+<li><p>流水线的多发技术：</p>
+<ul>
+<li>超标量技术：每个时钟周期内可 并发多条独立指令，通过编译优化技术，把可并行执行的指令搭配起来<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226410.png" srcset="/img/loading.gif" alt="image-20200910203446268"></li>
+<li>超流水线技术：在 一个时钟周期内再分段 ，在一个时钟周期内 一个功能部件使用多次，也是靠编译程序解决优化问题<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226411.png" srcset="/img/loading.gif" alt="image-20200910203531624"></li>
+<li>超长指令字技术：由编译程序 挖掘 出指令间 潜在 的 并行性， 将多条能并行操作 的指令组合成一条具有多个操作码字段的超长指令字 </li>
+<li><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226412.png" srcset="/img/loading.gif" alt="image-20200910203632390"></li>
+</ul>
+</li>
+<li><p>运算器也可以采用分段流水线，例如完成浮点加减运算 可分对阶、尾数求和、规格化 三段，分段原则：每段 操作时间 尽量 一致<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226414.png" srcset="/img/loading.gif" alt="image-20200910204214331"></p>
+</li>
+</ul>
+<h3 id="8-4-中断系统"><a href="#8-4-中断系统" class="headerlink" title="8.4 中断系统"></a>8.4 中断系统</h3><ul>
+<li><p>引起中断的各种因素：</p>
+<ul>
+<li>人为设置的中断,如 转管指令</li>
+<li>程序性事故,如 溢出、操作码不能识别、除法非法</li>
+<li>硬件故障</li>
+<li>I/O 设备中断申请</li>
+<li>外部事件,用键盘中断 现行程序</li>
+</ul>
+</li>
+<li><p>中断请求标记</p>
+<ul>
+<li>一个请求源，INTR 分散 在各个中断源的 接口电路中</li>
+<li>多个INTR组成中断请求标记寄存器，集中 在 CPU 的中断系统 内</li>
+</ul>
+</li>
+<li><p>中断判优逻辑</p>
+<ul>
+<li>硬件实现（排队器）：链式排队器或者集中 在 CPU 内<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226415.png" srcset="/img/loading.gif" alt="image-20200910205216265"></li>
+<li>软件实现（程序查询）<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226416.png" srcset="/img/loading.gif" alt="image-20200910205230083"></li>
+</ul>
+</li>
+<li><p>中断服务程序入口地址的寻找：</p>
+<ul>
+<li>硬件向量法：通过一个硬件产生一个地址指向一个跳转指令，或者直接在该存储字中存放中断服务程序入口地址<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226417.png" srcset="/img/loading.gif" alt="image-20200910205332171"></li>
+<li>软件查询法：编写一组中断识别程序实现地址跳转</li>
+</ul>
+</li>
+<li><p>中断响应：</p>
+<ul>
+<li>响应中断的前提条件：允许中断触发器 EINT = 1</li>
+<li>响应中断的时间：指令执行周期结束时刻由CPU 发查询信号看是否有中断，有则进入中断周期。除了少数指令特别复杂的机器，指令执行时间比较长，为了及时处理异常时间，允许 CPU 在执行指令的过程中响应中断</li>
+</ul>
+</li>
+<li><p>中断隐指令：隐指令并不是指令集中的一条指令，虽然操作由硬件完成，但并不是在某一条具体指令的驱动下，而是在响应中断的时候自动执行</p>
+<ol>
+<li>保护程序断点：断点存于 特定地址（ 0 号地址，这里的 0 号地址并不是真正主存物理地址） 内或者断点地址 进栈</li>
+<li>寻找服务程序入口地址：硬件向量法和软件查询法</li>
+<li>硬件关中断：单重 中断：执行中断服务程序时不允许再发生中断</li>
+</ol>
+</li>
+<li><p>中断流程</p>
+<ul>
+<li>保护现场<ul>
+<li>程序断点由中断隐指令完成保存</li>
+<li>保存寄存器内容不同的中断服务程序 完成</li>
+</ul>
+</li>
+<li>其它服务程序：对不同的中断类型有不同的服务程序</li>
+<li>恢复现场：中断服务程序 完成</li>
+<li>中断返回：IRET 指令</li>
+</ul>
+</li>
+<li><p>单重中断和多重中断：</p>
+<ul>
+<li>单重中断：不允许中断 现行的 中断服务程序</li>
+<li>多重中断：提前 设置 开中断 指令，允许级别更高 的中断源中断现行的中断服务程序，即中断可以嵌套，但是保护程序软硬件状态的过程中，不允许发生中断</li>
+</ul>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226418.png" srcset="/img/loading.gif" alt="image-20200909211104631"></p>
+</li>
+<li><p>多重中断中的屏蔽技术：通过重新设置屏蔽字（中断源屏蔽触发器的值的序列）可改变处理优先等级，但是响应优先级不可以改变，还是依据中断判优逻辑（排队器或者查询程序的顺序）。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226419.png" srcset="/img/loading.gif" alt="image-20200910212332296"></p>
+<p>下图：响应优先级 A→B→C→D 降序排列，A、B、C、D同时请求中断，先响应A，A不可被BCD中断。处理完A 后，BCD同时请求中断，B响应优先级最高，响应B，执行B的过程CD优先级高于B没有被屏蔽，CD可以提出中断请求并判优C更高，响应C。<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226420.png" srcset="/img/loading.gif" alt="image-20200910212027581"></p>
+</li>
+</ul>
+<h2 id="第-９章-控制单元的功能"><a href="#第-９章-控制单元的功能" class="headerlink" title="第 ９章 控制单元的功能"></a>第 ９章 控制单元的功能</h2><h3 id="9-1-微操作命令的分析"><a href="#9-1-微操作命令的分析" class="headerlink" title="9.1 微操作命令的分析"></a>9.1 微操作命令的分析</h3><ul>
+<li><p>一条机器指令在取址、执行过周期又可以划分为几个微操作命令，一个时钟周期（一个节拍）CU 可以产生一个或几个微操作命令，只要这几个微操作命令可以并行不冲突在一个周期内完成。下面给出执行周期中的微指令，取址，间址，中断周期参考 8.2 指令周期。</p>
+</li>
+<li><p>执行周期</p>
+<ul>
+<li>非访存指令<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226421.png" srcset="/img/loading.gif" alt="image-20200910214757482"></li>
+<li>访存指令<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226422.png" srcset="/img/loading.gif" alt="image-20200910214828731"></li>
+<li>转移指令：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226423.png" srcset="/img/loading.gif" alt="image-20200910214839716"></li>
+</ul>
+</li>
+<li><p>三类指令的指令周期：取指周期、间址周期和中断周期，所有指令都做了相同的工作，取址阶段 pc 就已经+1  ，执行阶段不需要在+1<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226424.png" srcset="/img/loading.gif" alt="image-20200910214858311"></p>
+</li>
+</ul>
+<h3 id="9-2-控制单元的功能"><a href="#9-2-控制单元的功能" class="headerlink" title="9.2 控制单元的功能"></a>9.2 控制单元的功能</h3><ul>
+<li><p>控制单元的外特性</p>
+<ul>
+<li>输入信号：<ul>
+<li>时钟：CU 受时钟控制，一个时钟脉冲，发一个操作命令或一组需同时执行的操作命令</li>
+<li>指令寄存器：控制信号与指令操作器中操作码部分有关</li>
+<li>标志：CU 受标志寄存器</li>
+<li>外来信号：来自系统总线的控制信号，如INTR 中断请求，HRQ 总线请求</li>
+</ul>
+</li>
+<li>输出信号：<ul>
+<li>CPU 内的各种控制信号：寄存器之间的内容传送，PC寄存器+“1”，ALU控制信号</li>
+<li>送至控制总线的信号：访存控制信号MREQ、访 IO / 存储器的控制信号IO/M、读命令RD、写命令WR、中断响应信号INTA、总线响应信号HLDA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>机器周期：所有指令执行过程中的一个基准时间，一般以完成 最复杂 指令功能的时间 为准， 因为访存占了通常占了周期绝大部分时间，可以访问一次存储器 的时间为基准 。若指令字长 = 存储字长，取指周期 = 机器周期</p>
+</li>
+<li><p>时钟周期 （节拍、状态）：时钟周期是控制计算机操作的最小单位时间，一个时钟周期（一个节拍）可以产生一个或几个微操作命令，只要这几个微操作命令可以并行不冲突。</p>
+</li>
+<li><p>多级时序系统：机器周期、节拍（状态）组成多级时序系统，一个指令周期包含若干个机器周期，一个机器周期包含若干个时钟周期。只有时钟周期是绝对相等的。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226425.png" srcset="/img/loading.gif" alt="image-20200910221305112"></p>
+</li>
+<li><p>机器速度与机器主频的关系：在指令周期所含机器周期数相同,机器周期所含时钟周期数相同 的前提下，两机 平均指令执行速度之比 等于 两机主频之比</p>
+</li>
+</ul>
+<h2 id="第10章-控制单元的设计"><a href="#第10章-控制单元的设计" class="headerlink" title="第10章 控制单元的设计"></a>第10章 控制单元的设计</h2><h3 id="10-1-组合逻辑设计"><a href="#10-1-组合逻辑设计" class="headerlink" title="10.1 组合逻辑设计"></a>10.1 组合逻辑设计</h3><h3 id="10-2-微程序设计"><a href="#10-2-微程序设计" class="headerlink" title="10.2 微程序设计"></a>10.2 微程序设计</h3><ul>
+<li><p>存储逻辑：一条机器指令对应一个微程序,一个微程序包含了若干条微指令，每一条微指令包含了一个或者多个微操作的控制信号，微指令的先后顺序就是微操作的先后顺序。将这些微指令组成的微程序保存在 ROM 中。执行时 CU 把微指令一条一条从 ROM 读出，操作控制字段中每一个位对应的微操作是确定的，根据读出微指令中有效控制信号的个数和位置发出控制信号，进而执行相应操作。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226426.png" srcset="/img/loading.gif" alt="image-20200911220939978"></p>
+</li>
+<li><p>微地址形成部件：根据取来的机器指令的操作码形成这条指令对应的微程序在控制存储器中的位置</p>
+</li>
+<li><p>微指令格式：</p>
+<ul>
+<li>水平型微指令，一次能定义并执行多个并行操作</li>
+<li>垂直型微指令，类似机器指令操作码 的方式，由微操作码字段规定微指令的功能</li>
+</ul>
+</li>
+<li><p>微程序控制单元：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226427.png" srcset="/img/loading.gif" alt="image-20200911221651608"></p>
+</li>
+<li><p>微指令序列地址的形成方式：<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192226428.png" srcset="/img/loading.gif" alt="image-20200911221556016"></p>
+<ol>
+<li>微指令的 下地址字段 指出</li>
+<li>根据机器指令的 操作码 形成</li>
+<li>增量计数器</li>
+<li>分支转移，微指令给出转移方式和转移地址，转移方式 指明判别条件，转移地址 指明转移成功后的去向</li>
+<li>由硬件产生微程序入口地址，第一条微指令地址 由专门 硬件 产生，中断周期 由 硬件 产生 中断周期微程序首地址</li>
+</ol>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>  ﻿<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c4411d7jb">计算机组成原理（哈工大刘宏伟）</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/">自学笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/23/Git/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git 和 GitHub 学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

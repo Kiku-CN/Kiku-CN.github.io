@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>Git 和 GitHub 学习笔记 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/20210226195531.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Git 和 GitHub 学习笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-23 10:00" pubdate>
+        2020年11月23日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Git 和 GitHub 学习笔记</h1>
+            
+            <div class="markdown-body">
+              <h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>版本控制（Revision control）是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+<p>在使用版本控制软件之前，我们往往使用文件和文件夹配合后缀版本编号来管理版本的迭代，而版本控制软件则是可以帮助我们实施高效科学版本控制的一种工具。</p>
+<h3 id="版本控制分类"><a href="#版本控制分类" class="headerlink" title="版本控制分类"></a>版本控制分类</h3><ul>
+<li><p>本地版本控制：记录文件每次的更新，可以对每个版本做一个快照，或是记录补丁文件，仅仅适合个人使用，几乎已经被淘汰。如RCS（Revision Control System）。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155305.png" srcset="/img/loading.gif" alt="img"></p>
+</li>
+<li><p>集中版本控制：有一个单一的集中管理服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。常见的例如 SVN（Subversion），CVS（Concurrent Versions System）。</p>
+</li>
+</ul>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155306.png" srcset="/img/loading.gif" alt="140221095037232"></p>
+<ul>
+<li><p>分布式版本控制：相比集中版本控制客户端并不只是提取最新的文件快照，而是把原始的代码仓库完整地镜像下来，所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需在连网时 push 到远程仓库即可。Git 就是一个典型的分布式版本控制系统。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155308.png" srcset="/img/loading.gif" alt="img"></p>
+</li>
+<li><p>集中式和分布式版本控制的区别：</p>
+<ul>
+<li>集中式所有的版本数据都保存在服务器上，客户机只有某个特定版本的特定文件，依赖通信环境以及服务器的高可靠性。</li>
+<li>分布式每个用户都有服务器所有版本的副本，不依赖网络和中央服务器，但是增加了本地存储空间的占用，Git 通过快照索引大大减少了空间的占用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Git-的安装和配置"><a href="#Git-的安装和配置" class="headerlink" title="Git 的安装和配置"></a>Git 的安装和配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>进入<a href="git-scm.com/downloads">官网</a>下载对应的版本一路 next 即可，安装成功后在资源管理器任意目录空白处鼠标右键可以看到 <code>Git Bash Here</code> 的选项，可以很方便的在任意路径打开 Bash 终端。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155309.png" srcset="/img/loading.gif" alt="image-20201125205733637"></p>
+<p>因为 Git 这款软件上是从 Linux 移植而来，通过安装 Git for Windows 我们不仅获得了 Git 这个工具，还拥有了一个 Git Bash 终端以及一些移植而来的 Linux 命令，这让我们可以在 Git bash 终端中运行一些常见 Linux 命令工具，因此建议以后使用 Git Bash 终端来进行 Git 相关操作，顺便还可以熟悉常用的 Linux 命令。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Git 在安装目录（系统配置），用户主目录下（全局配置），仓库目录下（项目配置）存在三级配置文件。 配置文件名为<code>.gitconfig</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#查看当前的 Git 配置</span><br>git config --list  <br><br><span class="hljs-comment">#查看系统 config</span><br>git config --system --list<br>　　<br><span class="hljs-comment">#查看当前用户（global）配置</span><br>git config --global  --list<br><br><span class="hljs-comment">#编辑当前仓库的 Git 配置文件</span><br>$ git config -e<br><br><span class="hljs-comment">#编辑当前全局的 Git 配置文件</span><br>$ git config -e --global<br></code></pre></td></tr></table></figure>
+
+<p>当你安装 Git 后首先要做的事情是设置你的用户名称和 e-mail 地址。<br>如果查看配置中没有 <code>user.name</code>  和 <code>user.email</code> 项，需要使用以下命令设置用户名与邮箱，每次 Git 提交都会附带上这些信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name &lt;user name&gt;<br>git config --global user.email &lt;user name&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Git-操作"><a href="#Git-操作" class="headerlink" title="Git 操作"></a>Git 操作</h2><h3 id="Git-中的四大区域"><a href="#Git-中的四大区域" class="headerlink" title="Git 中的四大区域"></a>Git 中的四大区域</h3><p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155310.png" srcset="/img/loading.gif" alt="img"></p>
+<ul>
+<li>Workspace：工作区，对应着资源管理器中的一个目录，这个目录由 Git 进行管理</li>
+<li>Index / Stage：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息</li>
+<li>Repository：仓库区（或本地仓库），里面有本地提交的所有版本的数据。其中存在一个 HEAD 指针指向当前开发的分支最新更改，不一定指向最新的提交，因为可能回滚。</li>
+<li>Remote：远程仓库，托管代码的服务器中的仓库。</li>
+</ul>
+<p>四个区域的转化关系如图，History 对应的就是 Repository 区。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155311.png" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>新建一个需要 Git 进行管理的项目目录，鼠标右键点击 Git Bash Here，在此处打开 Git Bash 终端。</p>
+<ol>
+<li><p>使用<code>git status</code>先查看一次当前目录的 git 状态，命令行错误提示当前目录这不是一个 git 仓库，就是改目录还没有被 git 管理起来。</p>
+</li>
+<li><p>输入<code>git init</code>使用初始化命令将目录初始化，初始化本地仓库时，会在当前目录创建一个名为 .git 的隐藏文件夹，里面存放了一些 git 相关的文件。</p>
+</li>
+<li><p>输入<code>git status</code>再查看一次当前目录的 git 状态，命令行提示当前我们在 Git 为我们自动创建的 master 分支上，并且没有当前没有任何提交，说明当前目录已经被 git 管理起来了。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155312.png" srcset="/img/loading.gif" alt="image-20201126105322809"></p>
+</li>
+<li><p>使用 <code>touch demo1.txt </code>在当前目录新建一个文件，用<code>git status</code>查看 git 状态，显示我们刚刚新加的文件没有被跟踪（Untracked）。</p>
+</li>
+<li><p>使用 <code>git add .</code> 将该目录所有文件跟踪起来，并提交暂存区，然后再用<code>git status</code>查看 git 状态，提示有一个更改待提交。因为刚才只是把文件添加到暂存区，还没有提交到本地仓库。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155313.png" srcset="/img/loading.gif" alt="image-20201126110128293"></p>
+</li>
+</ol>
+<ol start="4">
+<li>使用<code>git commit -m &quot;create demo1.txt&quot;</code>，将暂存区中的修改提交到远程仓库 master 分支，-m 后面的字符串消息用来提示本次提交的修改，不可省略。</li>
+<li>再使用<code>git status</code>查看工作区状态，提示没有更改要提交，这样就完成了一个完整创建仓库初始化，创建新文件并提交的流程。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155314.png" srcset="/img/loading.gif" alt="image-20201126111336942"></li>
+</ol>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><ol>
+<li>使用<code>touch</code>再创建几个新文件并通过<code>git add</code>和<code>git commit</code>，提交到本地仓库 master 分支，这样就有了多次提交记录。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155315.png" srcset="/img/loading.gif" alt="image-20201126120803460"></li>
+<li>使用<code>git log</code>可以查看当前分支的提交日志，按提交日期由近及远打印，最上面对应的是最近一次提交。其中 commit 后面的一长串字符串是该次提交的 commit id，通过这个 id 索引可以得到该次提交发生时整个仓库的文件内容。 当日志记录过多的时候一页展示不下时会自动分页，终端左下角会有一个冒号，按「空格」键下一页，按「b」上一页，按「q」退出查看，到尾页左下角显示(END)。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155316.png" srcset="/img/loading.gif" alt="image-20201126120826493"></li>
+<li>使用<code>git log --oneline</code>查看精简后的日志，以一行显示。</li>
+<li>使用<code>git reflog</code>查看所有分支的历史提交精简日志，HEAD@ 后面大括号中的数字是当前开发分支和历史更改间的修改次数。这个命令而不仅仅是当前分支的历史提交，还显示整个仓库中其他分支历史提交，因为我们没有创建其他分支所以还是只有 3 条记录。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155317.png" srcset="/img/loading.gif" alt="image-20201126122357668"></li>
+</ol>
+<h3 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h3><h4 id="会滚到暂存区"><a href="#会滚到暂存区" class="headerlink" title="会滚到暂存区"></a>会滚到暂存区</h4><ol>
+<li>如果我们在工作区的某个文件进行了一些修改操作，但还没有提交到暂存区中，想回滚到暂存区之前的状态，可以使用<code>git checkout &lt;file name&gt;</code>回滚指定文件。也可以使用<code>git checkout .</code>回滚整个文件夹，注意：这个操作会清除工作区中所有未添加到暂存区的改动。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155318.png" srcset="/img/loading.gif" alt="image-20201126132124585"></li>
+</ol>
+<h4 id="回滚到某次提交"><a href="#回滚到某次提交" class="headerlink" title="回滚到某次提交"></a>回滚到某次提交</h4><ol>
+<li><p>如果修改只是通过 add 添加到了暂存区，但还没有提交到本地仓库，可以使<code>git reset --hard HEAD</code>，因为此时 HEAD 指针还没有移动，可以直接回滚到 HEAD 指针处。</p>
+</li>
+<li><p>如果已经提交到本地仓库，则要使用<code>git reset --hard</code>后面跟上 commit id 就可以回滚到指定版本，一般只输入 commit id 的前几位就足够区分该 id，没必要输入完整的 commit id，一般输入前 7 位，最少要输入 4 位。<code>git reset --hard</code>中 hard 参数会让本地库中 HEAD 指针移动的同时，重置本地仓库、暂存区和暂存区，而 mixed 参数只让本地仓库和暂存区进行回滚，soft 参数只让本地仓库重置，使用最多的就是 hard 参数。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155319.png" srcset="/img/loading.gif" alt="image-20201126123405823"></p>
+</li>
+<li><p>用<code>ls</code>查看当前目录下的文件，发现仓库已经回滚到第一次提交时的状态，只剩下 <code>demo1.txt</code> 文件通过<code>git log</code>也只能查看到第一次提交历史。也就是说连日志记录也回滚了，回滚前的一部分日志也消失了，要查看完整的回滚日志记录，应该像上图使用<code>git reflog</code>。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155320.png" srcset="/img/loading.gif" alt="image-20201126123756270"></p>
+</li>
+<li><p>前进版本，和回滚一样，利用<code>git reset --hard</code>加上 commit id 也可以前进到回滚前某一次提交的版本。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155321.png" srcset="/img/loading.gif" alt="image-20201126124647709"></p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3></li>
+<li><p>使用<code>git diff [file name]</code>将工作区的文件内容和暂存区中文件内容做按行比较，显示差异，后面加上文件名只比较指定文件。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155322.png" srcset="/img/loading.gif" alt="image-20201126143234024"></p>
+</li>
+<li><p>使用<code>git diff &lt;commit id | HEAD&gt;  [file name]</code>将工作区和某次提交时的本地仓库中进行按行比较。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155323.png" srcset="/img/loading.gif" alt="image-20201126142142484"></p>
+</li>
+<li><p>使用<code>git checkout</code> 将工作区、暂存区，与 HEAD 指向本地库中的文件内容做汇总比较，看是否已经全部同步。</p>
+</li>
+</ol>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><p>创建一个新的分支，相当于把原来分支的内容复制了一份到新分支上，可以在新分支上做各种功能的开发，等功能开发完毕可以再选择合并到原来的分支，这样便可以在不影响原分支的情况下添加各种新功能，这样可以多个分支并行开发，互不影响，提高开发效率。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155324.png" srcset="/img/loading.gif" alt="img"></p>
+<h4 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h4><ol>
+<li>使用<code>git branch [-v]</code>查看所有本地分支，分支前面的「*」代表当前所在分支。</li>
+<li><code>git branch &lt;branch-name&gt; [commit-id]</code> 从指定提交处创建一个新的分支，后面没有跟 commit id 则默认从 HEAD 指针处创建一份新的分支。</li>
+<li><code>git checkout &lt;branch-name&gt; </code>切换到指定分支。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155325.png" srcset="/img/loading.gif" alt="image-20201126151411013"></li>
+<li>在 dev 分支中新建一个 <code>demo4.txt</code> 文件，add 到暂存区后 commit，可以看到 HEAD 指针已经指向了当前开发分支的最新修改。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155327.png" srcset="/img/loading.gif" alt="image-20201126152247294"></li>
+</ol>
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><ol>
+<li>切换回 master 分支，dev 分支中的修改并没有影响到 master 分支。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155328.png" srcset="/img/loading.gif" alt="image-20201126152547025"></li>
+<li>使用<code>git merge &lt;branch name&gt;</code>将另外一个分支合并到当前分支。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155329.png" srcset="/img/loading.gif" alt="image-20201126153034605"></li>
+</ol>
+<h4 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h4><ol>
+<li>当两个分支对了同一文件的同一行位置做了不同的修改时，直接合并这两个分支就会产生冲突，分支会变成 MERGING 状态。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155330.png" srcset="/img/loading.gif" alt="image-20201126154608101"></li>
+<li>提示合并出现冲突后，工作区的冲突文件其实已经被修改，但这个文件中保留了两个分支中的冲突代码，并通过分隔符来告诉发生冲突的代码分别属于哪个分支，这时候就需要手动修改冲突的文件来解决冲突。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155331.png" srcset="/img/loading.gif" alt="image-20201126155056631"></li>
+<li>修改后先 add 冲突的文件，来告诉 Git 系统已经解决把冲突解决，然后再 commit 整个工作区，合并才是真正的完成，MERGING 状态消失。注意：不能只单独 commit 冲突的文件。<img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155332.png" srcset="/img/loading.gif" alt="image-20201126160111169"></li>
+</ol>
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>前面我们只是把 Git 当作一个本地版本控制系统来使用，接下来学习和远程仓库相关的操作。GitHub，Gitee 给我们提供免费的远程仓库托管服务，我们可以在上面免费创建远程仓库，也可以选择选择自己搭建 GitLab 这样的代码托管平台。进行接下来操作之前先到 <a target="_blank" rel="noopener" href="http://github.com/">GitHub </a>注册一个账号。</p>
+<h3 id="将本地仓库上传到远程仓库"><a href="#将本地仓库上传到远程仓库" class="headerlink" title="将本地仓库上传到远程仓库"></a>将本地仓库上传到远程仓库</h3><ol>
+<li>初始化一个本地仓库</li>
+<li>在 GitHub 上新建一个空的远程仓库，仓库名建议和本地工作区目录名一样，这样可以让我们方便把本地的工作区目录和远程的仓库对应起来。</li>
+<li>在 GitHub 上打开仓库可以得到远程仓库的 https 地址<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155333.png" srcset="/img/loading.gif" alt="image-20201126161814967"></li>
+<li>给远程仓库的 https 地址取一个别名，常用为 origin，方便后面的操作<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155334.png" srcset="/img/loading.gif" alt="image-20201126162243228"></li>
+<li>用<code>git push</code>命令向远程仓库推送本地仓库的内容，第一次git push 会弹出一个窗口让在先登录 GitHub 账号，之后 Windows 会保存凭据自动登录，如果想要推送到远端另一个账号需要先在 Windows 凭据管理器删除原先的凭据。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155335.png" srcset="/img/loading.gif" alt="image-20201126162749682"></li>
+<li>打开 GitHub 对应仓库页面，本地仓库的内容已经同步了上去。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155336.png" srcset="/img/loading.gif" alt="image-20201126163609357"></li>
+</ol>
+<h3 id="将远程仓库同步到本地仓库"><a href="#将远程仓库同步到本地仓库" class="headerlink" title="将远程仓库同步到本地仓库"></a>将远程仓库同步到本地仓库</h3><ol>
+<li>打开一个 GitHub 仓库页面，找到仓库的 clone 地址并复制<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155337.png" srcset="/img/loading.gif" alt="image-20201126163709535"></li>
+<li>任意目录下右键打开 Git Bash 终端，使用<code>git clone</code>命令来克隆远程仓库到本地，并自动创建远程仓库链接的别名<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155338.png" srcset="/img/loading.gif" alt="image-20201126164201012"><br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155339.png" srcset="/img/loading.gif" alt="image-20201126164549289"></li>
+</ol>
+<h3 id="团队开发"><a href="#团队开发" class="headerlink" title="团队开发"></a>团队开发</h3><p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155340.png" srcset="/img/loading.gif" alt="image-20201125161147659"></p>
+<ol>
+<li>项目经理在 GitHub 的仓库设置中向其他团队成员的 GitHub 账户发送邀请链接。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155341.png" srcset="/img/loading.gif" alt="image-20201126165218019"></li>
+<li>被邀请用户登录 Github 打开邀请链接同意邀请成为协作者。</li>
+<li>协作成员 clone 整个项目到本地后在本就可以直接在本地开发，完成后可以直接利用自己的 GItHub 直接 push 到该仓库中。</li>
+</ol>
+<h3 id="远程冲突"><a href="#远程冲突" class="headerlink" title="远程冲突"></a>远程冲突</h3><ol>
+<li>由于其他协作开发者的对同一文件的更改，可能导致将本地库 push 到远程仓库时产生冲突，这时候远程仓库会拒绝 push。</li>
+<li>需要先把远程仓库 pull 下来，会和本地仓库自动合并，产生冲突文件，修改好冲突文件后，经过 add 和 commit 操作后再 push 到远程仓库。</li>
+<li>为了尽可能的避免冲突每次开发前应该先把远程的仓库 pull 到本地更新完本地仓库后再进行开发，当然更为谨慎的做法是先 fetch 远程库，在checkout 进入远程库，确认改动后再手动 merge，pull = fetch + merge。</li>
+</ol>
+<h3 id="跨团队合作"><a href="#跨团队合作" class="headerlink" title="跨团队合作"></a>跨团队合作</h3><ol>
+<li>先在 GitHub 上 fork 一份目标远程仓库，然后 clone 到本地。至于 clone 上游仓库还是自己的账户里面的 fork 下来的仓库无所谓。使用diff命令比较两次不同地址 clone  下来的文件除了 .git 目录中记录的 clone 日期和 url不一样，其余文件均一样，当然前提是 fork 下来的仓库和原来的上游仓库是同步的，没有落后（behind）版本。GitHub 中 fork 的仓库是原来仓库 fork 时的副本，相当于快照，不会自动更新，需要手动在 fetch 原始上游仓库后合并到本地，再push回远程。详见<a target="_blank" rel="noopener" href="https://help.github.com/articles/syncing-a-fork/">Syncing a fork</a> 和 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qianghaohao/article/details/79330114">GitHub设置fork仓库和原始仓库同步</a></li>
+<li>因为没有权利提交到上游仓库，每一个小版本提交到自己账户下 fork 而来的仓库进行开发。</li>
+<li>开发完毕后在 GitHub 上创建一个新的 Pull Request。</li>
+<li>等上游审核完毕后，就可以把代码合并进原来的项目了</li>
+</ol>
+<h3 id="使用-SSH-连接到远程仓库"><a href="#使用-SSH-连接到远程仓库" class="headerlink" title="使用 SSH 连接到远程仓库"></a>使用 SSH 连接到远程仓库</h3><ol>
+<li>先使用<code>cd ~</code>切换到当前用户目录，然后输入命令<code>ssh-keygen -t rsa -C &quot;HP-OMEN&quot;</code>，按三次回车确认，会在用户目录生成一个.shh的文件夹，里面存放了公钥和私钥。 -C 后面的参数是生成的秘钥的的注释（comment to identify the key），相当于是这串钥匙的名字，可以任意，不一定为邮箱。</li>
+<li>使用命令<code>cat ~/.ssh/id_rsa.pub</code>打开公钥文件，复制整行，粘贴进GitHub 中。的个人 setting 页面，左侧找到 SSH and GPG keys 选项，点击 New SSH KEy 按钮，进去粘贴公钥，并命名，完成公钥绑定。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155342.png" srcset="/img/loading.gif" alt="image-20201125173736244"></li>
+<li>使用命令<code>ssh -T git@github.com</code>测试是否配置成功。第一次连接到陌生主机需要输入 yes 后回车确认，配置成功后可以使用 ssh 的方式来访问远程仓库。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155343.png" srcset="/img/loading.gif" alt="image-20201125174610157"></li>
+<li>通过 ssh 地址连接远程仓库 push 操作不用输入密码，缺点是一台电脑只能连接到远端的一个GitHub账户。</li>
+</ol>
+<h2 id="在-IDEA-中集成-Git-操作"><a href="#在-IDEA-中集成-Git-操作" class="headerlink" title="在 IDEA 中集成 Git 操作"></a>在 IDEA 中集成 Git 操作</h2><ol>
+<li><p>打开 IDEA 设置界面，配置 Git 的安装路径。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155344.png" srcset="/img/loading.gif" alt="image-20201125175556213"></p>
+</li>
+<li><p>使用 Git 管理该项目并进行本地库的初始化操作，在 IDEA 项目根目录会生成一个 .git 目录<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155345.png" srcset="/img/loading.gif" alt="image-20201126180751582"></p>
+</li>
+<li><p>也可以在 IDEA 中利用 Git 从远程仓库直接克隆一个项目，输入GitHub 仓库地址，或者绑定自己的 GitHub 账号，就可以直接在下拉框中选择自己账号中的仓库clone，点击 clone，等待一会 IDEA 会提示是否在新窗口中打开 clone 下来的项目。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155346.png" srcset="/img/loading.gif" alt="image-20201125183134274"><br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155347.png" srcset="/img/loading.gif" alt="image-20201125193050152"></p>
+</li>
+<li><p>在 IDEA 设置界面中，可以取消 Git 对该项目的管理。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192155348.png" srcset="/img/loading.gif" alt="image-20201126181027784"></p>
+</li>
+</ol>
+<h2 id="常用-git-命令补充"><a href="#常用-git-命令补充" class="headerlink" title="常用 git 命令补充"></a>常用 git 命令补充</h2><p>下面列举了工作中常用到的 git 命令，更多 git 命令请参考<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰：常用 Git 命令清单</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#查看工作目录的状态；</span><br>git status<br><br><span class="hljs-comment">#查看工作目录的状态的精简信息，s=summary，总结，b=braanch，分支</span><br>git status  -sb<br><br><span class="hljs-comment">#让 git 开始管理当前目录并初始化</span><br>git init<br><br><span class="hljs-comment">#将指定文件提交到暂存区；用通配符「*」可以把当前目录下所有文件添加到暂存区</span><br>git add &lt;file name&gt;...<br><br><span class="hljs-comment">#将当前目录的所有文件到暂存区，效果同 git add *</span><br>git add .<br><br><span class="hljs-comment">#提交整个暂存区到本地仓库，message 这次提交的备注信息，必须输入,没有直接输入，则会自动打开一个空文本用来输入备注信息</span><br>git commit -m &lt;message&gt;<br><br><span class="hljs-comment">#查看历史提交日志</span><br>git <span class="hljs-built_in">log</span><br><br><span class="hljs-comment">#显示当前分支的版本提交历史，但每次提交以一行显示</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br><br><span class="hljs-comment">#显示当前分支的版本提交历史，但每次提交以一行显示，并且 commit-id 只显示前面 7 位 </span><br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#显示整个仓库所有分支的最近提交历史，还包括每个提交距离工作分支的距离，每次提交以一行显示，并且 commit-id 只显示前面 7 位 </span><br>git reflog<br><br><span class="hljs-comment">#将本地库的指针指定指向 commit-id 这次提交，重置这次暂存区与工作区，不指定 commit 默认与最近一次 commit 保持一致；</span><br>git reset --hard [commit-id]<br><br><span class="hljs-comment">#恢复某个commit的指定文件到暂存区和工作区</span><br>git checkout &lt;commit id&gt; &lt;file&gt;<br><br><span class="hljs-comment">#恢复暂存区的所有文件到工作区</span><br>git checkout .<br><br><span class="hljs-comment">#恢复暂存区的指定文件到工作区</span><br>git checkout &lt;file&gt;<br><br><span class="hljs-comment">#将工作区和暂存区的进行按行比较，显示暂存区和工作区的差异</span><br>git diff<br><br><span class="hljs-comment">#显示工作区与当前 HEAD 分支之间的差异</span><br>git diff HEAD<br><br><span class="hljs-comment">#列出所有本地分支，分支前面的「*」代表当前所在分支</span><br>git brach<br><br><span class="hljs-comment">#新建一个分支，但依然停留在当前分支</span><br>git branch &lt;branch-name&gt;<br><br><span class="hljs-comment">#新建一个指向指定 commit 的分支，</span><br>git branch &lt;branch-name&gt; &lt;commit-id&gt;<br><br><span class="hljs-comment">#切换到指定分支，并更新工作区</span><br>git checkout &lt;branch-name&gt;<br><br><span class="hljs-comment">#合并指定分支到当前分支,使用前应该配合 checkout 切换到合适的分支</span><br>git merge &lt;branch-name&gt;<br><br><span class="hljs-comment">#查看远程仓库，还可以用来看仓库的别名</span><br>git remote -v<br><br><span class="hljs-comment">#给远程某一个仓库添加地址别名,只在当前仓库配置中生效</span><br>git remote add &lt;<span class="hljs-built_in">alias</span>&gt; &lt;url&gt;<br><br><span class="hljs-comment"># 取回远程仓库的变化，并与指定分支合并</span><br>git pull [url | <span class="hljs-built_in">alias</span>] &lt;branch name&gt;<br><br><span class="hljs-comment">#从远程克隆一个项目和它的整个代码历史</span><br>git <span class="hljs-built_in">clone</span> [url]<br><br><span class="hljs-comment">#将本地指定分支往远程仓库推送</span><br>git push [url | <span class="hljs-built_in">alias</span>] &lt;branch name&gt;<br><br><br><span class="hljs-comment">#把远程仓库的内容拉取到本地创建一个副本仓库，这个仓库是远程仓库的一个拷贝，区别仅仅是已经下载到本地而已，不会自动更新工作区，需要手动使用 merge 命令来手动把本地仓库的某个分支和已经下载到本地的远程仓库副本的某个分支合并在一起达到 pull 的效果。pull = fetch + merge，工作中最好先fetch 下来，使用 diff 比较检查两个分支再 merge，而不是直接pull。</span><br>git fetch [url | <span class="hljs-built_in">alias</span>] <br><br><span class="hljs-comment">#如果在本地已经有了仓库，并且里面有一些文件，想把远程仓库的文件添加进来，由于两个仓库没有共同的祖先，需要进行无关联拉取。</span><br>git pull [url | <span class="hljs-built_in">alias</span>]  master --allow-unrelated-histories<br><br><span class="hljs-comment">#删除指定的远程分支</span><br>git push origin --delete master<br><br><span class="hljs-comment">#冒号前不指定本地分支，就推送一个空的本地分支到远程分支，也可以达到上面一条删除的效果</span><br>git push origin :master<br></code></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV185411L7xs">B站视频教程：赵姗姗教你玩转Git</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Bf7uVhGiu47uOELjmC5uXQ">狂神聊git</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">阮一峰：常用 Git 命令清单</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/">自学笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SSH/">SSH</a>
+                    
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
+                    
+                      <a class="hover-with-bg" href="/tags/IDEA/">IDEA</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/19/UMLClassDiagram/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">UML 中的类图</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                        <span class="hidden-mobile">计算机组成原理学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>jQuery 快速入门 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/20210226200048.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="jQuery 快速入门">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-30 00:00" pubdate>
+        2021年6月30日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.5k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">jQuery 快速入门</h1>
+            
+            <div class="markdown-body">
+              <h3 id="jQuery-概述"><a href="#jQuery-概述" class="headerlink" title="jQuery 概述"></a>jQuery 概述</h3><p>jQuery 是一个快速、简洁的 JavaScript 库，其设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+<p>在这个库中有很多预先定义好的函数，对 JavaScript 中的 DOM 操作、事件处理、动画设计和 Ajax 交互做了优化封装，调用这些函数可以加快开发速度，提高开发效率。</p>
+<h3 id="jQuery-入口函数"><a href="#jQuery-入口函数" class="headerlink" title="jQuery 入口函数"></a>jQuery 入口函数</h3><p>当 DOM 结构渲染完毕（不必等到所有外部资源加载完成）即可执行入口函数里面的内部代码，相当于原生 JavaScript 中的 <code>DOMContentLoaded</code> 事件（原生 JavaScript 中的 load 事件是等页面文档、外部的 JS 文件、CSS 文件、图片加载完毕才执行内部代码）。利用入口函数，在任意位置书写的 JavaScript 代码都可以获取到完整的 DOM 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>... <span class="hljs-comment">// 此处是页面 DOM 加载完成的入口</span><br>&#125;) ;<br>$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>... <span class="hljs-comment">// 此处是页面 DOM 加载完成的入口</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-的顶级对象"><a href="#jQuery-的顶级对象" class="headerlink" title="jQuery 的顶级对象 $"></a>jQuery 的顶级对象 $</h3><p><code>$</code> 是 jQuery 的别称，在代码中可以使用 jQuery 代替 <code>$</code>，但一般为了方便，通常都直接使用 <code>$</code>，<code>$</code> 是 jQuery 的顶级对象， 地位相当于原生 JavaScript 中的 <code>window</code>。</p>
+<p>利用原生 JavaScript （<code>getElementById()</code>、<code>querySelector()</code> 等）获取到的对象就是 DOM 对象。</p>
+<p>利用 <code>$(&#39;selector&#39;)</code> 获取的元素就是 jQuery 对象（集合），本质是一个伪数组集合，其中存储了选择符匹配到的所有 DOM 对象。</p>
+<p>DOM 对象与 jQuery 对象之间是可以相互转换的。 </p>
+<p>将 DOM 对象转换为 jQuery 对象： <code>$(DOMElement)</code>。只有 jQuery 对象才能使用 jQuery 对象特有的属性和方法，利用 <code>$</code> 把 DOM 对象包装成 jQuery 对象，这样就可以调用 jQuery 对象特有的属性和方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;div&quot;</span>);<br>$(ele).hide();<br></code></pre></td></tr></table></figure>
+
+<p>但是普通 DOM 对象的一些属性和方法 jQuery 没有给我们封装到 jQuery 对象中，如果要想使用这些属性和方法需要把 jQuery 对象转换为普通 DOM 对象才能使用。jQuery 对象转换为 DOM 对象有下面两种方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>)[index]; <span class="hljs-comment">// index 是索引号, jQuery 对象实际上是一个存储着 DOM 对象的伪数组集合</span><br>$(<span class="hljs-string">&quot;div&quot;</span>).get(index) <span class="hljs-comment">// index 是索引号</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-选择器"><a href="#jQuery-选择器" class="headerlink" title="jQuery 选择器"></a>jQuery 选择器</h3><p>原生 JavaScript 获取元素方式可能存在兼容性问题，jQuery 顶级对象使用类似 CSS 选择器的方式快速获取元素，并且解决了兼容性问题。</p>
+<p>jQuery 基础选择器：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192214286.png" srcset="/img/loading.gif" alt="image-20210629110925369"></p>
+<p>jQuery 层级选择器：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192214287.png" srcset="/img/loading.gif" alt="image-20210629110949061"></p>
+<p>jQuery 筛选选择器：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192214288.png" srcset="/img/loading.gif" alt="image-20210629151630436"></p>
+<p><strong>注意：和 CSS 伪类选择器有些许区别。</strong></p>
+<p>jQuery 筛选方法：</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192214289.png" srcset="/img/loading.gif" alt="image-20210629151756361"></p>
+<p><code>:checked</code> 选择器：匹配所有被选中的表单元素（复选框、单选框等）。</p>
+<h3 id="jQuery-排他思想和链式编程"><a href="#jQuery-排他思想和链式编程" class="headerlink" title="jQuery 排他思想和链式编程"></a>jQuery 排他思想和链式编程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>);  			<span class="hljs-comment">// 给当前元素设置样式</span><br>$(<span class="hljs-built_in">this</span>).siblings().css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);	<span class="hljs-comment">// 清楚其余兄弟元素的样式</span><br><br>$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>).siblings().css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;&quot;</span>); 	<span class="hljs-comment">// 链式编程</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-操作元素样式"><a href="#jQuery-操作元素样式" class="headerlink" title="jQuery 操作元素样式"></a>jQuery 操作元素样式</h3><p>jQuery 对象没有 <code>style</code>  属性，因此不能直接通过 <code>style</code> 属性来设置样式，而是通过 jQuery 对象的 <code>css()</code> 方法来设置样式。 jQuery 对象具有隐式迭代特性：会自动遍历 jQuery 对象中的伪数组集合，一次调用即可同时修改其伪数组中所有 DOM 元素的样式。</p>
+<p><code>css()</code> 方法参数只写样式的属性名，则返回的是该样式的属性值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).css(<span class="hljs-string">&quot;color&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><code>css()</code> 方法参数是样式的属性名和属性值，用逗号分隔，设置一组样式。属性名必须加引号，属性值如果是数字可以不用跟单位和引号。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).css(<span class="hljs-string">&quot;width&quot;</span>, <span class="hljs-number">300</span>);<br></code></pre></td></tr></table></figure>
+
+<p><code>css()</code> 方法参数还可以是键值对形式的 JavaScript 对象，用来一次设置多组样式。属性名和属性值用冒号隔开，键值对中的 CSS 属性名使用驼峰命名法，比如用 <code>marginLeft</code> 代替 <code>margin-left</code>。属性名可以不用加引号，属性值如果是数字可以不用跟单位和引号。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).css(&#123; <br>    width: <span class="hljs-number">400</span>,<br>    height: <span class="hljs-number">400</span>,<br>    backgroundColor: <span class="hljs-string">&quot;red&quot;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>除了 <code>css()</code> 方法还可以通过修改元素的类名从而匹配不同的选择器。类似于 DOM 对象中的 <code>classList</code> 属性，jQuery 对象也有三个方法来修改类名：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).addClass(<span class="hljs-string">&quot;current&quot;</span>);		<span class="hljs-comment">// 添加类</span><br>$(<span class="hljs-string">&quot;div&quot;</span>).removeClass(<span class="hljs-string">&quot;current&quot;</span>);	<span class="hljs-comment">// 移除类</span><br>$(<span class="hljs-string">&quot;div&quot;</span>).toggleClass(<span class="hljs-string">&quot;current&quot;</span>);	<span class="hljs-comment">// 切换类</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-动画效果"><a href="#jQuery-动画效果" class="headerlink" title="jQuery 动画效果"></a>jQuery 动画效果</h3><p>基本显示隐藏效果：</p>
+<ul>
+<li><p>  <code>show([speed,[easing],[fn]])</code>：显示指定的元素。</p>
+</li>
+<li><p>  <code>hide([speed,[easing],[fn]])</code>：隐藏指定的元素。</p>
+</li>
+<li><p>  <code>toggle([speed,[easing],[fn]])</code>：在显示和隐藏之间切换，如果元素是可见的，则切换为隐藏的；如果元素是隐藏的，则切换为可见的。</p>
+</li>
+</ul>
+<p>滑动显示隐藏效果：</p>
+<ul>
+<li>  <code>slideDown([speed,[easing],[fn]])</code>：下滑显示指定的元素。</li>
+<li>  <code>slideUp([speed,[easing],[fn]])</code>：上滑隐藏指定的元素。</li>
+<li>  <code>slideToggle([speed,[easing],[fn]])</code>：滑动切换指定的元素。</li>
+</ul>
+<p>淡入淡出效果：</p>
+<ul>
+<li>  <code>fadeIn([speed,[easing],[fn]])</code>：淡入显示指定的元素。</li>
+<li>  <code>fadeOut([speed,[easing],[fn]])</code>：淡出隐藏指定的元素。</li>
+<li>  <code>fadeToggle([speed,[easing],[fn]])</code>：淡入淡出切换指定的元素。</li>
+<li>  <code>fadeTo(speed,opacity,[easing],[fn]])</code>：渐进地调整元素到指定不透明度。<code>speed</code> 和 <code>opacity</code> 参数值必须写，不透明度取值 0~1 之间，值越小越透明，值为 0 代表完全透明显示底层元素的颜色，值为 1 则是完全不透明即正常显示。</li>
+</ul>
+<p>自定义动画：</p>
+<ul>
+<li>  <code>animate(params,[speed],[easing],[fn])</code>：创建自定义动画，以 JavaScript 对象键值对的形式指定想要更改的样式属性，通过 <code>params</code> 参数传递，样式属性就会从当前的值渐变到指定的值。属性名可以不用带引号，如果对应的 CSS 属性带有连字符则需要采取驼峰命名法，比如用 <code>marginLeft</code> 代替 <code>margin-left</code>。</li>
+</ul>
+<p>上面动画函数中的出现的三个参数描述如下：</p>
+<ul>
+<li>  <code>speed</code>：三种预定速度之一的字符串（<code>&quot;slow&quot;</code>，<code>&quot;normal&quot;</code> 或者 <code>&quot;fast&quot;</code>）或表示动画时长的毫秒数值（不需要带单位，如：1000）。</li>
+<li>  <code>easing</code>：来指定切换效果，默认是 <code>&quot;swing&quot;</code>，可用参数 <code>&quot;linear&quot;</code> 。</li>
+<li>  <code>fn</code>：回调函数，在动画完成时执行该函数，每个元素执行一次。</li>
+</ul>
+<p>停止动画：</p>
+<ul>
+<li>  <code>stop()</code>：动画效果一旦触发就会执行，如果同时触发多个动画效果，就造成动画效果排队执行。<code>stop()</code> 方法用于手动停止该元素正在运行的动画效果，并且使队列中的其他动画直接完成。<code>stop()</code> 通常写到动画效果的前面：<code>$(this).stop().fadeIn();</code>，即先结束其他动画，再开始新的动画效果。</li>
+</ul>
+<h3 id="jQuery-操作元素属性"><a href="#jQuery-操作元素属性" class="headerlink" title="jQuery 操作元素属性"></a>jQuery 操作元素属性</h3><ul>
+<li><code>prop()</code>：设置或获取元素固有的属性值（元素本身自带的属性）。<ul>
+<li>  <code>prop(&quot;属性&quot;)</code>：获取固有属性值。</li>
+<li>  <code>prop(&quot;属性&quot;, &quot;属性值&quot;)</code>：设置固有属性值。</li>
+</ul>
+</li>
+<li><code>attr()</code>：设置或获取元素自定义的属性值。<ul>
+<li>  <code>attr(&quot;属性&quot;)</code>：获取元素自定义属性值，类似原生 DOM API 中的 <code>getAttribute()</code>，该方法也可以获取 HTML 5 规范中的自定义属性 data-[key] 中的值。</li>
+<li>  <code>attr(&quot;属性&quot;, &quot;属性值&quot;)</code>：设置元素自定义属性值，类似 DOM 中的 <code>setAttribute()</code>。</li>
+</ul>
+</li>
+<li><code>data()</code>：该方法可以在指定的元素上附加数据，但不会修改 DOM 元素结构，即元素标签中并不会显示该属性，一旦页面刷新，之前存放的数据都将被移除。<ul>
+<li>  <code>date(&quot;key&quot;)</code>：获取该元素中存储的与 key 对应的值，该方法也可以获取 HTML 5 规范中的自定义属性 data-[key] 中的值。</li>
+<li>  <code>data(&quot;key&quot;, value)</code>：在该元素上存储 key-value 键值对的数据，<code>value</code> 可以是任何格式的数据，而不仅仅是字符串。</li>
+</ul>
+</li>
+</ul>
+<h3 id="jQuery-操作元素内容"><a href="#jQuery-操作元素内容" class="headerlink" title="jQuery 操作元素内容"></a>jQuery 操作元素内容</h3><ul>
+<li><p>  <code>html()</code>：获取元素中的 HTML 内容，包括子元素的 HTML 标签，相当于原生 DOM API 中的 <code>innerHTML</code> 属性。</p>
+</li>
+<li><p>  <code>html(&quot;val&quot;)</code>：设定元素中的 HTML 内容，会解析字符串其中的 HTML 标签。</p>
+</li>
+<li><p>  <code>text()</code>：仅获取元素中的文本内容，不包括子元素的 HTML 标签，相当于 原生 DOM API 中的 <code>innerText</code> 属性。</p>
+</li>
+<li><p>  <code>text(&quot;val&quot;)</code>：设定元素中的文本内容，不会解析其中的 HTML 标签。</p>
+</li>
+<li><p>  <code>val()</code>：获取表单元素中 <code>value</code> 属性的值。</p>
+</li>
+<li><p>  <code>val(&quot;val&quot;)</code>：设定表单元素中 <code>value</code> 属性的值。</p>
+</li>
+</ul>
+<h3 id="jQuery-操作元素"><a href="#jQuery-操作元素" class="headerlink" title="jQuery 操作元素"></a>jQuery 操作元素</h3><ul>
+<li><p><code>each()</code>：jQuery 的隐式迭代是对同一类元素做了同样的操作，如果想要给同一类元素做不同操作，就需要用到 <code>each()</code> 方法遍历。</p>
+<ul>
+<li>  <code>$(&quot;div&quot;).each(function (index, domEle) &#123; xxx; &#125;）</code>：对匹配的 JQuery 对象中的伪数组集合中的每一个 DOM 元素都传入回调函数进行处理，回调函数有 2 个参数： <code>index</code> 是 DOM 元素在伪数组中的索引号，<code>domEle</code> 则是待处理的 DOM 元素对象。<strong>注意 <code>domEle</code> 不是一个 jQuery 对象，如果要调用 jQuery 方法要先利用 <code>$</code> 把 <code>domEle</code> 对象包装成 jQuery 对象。</strong></li>
+<li>  <code>$.each(object，function (index, element) &#123; xxx; &#125;）</code>：遍历任何对象。主要用于数据处理，比如数组，对象，回调函数有 2 个参数： <code>index</code> 是每个元素的索引号，<code>element</code> 是待处理的元素。</li>
+</ul>
+</li>
+<li><p>  <code>$(&quot;&lt;div&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/div&gt;&quot;).</code>：动态创建一个 div 元素（以及其中的所有内容）。</p>
+</li>
+<li><p>  <code>append(&quot;内容&quot;)</code>：在该元素的内部尾部追加内容，类似 DOM 中的 <code>appendChild()</code>，追加的元素和该元素是父子节点关系。</p>
+</li>
+<li><p>  <code>prepend(&quot;内容&quot;)</code>：在该元素的内部头部插入内容，追加的元素和该元素是父子节点关系。</p>
+</li>
+<li><p>  <code>appendTo(&quot;selector&quot;)</code>：把选择器所匹配的元素追加到该元素内部尾部中。颠倒了常规的<code>$(A).append(B)</code>的操作，即不是把 B 追加到 A 中，而是把 A 追加到  B 中。</p>
+</li>
+<li><p>  <code>prependTo(&quot;selector&quot;)</code>：把选择器所匹配的元素插入到该元素内部头部中。颠倒了常规的<code>$(A).prependTo(B)</code>的操作，即不是把 B 追加到 A 中，而是把 A 追加到  B 中。</p>
+</li>
+<li><p>  <code>after(&quot;内容&quot;)</code>：在该元素的外部尾部追加内容，追加的元素和该元素是兄弟节点关系。</p>
+</li>
+<li><p>  <code>before(&quot;内容&quot;)</code>：在该元素的外部头部追加内容，追加的元素和该元素是兄弟节点关系。</p>
+</li>
+<li><p>  <code>remove()</code>：删除元素本身，包括其中的子节点。</p>
+</li>
+<li><p>  <code>empty()</code>：删除元素的所有子节点，和 <code>html(&quot;&quot;)</code> 作用等价，都可以删除元素里面的内容，只不过 <code>html()</code> 方法在清空元素原来内容的同时还可以设置内容。</p>
+</li>
+</ul>
+<h3 id="jQuery-操作元素尺寸"><a href="#jQuery-操作元素尺寸" class="headerlink" title="jQuery 操作元素尺寸"></a>jQuery 操作元素尺寸</h3><p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192214290.png" srcset="/img/loading.gif" alt="image-20210820171256963"></p>
+<p>以上方法的参数为空，则是获取相应值，返回的是数字型。可以传入参数设置相应值，参数为省略 px 单位的数字或者带单位的字符串。</p>
+<h3 id="jQuery-操作元素位置"><a href="#jQuery-操作元素位置" class="headerlink" title="jQuery 操作元素位置"></a>jQuery 操作元素位置</h3><ul>
+<li>  <code>offset()</code>：获取元素相对于文档（HTML 根元素）的偏移坐标对象，该对象有 2 个属性 <code>left</code>、<code>top</code> 。<code>offset().top</code> 用于获取距离文档顶部的距离，<code>offset().left</code> 用于获取距离文档左侧的距离。这两个属性是只读的，只能通过 <code>offset()</code> 方法传入一个带有 <code>top</code> 和 <code>left</code> 属性的对象来修改偏移距离，例如 <code>offset(&#123; top: 10, left: 30 &#125;);</code>。</li>
+<li>  <code>postion()</code>：获取元素相对于带有定位的父级的偏移坐标对象，如果父级都没有定位，则是相对于文档（HTML 根元素）的偏移坐标。返回的对象有 2 个属性 <code>left</code>、<code>top</code>。<code>position().top</code> 用于获取距离带定位父级顶部的距离，<code>position().left</code> 用于获取距离带定位父级左侧的距离。该方法只能获取偏移不能修改偏移距离。</li>
+<li>  <code>scrollTop()</code>：获取元素被卷去的头部距离，可以传入参数设置被卷去的头部距离，参数为省略 px 单位的数字或者带单位的字符串。<code>$(document).scrollTop()</code> 获取文档滚动的距离，多配合 <code>$(window).scroll()</code> 浏览器滚动事件使用。</li>
+<li>  <code>scrollLeft()</code>：获取元素被卷去的左侧距离，可以传入参数设置被卷去的左侧距离，参数为省略 px 单位的数字或者带单位的字符串。</li>
+</ul>
+<h3 id="jQuery-添加事件"><a href="#jQuery-添加事件" class="headerlink" title="jQuery 添加事件"></a>jQuery 添加事件</h3><p>jQuery 对象能够使用一系列方法比如 <code>click()</code>，<code>mouseover()</code> 来添加事件，类似原生 DOM API 中给元素对象的事件属性如 <code>onclick</code>、<code>onmouseover</code> 赋值一个函数对象。</p>
+<p><strong>注意：原生使用的是属性赋值， jQuery 是通过调用方法传入函数参数，并且 jQuery 的事件类型前面没有 on 前缀。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 原生 DOM API</span><br>element.onclick = <span class="hljs-function"><span class="hljs-title">funnction</span>(<span class="hljs-params"></span>)</span> &#123;Xxx;&#125;;<br><br><span class="hljs-comment">// jQuery 添加事件</span><br>$(<span class="hljs-string">&quot;div&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;Xxx;&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>但现在更推荐使用 <code>on()</code> 方法来为 jQuery 对象绑定事件。</p>
+<ul>
+<li>  <code>on(events-map,[selector])</code> 为对象同时绑定多个不同事件：<code>events-map</code> 中的键表示事件类型，值表示事件绑定的处理函数。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).on(&#123;<br>    mouseover: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-comment">// 事件处理函数</span><br>    &#125;,<br>    mouseout: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-comment">// 事件处理函数</span><br>    &#125;,<br>    click: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-comment">// 事件处理函数</span><br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>on(events,[selector],fn)</code> 为对象同时绑定多个相同事件，<code>events</code> 是一个或多个用空格分隔的事件类型，<code>fn</code> 为事件处理函数。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).on(<span class="hljs-string">&quot;mouseover mouseout click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 事件处理函数</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>上面两个方法的 <code>selector</code> 参数用来指定触发事件的后代元素，通过把原本应该绑定在子元素身上的事件注册在父元素身上，配合事件冒泡机制可以实现事件委派。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 事件绑定在 ul 上，但是触发的对象是 ul 里面的小 li，也就是说点击 ul 中的非小 li 范围不会触发事件 </span><br>$(<span class="hljs-string">&quot;ul&quot;</span>).on(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-string">&quot;li&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// 事件处理函数</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>通过事件委派，之后动态生成的子元素也能触发事件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;ul&quot;</span>).on(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-string">&quot;li&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-string">&quot;click&quot;</span>);<br>&#125;);<br><span class="hljs-keyword">var</span> li = $(<span class="hljs-string">&quot;&lt;li&gt;我是后来创建的&lt;/li&gt;&quot;</span>);<br>$(<span class="hljs-string">&quot;ol&quot;</span>).append(li);		 <span class="hljs-comment">// 点击该 li 可以 触发事件，前提是 ul 在已经提前存在</span><br></code></pre></td></tr></table></figure>
+
+<p>如果是直接给子元素添加事件则只对之前已经存在的子元素才有效：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;ul li&quot;</span>).on(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-string">&quot;click&quot;</span>);<br>&#125;);<br><span class="hljs-keyword">var</span> li = $(<span class="hljs-string">&quot;&lt;li&gt;我是后来创建的&lt;/li&gt;&quot;</span>);<br>$(<span class="hljs-string">&quot;ul&quot;</span>).append(li); 	<span class="hljs-comment">// 点击该 li 无法触发事件，之前的已经存在的 li 可以触发事件</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-解绑事件"><a href="#jQuery-解绑事件" class="headerlink" title="jQuery 解绑事件"></a>jQuery 解绑事件</h3><p>使用 <code>off()</code> 方法可以移除通过 <code>on()</code> 方法添加的事件处理程序。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;p&quot;</span>).off(); 				<span class="hljs-comment">// 解绑p元素所有事件处理程序</span><br>$(<span class="hljs-string">&quot;p&quot;</span>).off(<span class="hljs-string">&quot;click&quot;</span>); 		<span class="hljs-comment">// 解绑p元素上面的点击事件 后面的 foo 是侦听函数名</span><br>$(<span class="hljs-string">&quot;ul&quot;</span>).off(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-string">&quot;li&quot;</span>); <span class="hljs-comment">// 解绑事件委托</span><br></code></pre></td></tr></table></figure>
+
+<p>如果事件只想被触发一次， 可以使用 <code>one()</code> 方法来代替 <code>on()</code> 来为元素绑定一个一次性的事件处理函数，这个事件处理函数只会被执行一次，不用再手动解绑事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-string">&quot;div&quot;</span>).one(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>  <span class="hljs-comment">// 事件处理函数</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-手动触发事件"><a href="#jQuery-手动触发事件" class="headerlink" title="jQuery 手动触发事件"></a>jQuery 手动触发事件</h3><p>有时候需要手动触发某些时事件，比如中需要根据定时器自动触发右侧按钮点击事件来滚动图片。jQuery 中有三种手动触发事件的方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 第一种，类似原生触发方式</span><br>$(<span class="hljs-string">&quot;a&quot;</span>).click();<br><br><span class="hljs-comment">// 第二种，会导致浏览器同名的默认行为的执行，比如链接元素点击会跳转，表单元素触发 submit 事件后会提交</span><br>$(<span class="hljs-string">&quot;form&quot;</span>).trigger(<span class="hljs-string">&quot;submit&quot;</span>);<br><br><span class="hljs-comment">// 第三种，只会触发你绑定的事件处理函数，将不会执行浏览器默认动作，也不会产生事件冒泡</span><br>$(<span class="hljs-string">&quot;form&quot;</span>).triggerHandler(<span class="hljs-string">&quot;submit&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-事件对象"><a href="#jQuery-事件对象" class="headerlink" title="jQuery 事件对象"></a>jQuery 事件对象</h3><p>jQuery 中的事件对象和原生 DOM API 中的事件对象拥有的属性大致相同，并在此基础上做了一些兼容性处理。</p>
+<p>和原生 DOM API 中一样，可以使用 <code>event</code> 对象阻止浏览器默认行为和事件冒泡：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 阻止超链接进行跳转</span><br>$(<span class="hljs-string">&quot;a&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;  <br>　　event.preventDefault();<br>&#125;);<br><br><span class="hljs-comment">// 阻止超链接进行跳转</span><br>$(<span class="hljs-string">&quot;a&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;  <br>　　<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;);<br><br><span class="hljs-comment">// 阻止事件冒泡</span><br>$(<span class="hljs-string">&quot;div&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;  <br>　　 event.stopPropagation();<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="jQuery-对象拷贝"><a href="#jQuery-对象拷贝" class="headerlink" title="jQuery 对象拷贝"></a>jQuery 对象拷贝</h3><ul>
+<li>  <code>$.extend([deep], target, object1, [objectN])</code>：用一个或多个其他对象来扩展一个对象，返回被扩展的对象。该方法可以用来拷贝复制一个对象或者合并多个对象。<code>deep</code> 如果设为 <code>true</code>，则是递归合并即深拷贝，如果省略则默认为 <code>false</code> 即浅拷贝，浅拷贝只是拷贝一层，对象中更深层次的复杂属性只拷贝了引用。即浅拷贝目标中的引用类型变量和原对象中的引用类型变量指向同一个对象实例，修改目标对象会影响被拷贝对象中的对象实例。<code>target</code> 为待修改对象，<code>object1</code> 和 <code>objectN</code> 为待合并（拷贝）的一个对象或多个对象。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> empty = &#123;&#125;;<br><span class="hljs-keyword">var</span> defaults = &#123; <span class="hljs-attr">validate</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">limit</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;foo&quot;</span> &#125;;<br><span class="hljs-keyword">var</span> options = &#123; <span class="hljs-attr">validate</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;bar&quot;</span> &#125;;<br><span class="hljs-keyword">var</span> settings = $.extend(empty, defaults, options); <span class="hljs-comment">// settings 和 empty 最后都为 &#123; validate: true, limit: 5, name: &quot;bar&quot; &#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a4411w7Gx">B 站：黑马程序员前端基础必备教程|jQuery网页开发案例精讲</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/">自学笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/jQuery/">jQuery</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/08/Ajax/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Ajax 与前后端交互</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="hidden-mobile">计算机网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

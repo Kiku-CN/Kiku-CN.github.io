@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#515151">
+  <meta name="description" content="">
+  <meta name="author" content="Kiku">
+  <meta name="keywords" content="个人 博客 技术 分享 日记 笔记 学习 文章 教程 指南 程序员">
+  <title>使用 Hexo 搭建个人博客 - Kiku 的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/vs.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":90,"cursorChar":"▁","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":false,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"d3e02bccada8177079a692ffc4daabf8","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Kiku</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-pen"></i>
+                留言板
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/404.html">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/20210226195710.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用 Hexo 搭建个人博客">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-21 10:45" pubdate>
+        2020年12月21日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8k 字
+    </span>
+  
+
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    
+	
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用 Hexo 搭建个人博客</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h2><p>本文中将会使用到 Hexo 作为博客框架生成静态文件，GitHub Page 用来存储托管静态网页，Markdown 作为博客的写作语言，Typora 作为本地的 Markdown 编辑器，PicGo 作为图床上传工具。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156971.png" srcset="/img/loading.gif" alt="Build-Bog-Sit-With-Markdown-Typora-GitHub"></p>
+<h3 id="为什么要搭建个人博客"><a href="#为什么要搭建个人博客" class="headerlink" title="为什么要搭建个人博客"></a>为什么要搭建个人博客</h3><ul>
+<li>创作教程向的博客是对费曼学习法的很好实践，在输出知识的过程中帮自己很好地梳理知识并查漏补缺，从而真正掌握它。</li>
+<li>将学习所得总结成博客，给自己一个积极的成果反馈，增加学习的快感。</li>
+<li>将本地博客上传到网络可以随时随地通过浏览器访问，相比云笔记软件，博客更加开放正式，给人以仪式感，也能让执键盘者能认真对待。</li>
+<li>有一个个人专属的空间可以写一些东西，或是记录自己的学习心得体会，或是写一些碎碎念输出自己的观点，面对匿名访客不会像空间和朋友圈一样有心理负担。</li>
+<li>发扬互联网分享的精神，向互联网分享自己的经验，有可能会帮助到他人。</li>
+<li>搭建自己的博客站点相比使用平台提供的博客托管服务，自主性更高，可以随意定制，大胆折腾，可玩性更高。</li>
+<li>可以绑定自己的专属域名，逼格更高。</li>
+<li>在搭建博客的过程学习顺带网站的构建部署以及一些前端知识。</li>
+<li>高质量的博客可以给简历加分。</li>
+</ul>
+<h3 id="为什么是-Hexo"><a href="#为什么是-Hexo" class="headerlink" title="为什么是 Hexo"></a>为什么是 Hexo</h3><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
+</blockquote>
+<p>以上是 Hexo 的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">官方中文文档</a>中的介绍，由于此前并没有任何使用其他博客框架的经历，所以也说不出相对 WordPress、Hugo 等其他框架的优缺点。之所以使用 Hexo 完全是因为网上的安利以及教程很多，所以也就跟风选择了 Hexo。</p>
+<h3 id="为什么是-Markdown"><a href="#为什么是-Markdown" class="headerlink" title="为什么是 Markdown"></a>为什么是 Markdown</h3><p>Markdown 是一种轻量级的标记语言，使用 Markdown 写作可以让创作者专注于文字内容本身而不用过多的关心排版。Markdown 格式的文档介于纯文本和富文本之间，相比无格式的纯文本，Markdown 可以渲染出样式辅助表达必要的排版逻辑让文章结构美观清晰，相比富文本例如 Word 文档，不用在文字输入和复杂的排版之间来回切换，沉浸感更强。而相比其他的标记语言例如 HTML，Markdown 语法更加简单，容易上手，使用起来也更加灵活方便。此外 Markdown 还有以下优点：</p>
+<ul>
+<li>越来越多的互联网创作平台如「知乎」、「简书」都提供了对 Markdown 格式的支持，在各个平台都能有相对统一的渲染效果。</li>
+<li>使用的是纯文本格式存储，可以使用任何文本编辑器打开和编辑。</li>
+<li>必要时可以很方便的导出成 HTML 、Word 和 PDF 文档。</li>
+</ul>
+<p>花几十分钟学习一下简书官方的 Markdown 教程：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/q81RER">献给写作者的 Markdown 新手指南</a>，利用简书的在线 Markdown 编辑器体验几种常用的标记语法，熟练后就足以应付绝大多数 Markdown 应用场景。</p>
+<h3 id="为什么是-Typora"><a href="#为什么是-Typora" class="headerlink" title="为什么是 Typora"></a>为什么是 Typora</h3><p>上面提到任何文本编辑器都可以打开和编辑 Markdown 文档，普通文本编辑器虽然能显示 Markdown 文本和编辑，但是却无法渲染出我们想要的格式，所以还是很有必要选择一款专用的 Markdown 的编辑器。而 Typora 就是一款为 Markdown 而生的编辑器。它有以下优点：</p>
+<ul>
+<li>支持 Markdown  即时渲染，不用分屏预览，所见即所得。</li>
+<li>功能强大，对 Markdown 所有的语法都支持，虽然有很多复杂语法可能以后永远都用不上。</li>
+<li>软件颜值很高，自带 6 个主题，官网还有更多主题可供选择。</li>
+<li>即使不熟悉一些 Markdown 语法也能使用菜单或者快捷键来添加格式。</li>
+<li><a target="_blank" rel="noopener" href="http://support.typora.io/Markdown-Reference/">最大可能的</a>遵循 <a target="_blank" rel="noopener" href="https://github.github.com/gfm/">GitHub Flavored Markdown</a> 的渲染标准，此标准在原有 Markdown 语法的基础上添加了少量新特性使用起来对程序员更加友好，并且这些特性在 GItHub 的页面上都能完美的显示，所以用 Typora 来写项目的 Readme.md 文档会很合适。</li>
+<li>有复杂排版需求时可以直接嵌入 HTML 代码到 Markdown 文件中，也能渲染显示出来。</li>
+<li>通过开发者选项可以自定义 CSS，深度修改定制属于自己的渲染样式。</li>
+<li>最新版支持 PicGo 插件，可以一键调用 PicGo 自动上传图片到图床。</li>
+</ul>
+<h2 id="Hexo-的安装和配置"><a href="#Hexo-的安装和配置" class="headerlink" title="Hexo 的安装和配置"></a>Hexo 的安装和配置</h2><h3 id="Hexo-的安装"><a href="#Hexo-的安装" class="headerlink" title="Hexo 的安装"></a>Hexo 的安装</h3><blockquote>
+<p>安装 Hexo 相当简单，只需要先安装下列应用程序即可：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a> (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
+<li><a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a></li>
+</ul>
+</blockquote>
+<p>Node.js 的安装只需到官网下载安装包一路下一步即可，安装后建议把 npm 的镜像源切换到国内，能极大提高 npm 包的下载安装速度。</p>
+<p>Git 安装和配置可以参考我这篇博客：<a target="_blank" rel="noopener" href="https://kiku.vip/2020/11/23/Git/">Git 和 GitHub 学习笔记</a>。</p>
+<p>确保成功安装并配置号以上两款软件后，在适当位置创建一个空的文件夹作为自己的 Hexo 博客项目的工作目录。</p>
+<p>在该目录下打开终端，使用 cmd 或者 git bash 作为 shell 均可。</p>
+<p>在终端中输入以下命令运行来安装 Hexo 命令行工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli <br></code></pre></td></tr></table></figure>
+
+<p>如果中途出现终端长时间无响应的情况请检查网络状况或使用管理员模式打开终端再次尝试上面命令安装。</p>
+<p>安装成功后不要退出终端，也不要切换路径，继续输入以下命令并运行，在当前目录下初始化一个 Hexo 博客项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init <br></code></pre></td></tr></table></figure>
+
+<p>初始化过程因为要克隆远程 GitHub 仓库，可能出现以下错误。请确保自己的网络能正常访问 GitHub，必要时手动修改 <code>hosts</code> 文件或者使用网络代理。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156972.png" srcset="/img/loading.gif" alt="image-20201206220507356"></p>
+<p>初始化完毕后依次运行下面三条命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#生成名为 my first blog 的文章</span><br>hexo new <span class="hljs-string">&quot;my first blog&quot;</span><br><br><span class="hljs-comment">#根据 Markdown 文档生成博客静态文件，可以简写成 hexo g</span><br>hexo generate<br><br><span class="hljs-comment">#在本地启动一个 http 服务器，默认情况下，访问网址为： http://localhost:4000/</span><br>hexo server<br></code></pre></td></tr></table></figure>
+
+<p>如果上面三条命令运行成功，接下来可以打开浏览器访问 <code>http://localhost:4000/</code> 来预览自己的博客页面了。终端可能会弹出一些警告，不用理会它，可以在终端使用 <code>Ctrl + C</code> 手动结束掉 Hexo 的服务器模块。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156973.png" srcset="/img/loading.gif" alt="image-20201207110718539"></p>
+<h3 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h3><p>以上我们使用 Hexo 框架搭建了一个本地博客站点，不过只有在自己计算机的所在局域网才能访问到这些页面。接下来我们要把博客部署到 GitHub Pages 上。<a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a> 是 GitHub 官方提供的静态页面托管服务，我们可以通过 GitHub Pages 直接预览我们仓库中的一些静态网页。</p>
+<p>首先我们需要在 GitHub 上创建一个空的公开的仓库，仓库名要严格符合格式：<code>username.github.io</code>，username 换成自己的 GitHub 用户名，请注意区分用户名和昵称的区别。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156974.png" srcset="/img/loading.gif" alt="image-20201206224101092"></p>
+<p>创建完仓库后我们要修改 Hexo 的配置文件来将远程的 GitHub 仓库绑定到我们本地的 Hexo 项目。</p>
+<p>Hexo 项目的根目录下有一个名为 <code>_config.yml</code> 的配置文件，里面是我们的博客站点各种配置。</p>
+<p>打开配置文件，在最后面填上部署方式和我们的刚才创建的仓库 地址以及分支名。</p>
+<p><strong>注意：YAML 格式的键值对在英文冒号后面一定要有一个空格，否则 YAML 将不能正常被解析。并且 YAML 依靠缩进来确定元素间的从属关系。请确保缩进长度相同，并且使用空格缩进。</strong> </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:Kiku-CN/Kiku-CN.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure>
+
+<p>部署方式填 git，仓库地址更改成自己的仓库地址，进入我们刚才创建的仓库页面即可看到地址。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156975.png" srcset="/img/loading.gif" alt="image-20201206225221557"></p>
+<p>仓库地址使用 HTTPS 或者 SSH 都可以，使用 HTTPS 需要在第一次部署时输入账号密码，使用 SSH 方式不需要输入账号密码但需要提前绑定自己的 SSH 公钥到 GitHub 上面。有关 SSH 公钥的配置请参考：<a target="_blank" rel="noopener" href="https://kiku.vip/2020/11/23/Git/#%E4%BD%BF%E7%94%A8-SSH-%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">使用 SSH 连接到远程仓库</a>。</p>
+<p>改好配置文件后，安装 Hexo 的 Git 自动部署插件。终端中输入以下命令并运行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git <br></code></pre></td></tr></table></figure>
+
+<p>使用插件可以利用部署命令一键将本地静态页面推送到远端的 GitHub 仓库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将本地页面部署到远端仓库，命令可以缩写成 hexo d</span><br>hexo deploy<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当执行 <code>hexo deploy</code> 时，Hexo 会将 <code>public</code> 目录中的文件和目录推送至 <code>_config.yml</code> 中指定的远端仓库和分支中，并且<strong>完全覆盖</strong>该分支下的已有内容。</p>
+</blockquote>
+<p>提示部署成功后就可以通过 Github Pages 来访问自己博客了。访问的域名为：<code>username.github.io</code>。也就是我们之前创建的仓库名。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156976.png" srcset="/img/loading.gif" alt="image-20201207110635474"></p>
+<h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>将自己的域名和 GitHub Pages 绑定起来，这样就可以通过自己的个性化域名来访问博客。没有域名的同学可以跳过这步。</p>
+<p>首先我们需要到域名服务商购买一个自己喜欢的域名，然后进入服务商的域名管理界面。以 <a target="_blank" rel="noopener" href="https://www.namesilo.com/account_domains.php">namesilo</a> 为例，管理入口在右上方。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156977.png" srcset="/img/loading.gif" alt="image-20201207114936735"></p>
+<p>进入管理界面后删除原有所有的解析记录，然后添加一条 CNAME 记录指向自己的 GItHub Pages，再添几条 A 记录直接解析到自己的 GItHub Pages 的 IP 地址。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156979.png" srcset="/img/loading.gif" alt="image-20201207115444824"></p>
+<p>可以通过 Windows 自带的 <code>nslookup</code> 命令获取自己的 GitHub Pages 对应的 IP 地址。每个人对应的 IP 地址可能不一样。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156980.png" srcset="/img/loading.gif" alt="image-20201207115755102"></p>
+<p>绑定好解析记录后进入之前创建的名为  <code>user.name.io</code> GitHub 仓库的设置界面，请注意是仓库的设置界面，不是 GitHub 账号的设置界面。</p>
+<p>在后面找到 GitHub Pages 设置项，填上注册的域名然后保存。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156981.png" srcset="/img/loading.gif" alt="image-20201207120715984"></p>
+<p>这样就可以通过自己的域名来访问博客页面了。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156982.png" srcset="/img/loading.gif" alt="image-20201207123215633"></p>
+<p><strong>注意：在域名服务商页面修改 DNS 解析记录需要一段时间才能生效，如果通过自己的域名不能访问到博客页面，在检查上面几步操作无误的前提下耐心等待 DNS 记录生效就好。</strong></p>
+<p>回到仓库页面可以发现，刚才 GitHub 自动为我们在仓库下创建了一个名文 <code>CNAME</code> 文件，里面是我们刚才绑定的域名。我们到设置页面绑定域名的实质只是让 GitHub 帮我们自动生成了一个域名映射文件。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156983.png" srcset="/img/loading.gif" alt="image-20201207121209374"></p>
+<p>但是注意一点，这个文件是 GitHub 自动帮我们生成的，我们本地的仓库中是没有这个 <code>CNAME</code>  文件。如果我们将 Hexo 博客重新部署一遍过后，GitHub 仓库里的这个 <code>CNAME</code> 文件就会被同步而消失掉，又需要进入仓库设置页重新配置域名。</p>
+<p>为了能让每次部署都能自动绑定自定义域名，我们需要创建一个名为 <code>CNAME</code> 的文本文件置于 Hexo 项目的  <code>source</code> 目录下，只有这样 <code>hexo deploy</code> 时才能将 <code>CNAME</code> 文件一并推送至远程 GitHub 仓库。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156984.png" srcset="/img/loading.gif" alt="image-20201207122251487"></p>
+<p><strong>注意：<code>CNAME</code> 是一个纯文本文件，要和 GitHub 帮我们自动生成 <code>CNAME</code> 完全一致：文件名中不能带有任何后缀，文件内容为自己的域名，一定要放在 Hexo 项目的 <code>source</code> 目录下。</strong></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156985.png" srcset="/img/loading.gif" alt="image-20201207122719739"></p>
+<h3 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h3><p>到 Hexo 的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题页</a>选取自己喜欢的主题，我们以 <a target="_blank" rel="noopener" href="https://github.com/Fluid-dev/hexo-theme-Fluid.git">Fluid</a> 主题为例进行下面的操作。</p>
+<p>使用 <code>git</code> 命令克隆主题文件到自己的 Hexo 项目下的 <code>themes</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Fluid-dev/hexo-theme-Fluid.git themes/Fluid<br></code></pre></td></tr></table></figure>
+<p>clone 结束后进入 <code>themes</code> 目录，除了 Hexo 自带的默认主题 landscape 外，应该还有一个名为 <code>Fluid</code> 的主题文件夹。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156986.png" srcset="/img/loading.gif" alt="image-20201207124547245"></p>
+<p>打开站点目录下的 <code>_config.yml</code> 配置文件，修改主题为 Fluid，<strong>注意：是 Hexo 项目目录下的 <code>_config.yml</code> 配置文件，而不是 <code>themes</code> 里面的主题配置文件。</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br></code></pre></td></tr></table></figure>
+
+<p>修改后保存配置，使用以下命令重新生成并部署博客。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#生成静态文件并立即部署网站，相当于依次运行 hexo generate，hexo deploy</span><br>hexo g -d<br></code></pre></td></tr></table></figure>
+
+<p>等待部署完毕后就可以看到更换主题后的效果了。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156987.png" srcset="/img/loading.gif" alt="image-20201207130311895"></p>
+<p><strong>注意：如果发现自己对站点的更改无论如何也不生效（尤其是更换主题后），尝试运行下面的命令再重新生成部署。</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#清除 Hexo 项目的缓存文件和已生成的静态文件 </span><br>hexo clean<br></code></pre></td></tr></table></figure>
+
+<h3 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h3><p>在 Hexo 项目的根目录下的 <code>_config.yml</code> 文件中可以修改有关博客站点的配置。下面对常用的配置项进行说明，更详细的配置请参考 Hexo 官方文档中的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">配置部分</a>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> 	<span class="hljs-comment">#网站的标题</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">&#x27;&#x27;</span> 	<span class="hljs-comment">#网站的副标题，可以为空</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">#网站的简单描述，主要用于SEO</span><br><span class="hljs-attr">keywords:</span>		<span class="hljs-comment">#网站的关键词，主要用于SEO</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">Kiku</span>  	<span class="hljs-comment">#网站作者，用于主题显示文章的作者</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span>	<span class="hljs-comment">#网站使用的语言，建议改成简体中文。</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">&#x27;&#x27;</span>	<span class="hljs-comment">#网站时区。Hexo 默认使用您电脑的时区。不用修改</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：语言的配置需要和自己使用的主题文件夹中提供的一致， 不同的主题可能需要设置成不同的值，常见的有 zh-Hans 和 zh-CN。以 Fluid 主题为例，进入主题的 <code>language</code> 文件夹，里面提供了四种语言支持，中文对应的是 <code>zh-CN.yml</code>。</strong></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156988.png" srcset="/img/loading.gif" alt="image-20201207132511808"></p>
+<p>下图是 Fluid 主题的导航栏在<code>language: en</code> 和 <code>language: zh-CN</code> 下的效果示例。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156989.png" srcset="/img/loading.gif" alt="image-20201207133720184"></p>
+<h3 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h3><p>在调试博客样式的过程中，每次修改都部署到远程仓库是很不必要的。一是这样每次部署到远程需要等待上传文件更新完成，再查看修改后的效果，效率很低；二是这样会在 GitHub 上增加了很多无意义的 commit 记录，污染了时间线。</p>
+<p>所以应该多多利用 Hexo 提供的本地服务器功能，在本地调试博客，等修改满意后再部署到 GitHub 仓库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#启动服务器。默认情况下，访问网址为：http://localhost:4000/</span><br>hexo server<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：Hexo 服务器模块会监视文件变动并自动更新，这样不用每次改动都重新生成部署才能预览改动后的效果。但是如果是修改了 Hexo 项目或者主题的配置文件，可能需要先使用 <code>hexo g</code> 重新生成静态文件才能看到更新后的效果。</strong></p>
+<h2 id="配置-Fluid-主题"><a href="#配置-Fluid-主题" class="headerlink" title="配置 Fluid 主题"></a>配置 Fluid 主题</h2><p>Fluid 官方提供了十分详实的<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">中文配置文档</a>，直接阅读官方文档，按需修改配置即可。</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="将-Markdown-文章发布到博客"><a href="#将-Markdown-文章发布到博客" class="headerlink" title="将 Markdown 文章发布到博客"></a>将 Markdown 文章发布到博客</h3><p>将在其他位置编辑好的 Markdown 文档直接复制到 Hexo 项目下的 <code>source/_posts</code> 目录下，这样在使用 <code>hexo g</code> 命令时这篇文档就会被解析生成一篇文章页。</p>
+<p>也可以使用以下命令，或者手动在  <code>source/_posts</code>  目录下新建一个 Markdown 文档用来写作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#可以在命令中指定文章的布局（layout），默认为 post，title 是文档的名称</span><br>hexo new [layout] &lt;title&gt; <br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：Markdown 文档的文件名一定不能以空格结尾，例如 <code>README .md</code>，在解析时一篇 Markdown 文档会生成一个文件夹，而文件名末的空格会被带到文件夹中，而在 Windows 中文件夹末尾是不允许有空格的，这将导致该文件夹将无法被访问，也就无法被提交到远程 Git 仓库</strong></p>
+<h3 id="使用-Front-matter-为文章指定属性"><a href="#使用-Front-matter-为文章指定属性" class="headerlink" title="使用 Front-matter 为文章指定属性"></a>使用 Front-matter 为文章指定属性</h3><p>Front-matter 是 Markdown 文档文件最上方以 <code>---</code> 分隔的区域，用于指定这篇文章的一些属性，优先级最大，也就说这些变量的值会覆盖掉 Fluid 的主题配置和 Hexo 的项目配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">layout:</span> 		<span class="hljs-comment">#指定 Markdown 文档的渲染模板，默认是 post，会渲染成博客文章页，指定false则是不使用主题，直接解析 Markdown 文档生成网页。不同的主题的提供一些额外的布局模板，例如 Fluid 提供了 index，page，archive，category，about 这些模板。但是这些模板很少有机会手动指定，使用最多的就是 post，用来生成一篇文章</span><br><span class="hljs-attr">title:</span>			<span class="hljs-comment">#文章主标题，默认 Markdown 文档的文件名</span><br><span class="hljs-attr">author:</span>  		<span class="hljs-comment">#文章作者</span><br><span class="hljs-attr">date:</span> 			<span class="hljs-comment">#文章发布日期，时间日期格式：2019-10-10 10:00:00，默认为 Markdown 文档的创建日期</span><br><span class="hljs-attr">updated:</span>		<span class="hljs-comment">#文章更新日期，时间日期格式：2019-10-10 10:00:00，默认为 Markdown 文档的修改日期</span><br><span class="hljs-attr">comment:</span>  		<span class="hljs-comment">#开启文章的评论功能，默认值为 true，前提是已经在主题配置中已经配置好评论模块的参数，否则不显示</span><br><span class="hljs-attr">tags:</span> 			<span class="hljs-comment">#给文章添加标签</span><br><span class="hljs-attr">categories:</span> 	<span class="hljs-comment">#指定文章所属分类</span><br><span class="hljs-attr">excerpt:</span> 		<span class="hljs-comment">#指定摘要，也可以在 Markdown 文档使用 &lt;!-- more --&gt; 来划分摘要区域，不指定则默认自动选取摘要。优先级: excerpt 摘要 &gt; Markdown 划分摘要 &gt; 自动摘要</span><br><span class="hljs-attr">permalink:</span> 		<span class="hljs-comment">#指定 Markdown 文档解析后生成的路径，默认按照文章年月日来生成路径</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：分类具有顺序性和层次性，也就是说 Foo, Bar 不等于 Bar, Foo；而标签没有顺序和层次。分类类似文件夹的组织方式，标签则使用起来更加灵活。</strong></p>
+<blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">categories:<br><span class="hljs-bullet">  -</span> Diary<br><span class="hljs-bullet">  -</span> Life<br></code></pre></td></tr></table></figure>
+
+<p>会使分类<code>Life</code>成为<code>Diary</code>的子分类，而不是并列分类。如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">categories:<br><span class="hljs-bullet">- </span>[Diary, PlayStation]<br><span class="hljs-bullet">- </span>[Diary, Games]<br><span class="hljs-bullet">- </span>[Life]<br></code></pre></td></tr></table></figure>
+
+<p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
+</blockquote>
+<p>接下来这些属性均是在使用 Fluid 主题的前提下，使用其他主题不保证能产生相同效果。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">subtitle:</span> 		<span class="hljs-comment">#子标题，默认值等于 title，更好的理解是详细标题，进入文章页后显示的是子标题而不是标题</span><br><span class="hljs-attr">index_img:</span> 		<span class="hljs-comment">#文章在首页的封面图，如果没在主题配置中设置默认封面，则默认不显示文章封面</span><br><span class="hljs-attr">banner_img:</span> 	<span class="hljs-comment">#文章页顶部大图，默认使用主题配置的图片</span><br><span class="hljs-attr">hide:</span>			<span class="hljs-comment">#把某些文章隐藏起来，会使文章在首页和分类里都不显示，隐藏后依然可以通过文章链接访问,默认值为 false</span><br><span class="hljs-attr">sticky:</span>  		<span class="hljs-comment">#为文章设置权重，可以用来给首页文章排序。数值越大，则权重越高，该文章在首页越靠前，默认值为0，设定正数来置顶文章，置顶文章标题会带有一个置顶图标，设为负数保证置尾</span><br></code></pre></td></tr></table></figure>
+
+<p>下面给出我们经常会用到的 Front-matter 属性，可以当做模板使用。</p>
+<p><strong>注意：使用 Fluid 主题不指定 title 属性会使文章的标题为空。如果想使用自动摘要，就不要添加 excerpt  这个属性，添加了这个属性必须指定一串字符值，否则解析时会报错。</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> 			<span class="hljs-comment">#标题</span><br><span class="hljs-attr">date:</span>  			<span class="hljs-comment">#日期</span><br><span class="hljs-attr">excerpt:</span> 		<span class="hljs-comment">#摘要</span><br><span class="hljs-attr">tags:</span> 			<span class="hljs-comment">#标签</span><br><span class="hljs-attr">categories:</span>		<span class="hljs-comment">#分类</span><br><span class="hljs-attr">index_img:</span> 		<span class="hljs-comment">#封面</span><br><span class="hljs-attr">banner_img:</span> 	<span class="hljs-comment">#顶图</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="为-Typora-配置图床"><a href="#为-Typora-配置图床" class="headerlink" title="为 Typora 配置图床"></a>为 Typora 配置图床</h2><p>如果在上面发布的 Markdown 文档里面引用了本地图片，会发现文章页中的图片没有正常显示。因为 Markdown 文档本质上还是一个纯文本，它只是引用了本地或者网络上的图片，而我们在 Markdown 中插入的本地图片并没有一同随文档上传到 GitHub 仓库。所以我们需要把图片也上传到网络（图床）上，这样才能在博客中正常显示。</p>
+<p>如果只是简单地把图片和 Markdown 文档一同放在了 <code>_post</code> 目录下，并不能上传图片，因为 Hexo 默认是不会处理 <code>_post</code> 目录下的图片的。</p>
+<p>现在为了让 Hexo 把图片也一起上传到远程 GitHub 仓库，我们有两种选择，一是修改 Hexo 的配置文件中 <code>post_asset_folder</code> 属性，这样 Hexo 在生成静态文件时会把和 Markdown 文档同名的文件夹里面的内容也一起复制到 <code>public</code> 目录，并在部署时一同上传。</p>
+<p>这种上传图片的方式可以参考 Hexo 官方文档中的 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E5%BC%95%E7%94%A8%E7%9A%84%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6">资源文件夹说明</a>，网上也已经有很多教程，但是这个方法有个问题就是使用 Typora 粘贴剪切板中的图片时生成的路径会多出一个 <code>/</code> 造成路径错误。</p>
+<p>接下来分享的是另外两种配置图床方式。以下两种方法均使用 Typora 作为 Markdown 编辑器，所以请提前到 <a target="_blank" rel="noopener" href="https://typora.io/">Typora官网</a> 安装或升级到最新版本，旧版本可能不支持 PicGo 上传图片功能。</p>
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h3><p>在 <code>source</code> 目录下创建一个名为 <code>images</code> 的文件夹专门用于存放图片，Hexo 生成文件时不会处理 <code>_post</code> 下的图片，但是会把 <code>source/images</code> 这个文件夹复制到 <code>public/images</code> ，即部署后的站点根目录下，到时候可以通过绝对路径很方便的获取到 images 里面的图片。</p>
+<p>首先修改 Typora 里面的图像设置如下图。这样当我们在 <code>_post</code> 目录下使用 Typora 进行 Markdown 写作时，插入的图片时会自动拷贝复制一份到<code>../images</code>，也就是我们之前创建的目录下。</p>
+<p><strong>注意：一定要使用相对路径。此外建议网络和本地都勾上，这样即使引用的网络图片被删除或者原来的本地图片被被移动的情况下图片引用都不会失效。</strong></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156990.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>但是还有另外一个问题需要解决。在 <code>_post</code> 目录下的 Markdown 文档解析后的生成的 HTML 页面并不在 <code>public/post/</code> 这个目录下（事实上也不存这个目录），而是在以日期命名的路径下面。例如在 <code>_post</code> 目录下有一篇名为 <code>title.md</code> 的 Markdown 文档，其日期属性为 <code>date: 2020-12-3 </code> ，部署后需要通过 <code>主机名/2020/12/03/title/index.html</code> 这个路径才能访问对应的文章页面。</p>
+<p>这时如果我们在这个文档中粘贴一张图片，Typora 自动生成的图片引用为 <code>![](../images/example.jpg)</code>，图片经过解析后生成的 HTML 标签为  <code>&lt;img src=&quot;../images/example.jpg&quot; &gt;</code>，转化为绝对地址就是 <code>&lt;img src=&quot;主机名/2020/12/images/example.jpg&quot; &gt;</code>，然而图片在网络上的所在地址是 <code>主机名/images/example.jpg</code>，所以图片没法正确的加载显示出来。</p>
+<p>我们可以选择更改 Hexo 生成文章时的默认路径，让文章直接在部署到站点根目录下面的某一个文件夹下，而不经过年月日的层叠。</p>
+<p>但我们使用的是另外一种方法：Typora 专门提供了一项<a target="_blank" rel="noopener" href="https://support.typora.io/Images/#relative-path-to-certain-folder">设置</a>可以解决这个问题：在 Front-matter 给文档添加如下的 <code>typora-root-url</code> 属性。</p>
+<p><strong>再次提醒：英文冒号后面一定要有空格！</strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs groovy">typora-root-<span class="hljs-attr">url:</span> ../<br></code></pre></td></tr></table></figure>
+
+<p>新版 Typora 已经支持直接在菜单中设置图片根目录了，将  <code>_post</code> 目录的上一层 <code>source</code> 目录设为根目录。 Typora 会自动添加一条和上面一样的 YAML Front Matter 属性。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156991.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>指定了图片根目录后 Typora 解析图片的相对路径时就会自动添加设置的这段路径。这时粘贴图片到文章中时，图片还是会拷贝到 <code>source/images</code> 下面，但是所生成的 Markdown 引用为 <code>![](/images/example.jpg)</code>，解析成 HTML 图片标签的 src 值为 <code>/images/example.jpg</code> ，正好可以匹配到站点根目录下的 images 路径下的图片。</p>
+<p>优点：</p>
+<ul>
+<li>不用单独搭建图床仓库，也不用手动上传图片，直接把图片和 Markdown 文档一同部署到网络。</li>
+<li>直接在 <code>_post</code> 目录下创作，修改后保存重新生成部署即可生效。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>每篇 Markdown 文档都需要指定根目录属性，虽然可以利用 Hexo 的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing#%E6%A8%A1%E7%89%88%EF%BC%88Scaffold%EF%BC%89">模版</a>功能来解决，但是这样每次都必须通过命令行来创建新的 Markdown 文章。</li>
+<li>所有文章的图片都集中在一个文件夹，后期不好管理。</li>
+<li>图片和文章都在一个仓库中存储，有可能造成后期空间紧张。</li>
+<li>GitHub 在国内访问不是很稳定，造成图片加载很慢甚至加载不出来。</li>
+</ul>
+<p>方法 1 适合那些直接在 <code>_post</code> 目录下写博客的人群，而下面的方法 2 则适合那些以前就使用过 Typora，已经习惯在某个文件夹下创作的人群。</p>
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2:"></a>方法 2:</h3><p>首先在 GitHub 创建一个新的空仓库用作图床，仓库名可以任意。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156992.png" srcset="/img/loading.gif" alt="image-20201207212601641"></p>
+<p>创建一个新的分支用来存储图片，而不是直接使用默认分支，这样做有两点好处。一是上传照片到非默认分支可以避免被 GitHub 统计成 contribution，不会点亮主页的小绿点。二是在前期测试图床的过程中如果上传了一些测试图片可以方便利用删除分支功能来删除这些图片，而不是删除整个仓库再重新建新仓库。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156993.png" srcset="/img/loading.gif" alt="image-20201207212954936"></p>
+<p>安装 <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/">PicGo</a>，建议直接安装最新的 beta 版本，旧版本容易出现各种端口冲突。</p>
+<p>然后配置 PicGo 的 GitHub 参数。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156994.png" srcset="/img/loading.gif" alt="image-20201209201444082"></p>
+<p>仓库名和分支名使用上面自己创建的仓库和分支。<strong>注意：仓库名前要加上自己的 GitHub 账户名称。</strong></p>
+<p>在 Github 的账号设置页右侧找到 Developer settings 进入，生成一个新的 token。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156995.png" srcset="/img/loading.gif" alt="image-20201209201757662"></p>
+<p>Note 相当于给这个 token 取个名字，用来以后提示自己当初创建这个 token 的用途。权限范围只用勾上 repo 即可，token 生成后务必立即复制粘贴到 PicGo 的设置中来，页面关闭后将不可见，没复制上就只能选择再新建一个 token。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156996.png" srcset="/img/loading.gif" alt="image-20201209201949295"></p>
+<p>指定存储路径可以随意，建议还是指定个一级目录例如 <code>photos/</code> 或者 <code>imgs/</code>，避免图片直接暴露在仓库最外面。</p>
+<p>存储路径务必按照以下路径来填写，这样可以使用 jsdelivr 免费的 CDN 加快图片加载速度。其中 <code>user</code> 换成自己的 GitHub 名称， <code>repo</code> 换成自己的图床仓库名，<code>branch</code> 换成自己设定的分支名。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/u</span>ser/repo@branch<br></code></pre></td></tr></table></figure>
+
+<p>PicGo 配置完毕后回到 Typora 中的图像设置中来，还是选择方法 1 中一样的复制到指定路径的选项，不同的是这次我们把路径指定为<code>./$&#123;filename&#125; images</code>，即插入图片时在当前目录新建一个文件夹专门用来保存某一篇 Markdown 中的图片。上传服务选择 PicGo（app），并关联到自己的 PicGo 安装路径，然后点击验证图片上传选项看上传是否成功。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156997.png" srcset="/img/loading.gif" alt="image-20201210223806429"></p>
+<p>Typora 支持在插入图片时就通过 PicGo 自动上传图片。但是使用 PicGo 上传到 GitHub 不是很稳定，容易出现各种上传失败。所以建议还是先把图片老老实实保存到本地，最后再集中上传。这样即使上传出错，直接全部重传就好。上传失败时多利用 PicGo 的日志来查找失败原因。</p>
+<p><strong>注意：一定要在 PicGo 的设置中开启时间戳重命名，确保上传的图片名称不会和之前上传的图片产生冲突。</strong></p>
+<p>建议在本地创建一个文件夹专门用来 Markdown 写作，引用图片生成图片文件夹也在此文件夹中，等某篇 Markdown 完成无需修改再将 Markdown 文档和对应的图片文件夹复制一份到 Hexo 下的 <code>source/_post/</code> 目录里面，然后按照下图的方式集中上传整篇文档的图片到图床。</p>
+<p><strong>注意：一定要把图片文件夹也一起复制过来，因为我们前面设置的是相对路径，上传成功后图片文件夹可以删掉 。</strong></p>
+<p><strong>注意：一次上传完所有图片后 Typora 会自动把 Markdown 文档中原来的本地图片引用地址替换成我们在 PicGo 中配置的 HTTPS 地址，记得先 <code>Ctrl + s</code> 保存修改后的 Markdown 文档再使用 Hexo 命令生成和部署。</strong></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156998.png" srcset="/img/loading.gif" alt="image-20201203220016120"></p>
+<p>这样相当于存在两个版本，一个是引用本地图片的离线版本可以用作存档，一个是引用 GitHub 图床的在线版部用来解析生成博客，实现存档和部署的文件相互分离，以后如果要迁移起来也方便。</p>
+<p>优点：</p>
+<ul>
+<li>不用改变以前使用 Typora 的习惯，只需要将想上传的 Markdown 拷贝到 <code>_post</code> 文件夹然后在 Typora 中一次性上传所有本地图片。</li>
+<li>图床仓库和博客仓库隔离，图片不会挤占博客仓库空间。</li>
+<li>本地版中的图片按篇组织在一个个文件夹，易于检查和整理。</li>
+<li>可以配合 jsDelivr 实现免费的 CDN 加速，加快图片的加载速度，图片也不容易被墙。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要单独搭建配置图床。</li>
+<li>本地离线版和在线版两个版本管理起来容易混乱，特别是后期有修改需要同步时。</li>
+<li>PicGo 用起来不是很稳定，但是目前也没有找到更好的替代工具。</li>
+<li>两个版本多了一份重复文件，多占一丢丢几乎可忽略的硬盘空间。</li>
+</ul>
+<p>很多人担心 GitHub 的仓库容量用来图床会不会够用，GitHub 官方关单个仓库容量的<a target="_blank" rel="noopener" href="https://docs.github.com/cn/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota">说法</a>是：理想情况下小于 1 GB，强烈建议小于 5 GB。只是用来存储文章插图是够用的。</p>
+<p>如果是打算上传各种高清大图，或者要上传音频甚至视频的，可以考虑七牛云的对象存储服务，上传身份证照片实名认证后有 10 GB 的免费空间，每月 10 GB 的免费流量。</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156999.png" srcset="/img/loading.gif" alt="image-20201203162217404"></p>
+<p><strong>注意：一定要备过案的域名能使用免费的 CND 加速，没备案的不能使用自定义域名加速。CND 加速效果相比 jsDelivr 并没有感觉到什么差距，可能和自己的网络环境有关。</strong></p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156000.png" srcset="/img/loading.gif" alt="image-20201203161953280"></p>
+<p>至此完成了博客最基础的文章和图片展示功能的搭建，Hexo 还有更多高阶玩法，例如添加文章评论系统，嵌入音乐播放器，自定义主题模板等。建议把博客搭起来后，先把文章写起来，内容才是核心，花里胡哨可以等日后有空可以再慢慢折腾。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">吴润：GitHub+Hexo 搭建个人网站详细教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://me.miqilin21.cn/2020/09/28/%E4%BD%BF%E7%94%A8GitHub%E3%80%81jsDelivr%E3%80%81PicGo%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E5%BF%AB%E9%80%9F%E5%9B%BE%E5%BA%8A/">米淇淋：使用GitHub+jsDelivr+PicGo搭建免费快速图床</a></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0/">折腾日记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Markdown/">Markdown</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Typora/">Typora</a>
+                    
+                      <a class="hover-with-bg" href="/tags/PicGo/">PicGo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/GitHub/">GitHub</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CDN/">CDN</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/26/%E4%B8%AD%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">写给自己看的中文排版规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/19/UMLClassDiagram/">
+                        <span class="hidden-mobile">UML 中的类图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2"></div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     © 2020 - 2021 @ <a href="https://kiku.vip" target="_blank" rel="nofollow noopener"><span>Kiku</span></a><br> Powered by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme -  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d3e02bccada8177079a692ffc4daabf8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
