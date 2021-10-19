@@ -255,7 +255,7 @@
 <p>首先需要在 VPS 上准备一个 Git 裸仓库作为 Hexo 的部署仓库。当运行 <code>hexo deploy</code> 命令时，会自动使用 <code>git push</code> 将博客的静态文件上传到 VPS 的 Git 仓库中。</p>
 <p><strong>注意：裸仓一般都是用来当做远程的中心公共仓库，专门用来存储和同步分发，裸仓库可以被正常 <code>clone</code> 和 <code>push</code> ，但是裸仓没有 worktree 的，不能像普通仓库那样进行 <code>commit</code> 等 Git 操作。</strong></p>
 <p>光把博客静态文件上传到仓库还不够，还需要拷贝到 Nginx 的博客站点目录一下才能被 HTTP(S) 访问。为此需要使用到 <a target="_blank" rel="noopener" href="https://www.git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git Hooks</a> 功能，当服务器端的 Git 裸仓收到 git push 之后，会自动触发 Git Hooks 中的 <code>post-receive</code> 脚本，该脚本将 Git 裸仓中的文件拷贝到 Nginx 的博客站点目录下。这样就可以真正达到了 <code>hexo deploy</code> 命令全程自动部署的效果。</p>
-<p>![<a target="_blank" rel="noopener" href="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192157666.png">使用Git Hook自动部署Hexo到个人VPS</a>](Hexo 部署到 VPS images/2755175395.png)</p>
+<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192157666.png" srcset="/img/loading.gif" alt="使用Git Hook自动部署Hexo到个人VPS"></p>
 <ol>
 <li><p>  在宝塔面板已经创建好 kiku.vip 站点作为博客入口，站点的根目录为 <code>/www/wwwroot/kiku.vip</code>。</p>
 </li>
