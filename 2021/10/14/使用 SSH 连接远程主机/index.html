@@ -181,7 +181,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110191718571.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040835281.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -304,7 +304,7 @@
 <p>要以哪个用户的身份登录到服务器，密钥就必须保存在该用户主目录的<code>~/.ssh/authorized_keys</code>文件。</p>
 <p>下面提供三种上传公钥到远程主机上的方法：</p>
 <ol>
-<li><p>如果购买的是大厂云服务器，可以直接在控制台中上传公钥。以腾讯轻量应用服务器为例：<br>  首先要在控制台中创建秘钥：<br>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218790.png" srcset="/img/loading.gif" alt="image-20211014162335502"><br>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218791.png" srcset="/img/loading.gif" alt="image-20211014162545603"><br>  然后将秘钥绑定到我们远程主机上。<br>  <strong>注意：腾讯云控制台上传的公钥只能绑定在 root 用户下，并且绑定后将不能再通过密码方式 SSH 登录。</strong><br>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218792.png" srcset="/img/loading.gif" alt="image-20211015175759714"></p>
+<li><p>如果购买的是大厂云服务器，可以直接在控制台中上传公钥。以腾讯轻量应用服务器为例：<br>  首先要在控制台中创建秘钥：<br>  ![image-20211014162335502](使用 SSH 连接远程主机 images/image-20211014162335502.png)<br>  ![image-20211014162545603](使用 SSH 连接远程主机 images/image-20211014162545603.png)<br>  然后将秘钥绑定到我们远程主机上。<br>  <strong>注意：腾讯云控制台上传的公钥只能绑定在 root 用户下，并且绑定后将不能再通过密码方式 SSH 登录。</strong><br>  ![image-20211015175759714](使用 SSH 连接远程主机 images/image-20211015175759714.png)</p>
 </li>
 <li><p>手动将本地的公钥文件写入到远程主机上。<br>  在远程主机执行下面的命令。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">mkdir ~/.ssh  <br>chmod 700 ~/.ssh<br>vi ~/.ssh/authorized_keys<br>chmod 600 ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>

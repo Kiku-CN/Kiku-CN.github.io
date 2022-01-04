@@ -181,7 +181,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110191718575.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040837955.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.5k 字
     </span>
   
 
@@ -255,52 +255,52 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">安装/更新</span><br>source &lt;(curl -sL https://git.io/trojan-install)<br><br><span class="hljs-meta">#</span><span class="bash">卸载</span><br>source &lt;(curl -sL https://git.io/trojan-install) --remove<br></code></pre></td></tr></table></figure>
 
 <p>因为 trojan 协议中用到了 TLS 加密，需要申请证书。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218946.png" srcset="/img/loading.gif" alt="image-20211016150810283"></p>
+<p>![image-20211016150810283](在 VPS 上快速搭建 trojan 服务 images/image-20211016150810283.png)</p>
 <p>输入 <code>1</code> 回车，申请免费的 Let’s Encrypt 证书，时长为 3 个月，到期前会自动续签。</p>
 <p>然后输入提前准备好的域名，这里以 free.kiku.vip 为例</p>
 <p>接下来需要安装数据库，如果没有安装过 MySQL 就选择 1。 </p>
 <p>接下来提示设置管理员密码，使用该密码以管理员登录 trojan web 管理后台，管理员用户名默认为 admin 且不可更改。</p>
 <p>然后给 trojan 初始用户设置用户名和密码，生成的 trojan 分享链接有关，也可以使用该初始用户登录 trojan web 管理后台查看自己的流量使用情况。</p>
 <p>安装完毕后 trojan 会自动启动，在 Shell 中输入 <code>trojan</code> 可以对 trojan 进行一些管理设置。输入 <code>5</code> 可以得到 trojan 的分享链接，和之前设置初始的用户相对应。不输入任何数字直接回车可以退出管理程序，回到 Shell 环境。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218947.png" srcset="/img/loading.gif" alt="image-20211016232340427"></p>
+<p>![image-20211016232340427](在 VPS 上快速搭建 trojan 服务 images/image-20211016232340427.png)</p>
 <p>浏览器访问之前输入的域名 <a target="_blank" rel="noopener" href="https://free.kiku.vip/">https://free.kiku.vip</a> 访问 trojan web 管理面板，通过管理员帐号和用户都能登录。</p>
 <p>管理员可以在 Web 界面中查看 trojan 的运行统计数据，对 trojan 用户进行管理。普通用户只能查看到自己的流量统计。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218948.png" srcset="/img/loading.gif" alt="image-20211017130244204"></p>
+<p>![image-20211017130244204](在 VPS 上快速搭建 trojan 服务 images/image-20211017130244204.png)</p>
 <p>在管理界面的用户管理栏也能得到用户对应的 trojan 分享链接。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218950.png" srcset="/img/loading.gif" alt="image-20211017130719579"></p>
+<p>![image-20211017130719579](在 VPS 上快速搭建 trojan 服务 images/image-20211017130719579.png)</p>
 <p>至此服务端已经搭建完毕，接下来是客户端配置。</p>
 <p>在安卓手机可以使用 trojan 协议专用的客户端 <a target="_blank" rel="noopener" href="https://github.com/trojan-gfw/igniter">Igniter</a> 来进行代理。只需要点击右上角粘贴上面得到的分享连接即可。</p>
 <p>在 PC 中除了要下载客户端外还要为浏览器或者应用设置代理。</p>
 <p>PC 上推荐使用 v2rayN 客户端，支持协议众多，最新的 v2rayN 已经支持 trojan 协议。<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases/download/4.20/v2rayN.zip">下载 v2rayN 客户端</a>并运行，复制上面的分享链接，在 v2rayN 中选择从剪贴板导入服务器。选择刚才添加的 trojan 服务器然后回车，列表前面有 √ 的服务器代表当前连接使用的服务器。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218951.png" srcset="/img/loading.gif" alt="image-20211017132241969"></p>
+<p>![image-20211017132241969](在 VPS 上快速搭建 trojan 服务 images/image-20211017132241969.png)</p>
 <p>服务器添加成功后，有下面两种方式使用代理上网：</p>
 <ol>
-<li><p>右键任务栏的 v2rayN 图标，选择自动配置系统代理。<br>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218952.png" srcset="/img/loading.gif" alt="image-20211016233558949"><br>  设置成功后代理服务器会自动被添加到 Internet 选项中。系统代理对所有浏览器以及部分自动使用系统代理的桌面应用生效，这些生效的应用的所有流量都会走代理。<br>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218953.png" srcset="/img/loading.gif" alt="image-20211016233811251"></p>
+<li><p>右键任务栏的 v2rayN 图标，选择自动配置系统代理。<br>  ![image-20211016233558949](在 VPS 上快速搭建 trojan 服务 images/image-20211016233558949.png)<br>  设置成功后代理服务器会自动被添加到 Internet 选项中。系统代理对所有浏览器以及部分自动使用系统代理的桌面应用生效，这些生效的应用的所有流量都会走代理。<br>  ![image-20211016233811251](在 VPS 上快速搭建 trojan 服务 images/image-20211016233811251.png)</p>
 </li>
 <li><p>下载 <a target="_blank" rel="noopener" href="https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx">SwitchyOmega</a> 插件拖动到浏览器中安装，或者直接从 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/padekgcemlokbadohgkifijomclgjgif">Chrome 应用商店</a>安装。</p>
 <p>  新建情景模式，选择代理服务器模式。</p>
-<p>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218954.png" srcset="/img/loading.gif" alt="image-20211017002821872"></p>
+<p>  ![image-20211017002821872](在 VPS 上快速搭建 trojan 服务 images/image-20211017002821872.png)</p>
 <p>  填写的代理协议和端口要和 v2rayN 主界面最下面下面状态栏的本地代理服务器地址和端口匹配。</p>
-<p>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218955.png" srcset="/img/loading.gif" alt="image-20211017132040245"></p>
+<p>  ![image-20211017132040245](在 VPS 上快速搭建 trojan 服务 images/image-20211017132040245.png)</p>
 <p>  新建情景模式，选择自动切换模式，参考下图设置，规则列表的地址是 <code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code>。</p>
-<p>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218956.png" srcset="/img/loading.gif" alt="image-20211017003300414"></p>
+<p>  ![image-20211017003300414](在 VPS 上快速搭建 trojan 服务 images/image-20211017003300414.png)</p>
 <p>  设置成功后将模式切换为 auto switch 模式，这样就会自动分流，访问国内网站的时候不走代理，访问谷歌等科学网站就会自动使用代理。也可以在某些网站添加新的切换规则或者临时使用代理，相比第 1 中方法更加灵活方便，因此更加推荐使用第 2 中方法。</p>
-<p>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218957.png" srcset="/img/loading.gif" alt="image-20211017125821159"></p>
+<p>  ![image-20211017125821159](在 VPS 上快速搭建 trojan 服务 images/image-20211017125821159.png)</p>
 <p>  使用第 2 种方法建议右键任务栏的 v2rayN 图标，清除掉系统代理，这样只有使用 <a target="_blank" rel="noopener" href="https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx">SwitchyOmega</a> 插件的浏览器才通过代理上网，避免对其他的应用的上网方式产生影响。如果某个应用需要使用代理，需要手动在应用设置找到代理设置填写代理协议和端口。以 Telegram 桌面应用为例：</p>
-<p>  <img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218958.png" srcset="/img/loading.gif" alt="image-20211017132815559"></p>
+<p>  ![image-20211017132815559](在 VPS 上快速搭建 trojan 服务 images/image-20211017132815559.png)</p>
 </li>
 </ol>
 <p>代理设置成功后在浏览器中使用 SpeedTest 测试代理速度，本地使用的是电信 50 M 校园网，可以跑满 VPS  30 Mbps 的带宽。</p>
 <p>长沙联通节点：</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218959.png" srcset="/img/loading.gif" alt="image-20211016154612731"></p>
+<p>![image-20211016154612731](在 VPS 上快速搭建 trojan 服务 images/image-20211016154612731.png)</p>
 <p>黄冈电信节点：</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218960.png" srcset="/img/loading.gif" alt="image-20211016230623209"></p>
+<p>![image-20211016230623209](在 VPS 上快速搭建 trojan 服务 images/image-20211016230623209.png)</p>
 <p>香港节点：</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218961.png" srcset="/img/loading.gif" alt="image-20211016153727954"></p>
+<p>![image-20211016153727954](在 VPS 上快速搭建 trojan 服务 images/image-20211016153727954.png)</p>
 <p>下午 4 点 YouTube 连接情况：</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218962.png" srcset="/img/loading.gif" alt="image-20211016155320235"></p>
+<p>![image-20211016155320235](在 VPS 上快速搭建 trojan 服务 images/image-20211016155320235.png)</p>
 <p>晚上 11 点高峰期 YouTube 连接情况：</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192218963.png" srcset="/img/loading.gif" alt="1c2g50GB youtubetest"></p>
+<p>![1c2g50GB youtubetest](在 VPS 上快速搭建 trojan 服务 images/1c2g50GB youtubetest.png)</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li>  <a target="_blank" rel="noopener" href="https://trojan-gfw.github.io/trojan/">trojan 官方文档</a></li>
 <li>  <a target="_blank" rel="noopener" href="https://github.com/Jrohy/trojan">trojan 多用户管理部署程序</a></li>

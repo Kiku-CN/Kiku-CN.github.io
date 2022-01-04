@@ -181,7 +181,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/20210226195710.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040848375.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8k 字
+      8.2k 字
     </span>
   
 
@@ -251,7 +251,7 @@
             
             <div class="markdown-body">
               <h2 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h2><p>本文中将会使用到 Hexo 作为博客框架生成静态文件，GitHub Page 用来存储托管静态网页，Markdown 作为博客的写作语言，Typora 作为本地的 Markdown 编辑器，PicGo 作为图床上传工具。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156971.png" srcset="/img/loading.gif" alt="Build-Bog-Sit-With-Markdown-Typora-GitHub"></p>
+<p>![Build-Bog-Sit-With-Markdown-Typora-GitHub](Hexo images/Build-Bog-Sit-With-Markdown-Typora-GitHub.png)</p>
 <h3 id="为什么要搭建个人博客"><a href="#为什么要搭建个人博客" class="headerlink" title="为什么要搭建个人博客"></a>为什么要搭建个人博客</h3><ul>
 <li>创作教程向的博客是对费曼学习法的很好实践，在输出知识的过程中帮自己很好地梳理知识并查漏补缺，从而真正掌握它。</li>
 <li>将学习所得总结成博客，给自己一个积极的成果反馈，增加学习的快感。</li>
@@ -303,15 +303,15 @@
 <p>安装成功后不要退出终端，也不要切换路径，继续输入以下命令并运行，在当前目录下初始化一个 Hexo 博客项目。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init <br></code></pre></td></tr></table></figure>
 
-<p>初始化过程因为要克隆远程 GitHub 仓库，可能出现以下错误。请确保自己的网络能正常访问 GitHub，必要时手动修改 <code>hosts</code> 文件或者使用网络代理。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156972.png" srcset="/img/loading.gif" alt="image-20201206220507356"></p>
+<p>初始化过程因为要克隆远程 GitHub 仓库，可能出现以下错误。请确保自己的网络能正常访问 GitHub，必要时手动修改 <code>hosts</code> 文件或者使用网络代理。<br>![image-20201206220507356](Hexo images/image-20201206220507356.png)</p>
 <p>初始化完毕后依次运行下面三条命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#生成名为 my first blog 的文章</span><br>hexo new <span class="hljs-string">&quot;my first blog&quot;</span><br><br><span class="hljs-comment">#根据 Markdown 文档生成博客静态文件，可以简写成 hexo g</span><br>hexo generate<br><br><span class="hljs-comment">#在本地启动一个 http 服务器，默认情况下，访问网址为： http://localhost:4000/</span><br>hexo server<br></code></pre></td></tr></table></figure>
 
 <p>如果上面三条命令运行成功，接下来可以打开浏览器访问 <code>http://localhost:4000/</code> 来预览自己的博客页面了。终端可能会弹出一些警告，不用理会它，可以在终端使用 <code>Ctrl + C</code> 手动结束掉 Hexo 的服务器模块。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156973.png" srcset="/img/loading.gif" alt="image-20201207110718539"></p>
+<p>![image-20201207110718539](Hexo images/image-20201207110718539.png)</p>
 <h3 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h3><p>以上我们使用 Hexo 框架搭建了一个本地博客站点，不过只有在自己计算机的所在局域网才能访问到这些页面。接下来我们要把博客部署到 GitHub Pages 上。<a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a> 是 GitHub 官方提供的静态页面托管服务，我们可以通过 GitHub Pages 直接预览我们仓库中的一些静态网页。</p>
 <p>首先我们需要在 GitHub 上创建一个空的公开的仓库，仓库名要严格符合格式：<code>username.github.io</code>，username 换成自己的 GitHub 用户名，请注意区分用户名和昵称的区别。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156974.png" srcset="/img/loading.gif" alt="image-20201206224101092"></p>
+<p>![image-20201206224101092](Hexo images/image-20201206224101092.png)</p>
 <p>创建完仓库后我们要修改 Hexo 的配置文件来将远程的 GitHub 仓库绑定到我们本地的 Hexo 项目。</p>
 <p>Hexo 项目的根目录下有一个名为 <code>_config.yml</code> 的配置文件，里面是我们的博客站点各种配置。</p>
 <p>打开配置文件，在最后面填上部署方式和我们的刚才创建的仓库 地址以及分支名。</p>
@@ -319,7 +319,7 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:Kiku-CN/Kiku-CN.github.io.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure>
 
 <p>部署方式填 git，仓库地址更改成自己的仓库地址，进入我们刚才创建的仓库页面即可看到地址。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156975.png" srcset="/img/loading.gif" alt="image-20201206225221557"></p>
+<p>![image-20201206225221557](Hexo images/image-20201206225221557.png)</p>
 <p>仓库地址使用 HTTPS 或者 SSH 都可以，使用 HTTPS 需要在第一次部署时输入账号密码，使用 SSH 方式不需要输入账号密码但需要提前绑定自己的 SSH 公钥到 GitHub 上面。有关 SSH 公钥的配置请参考：<a target="_blank" rel="noopener" href="https://kiku.vip/2020/11/23/Git/#%E4%BD%BF%E7%94%A8-SSH-%E8%BF%9E%E6%8E%A5%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">使用 SSH 连接到远程仓库</a>。</p>
 <p>改好配置文件后，安装 Hexo 的 Git 自动部署插件。终端中输入以下命令并运行。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git <br></code></pre></td></tr></table></figure>
@@ -330,32 +330,32 @@
 <blockquote>
 <p>当执行 <code>hexo deploy</code> 时，Hexo 会将 <code>public</code> 目录中的文件和目录推送至 <code>_config.yml</code> 中指定的远端仓库和分支中，并且<strong>完全覆盖</strong>该分支下的已有内容。</p>
 </blockquote>
-<p>提示部署成功后就可以通过 Github Pages 来访问自己博客了。访问的域名为：<code>username.github.io</code>。也就是我们之前创建的仓库名。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156976.png" srcset="/img/loading.gif" alt="image-20201207110635474"></p>
+<p>提示部署成功后就可以通过 Github Pages 来访问自己博客了。访问的域名为：<code>username.github.io</code>。也就是我们之前创建的仓库名。<br>![image-20201207110635474](Hexo images/image-20201207110635474.png)</p>
 <h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>将自己的域名和 GitHub Pages 绑定起来，这样就可以通过自己的个性化域名来访问博客。没有域名的同学可以跳过这步。</p>
 <p>首先我们需要到域名服务商购买一个自己喜欢的域名，然后进入服务商的域名管理界面。以 <a target="_blank" rel="noopener" href="https://www.namesilo.com/account_domains.php">namesilo</a> 为例，管理入口在右上方。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156977.png" srcset="/img/loading.gif" alt="image-20201207114936735"></p>
+<p>![image-20201207114936735](Hexo images/image-20201207114936735.png)</p>
 <p>进入管理界面后删除原有所有的解析记录，然后添加一条 CNAME 记录指向自己的 GItHub Pages，再添几条 A 记录直接解析到自己的 GItHub Pages 的 IP 地址。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156979.png" srcset="/img/loading.gif" alt="image-20201207115444824"></p>
+<p>![image-20201207115444824](Hexo images/image-20201207115444824.png)</p>
 <p>可以通过 Windows 自带的 <code>nslookup</code> 命令获取自己的 GitHub Pages 对应的 IP 地址。每个人对应的 IP 地址可能不一样。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156980.png" srcset="/img/loading.gif" alt="image-20201207115755102"></p>
+<p>![image-20201207115755102](Hexo images/image-20201207115755102.png)</p>
 <p>绑定好解析记录后进入之前创建的名为  <code>user.name.io</code> GitHub 仓库的设置界面，请注意是仓库的设置界面，不是 GitHub 账号的设置界面。</p>
 <p>在后面找到 GitHub Pages 设置项，填上注册的域名然后保存。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156981.png" srcset="/img/loading.gif" alt="image-20201207120715984"></p>
+<p>![image-20201207120715984](Hexo images/image-20201207120715984.png)</p>
 <p>这样就可以通过自己的域名来访问博客页面了。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156982.png" srcset="/img/loading.gif" alt="image-20201207123215633"></p>
+<p>![image-20201207123215633](Hexo images/image-20201207123215633.png)</p>
 <p><strong>注意：在域名服务商页面修改 DNS 解析记录需要一段时间才能生效，如果通过自己的域名不能访问到博客页面，在检查上面几步操作无误的前提下耐心等待 DNS 记录生效就好。</strong></p>
 <p>回到仓库页面可以发现，刚才 GitHub 自动为我们在仓库下创建了一个名文 <code>CNAME</code> 文件，里面是我们刚才绑定的域名。我们到设置页面绑定域名的实质只是让 GitHub 帮我们自动生成了一个域名映射文件。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156983.png" srcset="/img/loading.gif" alt="image-20201207121209374"></p>
+<p>![image-20201207121209374](Hexo images/image-20201207121209374.png)</p>
 <p>但是注意一点，这个文件是 GitHub 自动帮我们生成的，我们本地的仓库中是没有这个 <code>CNAME</code>  文件。如果我们将 Hexo 博客重新部署一遍过后，GitHub 仓库里的这个 <code>CNAME</code> 文件就会被同步而消失掉，又需要进入仓库设置页重新配置域名。</p>
 <p>为了能让每次部署都能自动绑定自定义域名，我们需要创建一个名为 <code>CNAME</code> 的文本文件置于 Hexo 项目的  <code>source</code> 目录下，只有这样 <code>hexo deploy</code> 时才能将 <code>CNAME</code> 文件一并推送至远程 GitHub 仓库。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156984.png" srcset="/img/loading.gif" alt="image-20201207122251487"></p>
+<p>![image-20201207122251487](Hexo images/image-20201207122251487.png)</p>
 <p><strong>注意：<code>CNAME</code> 是一个纯文本文件，要和 GitHub 帮我们自动生成 <code>CNAME</code> 完全一致：文件名中不能带有任何后缀，文件内容为自己的域名，一定要放在 Hexo 项目的 <code>source</code> 目录下。</strong></p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156985.png" srcset="/img/loading.gif" alt="image-20201207122719739"></p>
+<p>![image-20201207122719739](Hexo images/image-20201207122719739.png)</p>
 <h3 id="更改主题"><a href="#更改主题" class="headerlink" title="更改主题"></a>更改主题</h3><p>到 Hexo 的<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题页</a>选取自己喜欢的主题，我们以 <a target="_blank" rel="noopener" href="https://github.com/Fluid-dev/hexo-theme-Fluid.git">Fluid</a> 主题为例进行下面的操作。</p>
 <p>使用 <code>git</code> 命令克隆主题文件到自己的 Hexo 项目下的 <code>themes</code> 目录。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/Fluid-dev/hexo-theme-Fluid.git themes/Fluid<br></code></pre></td></tr></table></figure>
 <p>clone 结束后进入 <code>themes</code> 目录，除了 Hexo 自带的默认主题 landscape 外，应该还有一个名为 <code>Fluid</code> 的主题文件夹。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156986.png" srcset="/img/loading.gif" alt="image-20201207124547245"></p>
+<p>![image-20201207124547245](Hexo images/image-20201207124547245.png)</p>
 <p>打开站点目录下的 <code>_config.yml</code> 配置文件，修改主题为 Fluid，<strong>注意：是 Hexo 项目目录下的 <code>_config.yml</code> 配置文件，而不是 <code>themes</code> 里面的主题配置文件。</strong></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span><br></code></pre></td></tr></table></figure>
 
@@ -363,7 +363,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#生成静态文件并立即部署网站，相当于依次运行 hexo generate，hexo deploy</span><br>hexo g -d<br></code></pre></td></tr></table></figure>
 
 <p>等待部署完毕后就可以看到更换主题后的效果了。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156987.png" srcset="/img/loading.gif" alt="image-20201207130311895"></p>
+<p>![image-20201207130311895](Hexo images/image-20201207130311895.png)</p>
 <p><strong>注意：如果发现自己对站点的更改无论如何也不生效（尤其是更换主题后），尝试运行下面的命令再重新生成部署。</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#清除 Hexo 项目的缓存文件和已生成的静态文件 </span><br>hexo clean<br></code></pre></td></tr></table></figure>
 
@@ -371,9 +371,9 @@
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">Hexo</span> 	<span class="hljs-comment">#网站的标题</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">&#x27;&#x27;</span> 	<span class="hljs-comment">#网站的副标题，可以为空</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-comment">#网站的简单描述，主要用于SEO</span><br><span class="hljs-attr">keywords:</span>		<span class="hljs-comment">#网站的关键词，主要用于SEO</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">Kiku</span>  	<span class="hljs-comment">#网站作者，用于主题显示文章的作者</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">zh-CN</span>	<span class="hljs-comment">#网站使用的语言，建议改成简体中文。</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">&#x27;&#x27;</span>	<span class="hljs-comment">#网站时区。Hexo 默认使用您电脑的时区。不用修改</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>注意：语言的配置需要和自己使用的主题文件夹中提供的一致， 不同的主题可能需要设置成不同的值，常见的有 zh-Hans 和 zh-CN。以 Fluid 主题为例，进入主题的 <code>language</code> 文件夹，里面提供了四种语言支持，中文对应的是 <code>zh-CN.yml</code>。</strong></p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156988.png" srcset="/img/loading.gif" alt="image-20201207132511808"></p>
+<p>![image-20201207132511808](Hexo images/image-20201207132511808.png)</p>
 <p>下图是 Fluid 主题的导航栏在<code>language: en</code> 和 <code>language: zh-CN</code> 下的效果示例。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156989.png" srcset="/img/loading.gif" alt="image-20201207133720184"></p>
+<p>![image-20201207133720184](Hexo images/image-20201207133720184.png)</p>
 <h3 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h3><p>在调试博客样式的过程中，每次修改都部署到远程仓库是很不必要的。一是这样每次部署到远程需要等待上传文件更新完成，再查看修改后的效果，效率很低；二是这样会在 GitHub 上增加了很多无意义的 commit 记录，污染了时间线。</p>
 <p>所以应该多多利用 Hexo 提供的本地服务器功能，在本地调试博客，等修改满意后再部署到 GitHub 仓库。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#启动服务器。默认情况下，访问网址为：http://localhost:4000/</span><br>hexo server<br></code></pre></td></tr></table></figure>
@@ -412,7 +412,7 @@
 <h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h3><p>在 <code>source</code> 目录下创建一个名为 <code>images</code> 的文件夹专门用于存放图片，Hexo 生成文件时不会处理 <code>_post</code> 下的图片，但是会把 <code>source/images</code> 这个文件夹复制到 <code>public/images</code> ，即部署后的站点根目录下，到时候可以通过绝对路径很方便的获取到 images 里面的图片。</p>
 <p>首先修改 Typora 里面的图像设置如下图。这样当我们在 <code>_post</code> 目录下使用 Typora 进行 Markdown 写作时，插入的图片时会自动拷贝复制一份到<code>../images</code>，也就是我们之前创建的目录下。</p>
 <p><strong>注意：一定要使用相对路径。此外建议网络和本地都勾上，这样即使引用的网络图片被删除或者原来的本地图片被被移动的情况下图片引用都不会失效。</strong></p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156990.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>![Image](Hexo images/Image-1607508767011.png)</p>
 <p>但是还有另外一个问题需要解决。在 <code>_post</code> 目录下的 Markdown 文档解析后的生成的 HTML 页面并不在 <code>public/post/</code> 这个目录下（事实上也不存这个目录），而是在以日期命名的路径下面。例如在 <code>_post</code> 目录下有一篇名为 <code>title.md</code> 的 Markdown 文档，其日期属性为 <code>date: 2020-12-3 </code> ，部署后需要通过 <code>主机名/2020/12/03/title/index.html</code> 这个路径才能访问对应的文章页面。</p>
 <p>这时如果我们在这个文档中粘贴一张图片，Typora 自动生成的图片引用为 <code>![](../images/example.jpg)</code>，图片经过解析后生成的 HTML 标签为  <code>&lt;img src=&quot;../images/example.jpg&quot; &gt;</code>，转化为绝对地址就是 <code>&lt;img src=&quot;主机名/2020/12/images/example.jpg&quot; &gt;</code>，然而图片在网络上的所在地址是 <code>主机名/images/example.jpg</code>，所以图片没法正确的加载显示出来。</p>
 <p>我们可以选择更改 Hexo 生成文章时的默认路径，让文章直接在部署到站点根目录下面的某一个文件夹下，而不经过年月日的层叠。</p>
@@ -420,11 +420,11 @@
 <p><strong>再次提醒：英文冒号后面一定要有空格！</strong></p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs groovy">typora-root-<span class="hljs-attr">url:</span> ../<br></code></pre></td></tr></table></figure>
 
-<p>新版 Typora 已经支持直接在菜单中设置图片根目录了，将  <code>_post</code> 目录的上一层 <code>source</code> 目录设为根目录。 Typora 会自动添加一条和上面一样的 YAML Front Matter 属性。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156991.png" srcset="/img/loading.gif" alt="Image"></p>
+<p>新版 Typora 已经支持直接在菜单中设置图片根目录了，将  <code>_post</code> 目录的上一层 <code>source</code> 目录设为根目录。 Typora 会自动添加一条和上面一样的 YAML Front Matter 属性。<br>![Image](Hexo images/Image-1607002323485-1607508767013.png)</p>
 <p>指定了图片根目录后 Typora 解析图片的相对路径时就会自动添加设置的这段路径。这时粘贴图片到文章中时，图片还是会拷贝到 <code>source/images</code> 下面，但是所生成的 Markdown 引用为 <code>![](/images/example.jpg)</code>，解析成 HTML 图片标签的 src 值为 <code>/images/example.jpg</code> ，正好可以匹配到站点根目录下的 images 路径下的图片。</p>
 <p>优点：</p>
 <ul>
-<li>不用单独搭建图床仓库，也不用手动上传图片，直接把图片和 Markdown 文档一同部署到网络。</li>
+<li>不用单独搭建图床仓库，也不用手动上传图片，直接把图片和 Markdown 文档一同部署到仓库。</li>
 <li>直接在 <code>_post</code> 目录下创作，修改后保存重新生成部署即可生效。</li>
 </ul>
 <p>缺点：</p>
@@ -436,28 +436,28 @@
 </ul>
 <p>方法 1 适合那些直接在 <code>_post</code> 目录下写博客的人群，而下面的方法 2 则适合那些以前就使用过 Typora，已经习惯在某个文件夹下创作的人群。</p>
 <h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2:"></a>方法 2:</h3><p>首先在 GitHub 创建一个新的空仓库用作图床，仓库名可以任意。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156992.png" srcset="/img/loading.gif" alt="image-20201207212601641"></p>
+<p>![image-20201207212601641](Hexo images/image-20201207212601641.png)</p>
 <p>创建一个新的分支用来存储图片，而不是直接使用默认分支，这样做有两点好处。一是上传照片到非默认分支可以避免被 GitHub 统计成 contribution，不会点亮主页的小绿点。二是在前期测试图床的过程中如果上传了一些测试图片可以方便利用删除分支功能来删除这些图片，而不是删除整个仓库再重新建新仓库。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156993.png" srcset="/img/loading.gif" alt="image-20201207212954936"></p>
+<p>![image-20201207212954936](Hexo images/image-20201207212954936.png)</p>
 <p>安装 <a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/">PicGo</a>，建议直接安装最新的 beta 版本，旧版本容易出现各种端口冲突。</p>
-<p>然后配置 PicGo 的 GitHub 参数。<br><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156994.png" srcset="/img/loading.gif" alt="image-20201209201444082"></p>
+<p>然后配置 PicGo 的 GitHub 参数。<br>![image-20201209201444082](Hexo images/image-20201209201444082.png)</p>
 <p>仓库名和分支名使用上面自己创建的仓库和分支。<strong>注意：仓库名前要加上自己的 GitHub 账户名称。</strong></p>
 <p>在 Github 的账号设置页右侧找到 Developer settings 进入，生成一个新的 token。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156995.png" srcset="/img/loading.gif" alt="image-20201209201757662"></p>
+<p>![image-20201209201757662](Hexo images/image-20201209201757662.png)</p>
 <p>Note 相当于给这个 token 取个名字，用来以后提示自己当初创建这个 token 的用途。权限范围只用勾上 repo 即可，token 生成后务必立即复制粘贴到 PicGo 的设置中来，页面关闭后将不可见，没复制上就只能选择再新建一个 token。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156996.png" srcset="/img/loading.gif" alt="image-20201209201949295"></p>
+<p>![image-20201209201949295](Hexo images/image-20201209201949295.png)</p>
 <p>指定存储路径可以随意，建议还是指定个一级目录例如 <code>photos/</code> 或者 <code>imgs/</code>，避免图片直接暴露在仓库最外面。</p>
 <p>存储路径务必按照以下路径来填写，这样可以使用 jsdelivr 免费的 CDN 加快图片加载速度。其中 <code>user</code> 换成自己的 GitHub 名称， <code>repo</code> 换成自己的图床仓库名，<code>branch</code> 换成自己设定的分支名。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>cdn.jsdelivr.net<span class="hljs-regexp">/gh/u</span>ser/repo@branch<br></code></pre></td></tr></table></figure>
 
 <p>PicGo 配置完毕后回到 Typora 中的图像设置中来，还是选择方法 1 中一样的复制到指定路径的选项，不同的是这次我们把路径指定为<code>./$&#123;filename&#125; images</code>，即插入图片时在当前目录新建一个文件夹专门用来保存某一篇 Markdown 中的图片。上传服务选择 PicGo（app），并关联到自己的 PicGo 安装路径，然后点击验证图片上传选项看上传是否成功。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156997.png" srcset="/img/loading.gif" alt="image-20201210223806429"></p>
+<p>![image-20201210223806429](Hexo images/image-20201210223806429.png)</p>
 <p>Typora 支持在插入图片时就通过 PicGo 自动上传图片。但是使用 PicGo 上传到 GitHub 不是很稳定，容易出现各种上传失败。所以建议还是先把图片老老实实保存到本地，最后再集中上传。这样即使上传出错，直接全部重传就好。上传失败时多利用 PicGo 的日志来查找失败原因。</p>
 <p><strong>注意：一定要在 PicGo 的设置中开启时间戳重命名，确保上传的图片名称不会和之前上传的图片产生冲突。</strong></p>
 <p>建议在本地创建一个文件夹专门用来 Markdown 写作，引用图片生成图片文件夹也在此文件夹中，等某篇 Markdown 完成无需修改再将 Markdown 文档和对应的图片文件夹复制一份到 Hexo 下的 <code>source/_post/</code> 目录里面，然后按照下图的方式集中上传整篇文档的图片到图床。</p>
 <p><strong>注意：一定要把图片文件夹也一起复制过来，因为我们前面设置的是相对路径，上传成功后图片文件夹可以删掉 。</strong></p>
 <p><strong>注意：一次上传完所有图片后 Typora 会自动把 Markdown 文档中原来的本地图片引用地址替换成我们在 PicGo 中配置的 HTTPS 地址，记得先 <code>Ctrl + s</code> 保存修改后的 Markdown 文档再使用 Hexo 命令生成和部署。</strong></p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156998.png" srcset="/img/loading.gif" alt="image-20201203220016120"></p>
+<p>![image-20201203220016120](Hexo images/image-20201203220016120-1607515320744.png)</p>
 <p>这样相当于存在两个版本，一个是引用本地图片的离线版本可以用作存档，一个是引用 GitHub 图床的在线版部用来解析生成博客，实现存档和部署的文件相互分离，以后如果要迁移起来也方便。</p>
 <p>优点：</p>
 <ul>
@@ -475,9 +475,9 @@
 </ul>
 <p>很多人担心 GitHub 的仓库容量用来图床会不会够用，GitHub 官方关单个仓库容量的<a target="_blank" rel="noopener" href="https://docs.github.com/cn/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota">说法</a>是：理想情况下小于 1 GB，强烈建议小于 5 GB。只是用来存储文章插图是够用的。</p>
 <p>如果是打算上传各种高清大图，或者要上传音频甚至视频的，可以考虑七牛云的对象存储服务，上传身份证照片实名认证后有 10 GB 的免费空间，每月 10 GB 的免费流量。</p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156999.png" srcset="/img/loading.gif" alt="image-20201203162217404"></p>
+<p>![image-20201203162217404](Hexo images/image-20201203162217404-1607600671515.png)</p>
 <p><strong>注意：一定要备过案的域名能使用免费的 CND 加速，没备案的不能使用自定义域名加速。CND 加速效果相比 jsDelivr 并没有感觉到什么差距，可能和自己的网络环境有关。</strong></p>
-<p><img src="https://kiku-blogpic.oss-cn-shenzhen.aliyuncs.com/img/202110192156000.png" srcset="/img/loading.gif" alt="image-20201203161953280"></p>
+<p>![image-20201203161953280](Hexo images/image-20201203161953280-1607600737222.png)</p>
 <p>至此完成了博客最基础的文章和图片展示功能的搭建，Hexo 还有更多高阶玩法，例如添加文章评论系统，嵌入音乐播放器，自定义主题模板等。建议把博客搭起来后，先把文章写起来，内容才是核心，花里胡哨可以等日后有空可以再慢慢折腾。</p>
 <h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">吴润：GitHub+Hexo 搭建个人网站详细教程</a></li>
