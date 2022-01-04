@@ -181,7 +181,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040844409.png') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040908764.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.3k 字
+      6k 字
     </span>
   
 
@@ -283,46 +283,46 @@
 <li><p>硬件性能测试：在服务器控制台直接登录到远程主机，然后运行以下脚本查看 VPS 的 Linux 系统信息，还可以查看服务器配置信息，测试网络带宽及硬盘读写速率你可以</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -qO- bench.sh | bash<br></code></pre></td></tr></table></figure>
 
-<p>  这是在腾讯轻量应用服务器香港节点 24 元每月套餐得到的结果。可以看到上传速度没有虚标，30 Mbps 的带宽可以跑满，硬盘连续读写 100 多 MB 每秒，虽然购买页面写着是 SSD 硬盘，但是实际也就是机械硬盘的水平，不过也比一些读写个位数的石头硬盘强太多了，考虑到价格完全可以接受。<br>  ![image-20211015111557658](VPS 基础配置 images/image-20211015111557658.png)</p>
-<p>  下面是腾讯轻量应用服务器香港节点 34 元每月套餐的测试结果，可以做个对比。<br>  ![1c2g50GB bench](VPS 基础配置 images/1c2g50GB bench.png)</p>
+<p>  这是在腾讯轻量应用服务器香港节点 24 元每月套餐得到的结果。可以看到上传速度没有虚标，30 Mbps 的带宽可以跑满，硬盘连续读写 100 多 MB 每秒，虽然购买页面写着是 SSD 硬盘，但是实际也就是机械硬盘的水平，不过也比一些读写个位数的石头硬盘强太多了，考虑到价格完全可以接受。<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931932.png" srcset="/img/loading.gif" alt="image-20211015111557658"></p>
+<p>  下面是腾讯轻量应用服务器香港节点 34 元每月套餐的测试结果，可以做个对比。<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931933.png" srcset="/img/loading.gif" alt="1c2g50GB bench"></p>
 </li>
 <li><p>路由测试：很多人最关心 VPS 的去程回程路由走的什么线路，线路确实可以一定程度上决定网络质量，但是和自己的的网络供应商、物理位置也有着很大的关系，可能同一台机子不同人的访问速度截然不同。路由线路只能做参考，自己平日特别是晚上网络高峰期的使用感受更能说明网络质量的好坏，没必要过分追捧 CN2 GIA 线路，当让如果有钱任性请无脑上 GIA。<br>  以下路由测试均是基本的网络环境（湖北武汉，电信校园网）。<br>  去程测试，在本机运行以下命令：</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tracert 43.135.29.251<br></code></pre></td></tr></table></figure>
 
-<p>  去程路由结果：<br>  ![image-20211015112415667](VPS 基础配置 images/image-20211015112415667.png)</p>
+<p>  去程路由结果：<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931934.png" srcset="/img/loading.gif" alt="image-20211015112415667"></p>
 <p>  回程测试，在服务器控制台 WebShell 运行以下命令：</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mtr 27.18.195.81 -r<br></code></pre></td></tr></table></figure>
 
-<p>  上面的 27.18.195.81 地址是本人访问互联网的显示的公网 IP 地址，回程路由结果：<br>  ![image-20211015113516101](VPS 基础配置 images/image-20211015113516101.png)</p>
+<p>  上面的 27.18.195.81 地址是本人访问互联网的显示的公网 IP 地址，回程路由结果：<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931935.png" srcset="/img/loading.gif" alt="image-20211015113516101"></p>
 <p>  可以看到去程回程都走的是 AS4134，即电信传统的 163 骨干网，没有经过 CN 2 GIA 节点。目前腾讯轻量服务器香港地区的 VPS 据说只有少量机器仍然是 CN 2 GIA 路线了，询问客服得到的回答线路是随机的，猜测可能和开到的 VPS 的 IP 有关。</p>
 <p>  如果关心多地的访问情况可以在 IPIP 上使用 <a target="_blank" rel="noopener" href="https://tools.ipip.net/traceroute.php">TraceRoute 工具</a>查看不同地域节点去程线路，运行下面的网络回程测试脚本（需要 root 权限）查看不同地点的回程路线：</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl https://raw.githubusercontent.com/zhucaidan/mtr_trace/main/mtr_trace.sh|bash<br></code></pre></td></tr></table></figure>
 
 <p>  多地回程路由结果：</p>
-<p>  ![image-20211015152457648](VPS 基础配置 images/image-20211015152457648.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931936.png" srcset="/img/loading.gif" alt="image-20211015152457648"></p>
 </li>
 </ol>
 <h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>如果想使用自己注册的域名来访问主机，需要先在 DNS 解析服务商添加解析记录。</p>
 <p><strong>注意：这一步对连接 VPS 不是必须的，即使自己没有域名也可以通过 IP 地址来访问主机。</strong></p>
 <p>此前我的个人域名是注册在 NameSilo 名下，NameSilo 的自带的解析服务要接近一个小时才在国内生效，并且域名管理页面实在是太卡了。而使用 DNSPod 在国内几分钟解析记录就更新生效了，后台管理界面和流畅度也比 NameSilo 好太多。于是决定将将 DNS 域名解析服务从 NameSilo 迁移到腾讯 DNSPod，具体迁移步骤参见腾讯的官方文档： <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/302/5518#edit">其他注册商域名修改 DNS</a>。</p>
 <p>迁移之后在 NameSilo 域名管理后台看到的效果：</p>
-<p>![Image](VPS 基础配置 images/Image.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931937.png" srcset="/img/loading.gif" alt="Image"></p>
 <p><strong>注意：域名的管理权和解析权是独立的，可以仅仅把迁移解析权，管理权仍然在原来的注册商。</strong></p>
 <p>进入腾讯 <a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/cns">DNS 解析 DNSPod 控制台</a>，添加域名，然后设置解析记录。</p>
-<p>![image-20211015100440630](VPS 基础配置 images/image-20211015100440630.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931938.png" srcset="/img/loading.gif" alt="image-20211015100440630"></p>
 <p>添加一条 @ 类型的解析记录，把自己的域名直接指向 VPS 的 IP 地址。</p>
-<p>![image-20211015115836550](VPS 基础配置 images/image-20211015115836550.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931939.png" srcset="/img/loading.gif" alt="image-20211015115836550"></p>
 <p>过一段时间后，使用 <code>nslookup</code> 命令来看解析记录是否生效。如果十分钟过去还没有生效，尝试使用 <code>ipconfig /flushdns</code> 命令刷新一下本地的 DNS 缓存或者重启路由器。</p>
-<p>![image-20211015115920642](VPS 基础配置 images/image-20211015115920642.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931940.png" srcset="/img/loading.gif" alt="image-20211015115920642"></p>
 <h2 id="重置密码"><a href="#重置密码" class="headerlink" title="重置密码"></a>重置密码</h2><p>部分 VPS 厂商在新开通服务器时会为 root 用户自动生成了一串随机的密码，可以直接使用 root 用户登录。</p>
 <p>而腾讯云中新开通的轻量应用服务器要先在控制台重置 root 用户的密码才能切换到 root 用户。重置密码需要在关机状态，可以先手动关机或者直接强制关机。</p>
-<p>![image-20211015102234813](VPS 基础配置 images/image-20211015102234813.png)</p>
-<p>![image-20211015102715107](VPS 基础配置 images/image-20211015102715107.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931941.png" srcset="/img/loading.gif" alt="image-20211015102234813"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931942.png" srcset="/img/loading.gif" alt="image-20211015102715107"></p>
 <p>重置完密码就可以使用 SSH 客户端来登录 VPS 了，Windows 10 自带 SSH 客户端，直接在终端中输入以下命令即可向 VPS 发出登录请求。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh root@kiku.vip<br></code></pre></td></tr></table></figure>
 
 <p>在第一次连接陌生的 VPS 主机会发出确认提示，输入 yes 然后回车。接着输入自己刚才重置的 root 用户密码即可以 root 用户身份连接上 VPS。关于 SSH 的更多配置可以参考后面的安全设置这一节以及我的另一篇博客<a target="_blank" rel="noopener" href="https://kiku.vip/2021/10/14/%E4%BD%BF%E7%94%A8%20SSH%20%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E4%B8%BB%E6%9C%BA/">使用 SSH 连接远程主机</a>。</p>
-<p>![image-20211015122821186](VPS 基础配置 images/image-20211015122821186.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931943.png" srcset="/img/loading.gif" alt="image-20211015122821186"></p>
 <h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p>下面中的操作都以 CentOS 7.6 为例，如果是 Debian 系列的 Linux 发行版，请将下面命令中的 <code>yum</code> 用 <code>apt-get</code> 替换。如果是较老版本的 CentOS 先安装 wget 工具。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum -y install wget <br></code></pre></td></tr></table></figure>
 
@@ -340,7 +340,7 @@
 <p>  依次输入以下命令下载并运行一键安装BBR/暴力BBR/魔改BBR/BBRplus/锐速 (Lotserver)四合一的脚本。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;<br>chmod +x tcp.sh<br>./tcp.sh<br></code></pre></td></tr></table></figure>
 
-<p>  ![image-20211015134335662](VPS 基础配置 images/image-20211015134335662.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931944.png" srcset="/img/loading.gif" alt="image-20211015134335662"></p>
 <p>  输入 <code>2</code> 回车，安装 BBRplus 内核。BBRplus 是在原版 BBR 基础上的改进版本，加速效果更好。据说 BBR 魔改版和锐速的加速效果更好，但可能存在兼容和稳定性问题，本人也没有具体在测试过。</p>
 <p>  安装成功会提示是否现在重启机器。输入 <code>y</code> 确认现在重启。</p>
 <p>  重启完毕后重新登录 VPS，输入以下命令再次运行该脚本，</p>
@@ -350,7 +350,7 @@
 <p>  输入下面的命令查看 brr 内核模块。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">lsmod | grep bbr<br></code></pre></td></tr></table></figure>
 
-<p>  ![image-20211015134842826](VPS 基础配置 images/image-20211015134842826.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931945.png" srcset="/img/loading.gif" alt="image-20211015134842826"></p>
 </li>
 <li><p>安装宝塔 Linux 面板。</p>
 <p>  如果对 Linux 系统不熟悉的，强烈建议装一个可视化图形化面板，大大降低了 Linux 系统的上手难度。无论是装一些常用的软件，修改服务配置，编辑配置文件，查看系统负载情况。都可以直接通过面板操作。当然，还是有些配置必须通过 SSH 登录服务器操作，因此熟悉下常用的 Linux 命令也是很有必要的。   </p>
@@ -360,18 +360,18 @@
 <p>  安装成功后，末尾给出访问面板的入口地址以及初始的用户名和密码，这些都是随机生成的，也可以之后手动修改。如果忘记了初始的默认账户和密码可以使用下面命令查看。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">bt default<br></code></pre></td></tr></table></figure>
 
-<p>  ![image-20211015142221381](VPS 基础配置 images/image-20211015142221381.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931946.png" srcset="/img/loading.gif" alt="image-20211015142221381"></p>
 <p>  国内的大部分云产品都默认有安全组，在访问面板前需要去服务器控制台放行宝塔默认的 <code>8888</code> 端口，同样以腾讯云轻量应用服务器为例：</p>
-<p>  ![image-20211015141122173](VPS 基础配置 images/image-20211015141122173.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931947.png" srcset="/img/loading.gif" alt="image-20211015141122173"></p>
 <p>  放行成功后就可以通过网址来默认入口地址访问宝塔面板了，输入初始的默认账户和密码，同意用户协议就进入了面板主界面。</p>
 <p>  最新的宝塔面板强制用户绑定宝塔账户才能使用，如果不想绑定可以使用运行下面的命令绕过宝塔的登录要求。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo &quot;&#123;\&quot;uid\&quot;:1000,\&quot;username\&quot;:\&quot;admin\&quot;,\&quot;serverid\&quot;:1&#125;&quot; &gt; /www/server/panel/data/userInfo.json<br></code></pre></td></tr></table></figure>
 
 <p>  <strong>注意：因为宝塔面板官方的限制方法也在不断的变更，可能有些绕过登录的方法已经失效，截止 2021.10 使用该方法有效。</strong></p>
 <p>  在左侧的软件商店搜索下载宝塔跑分跑个分看一看。这是在腾讯轻量应用服务器香港节点 24 元每月套餐得到的跑分结果。</p>
-<p>  ![image-20211015143825173](VPS 基础配置 images/image-20211015143825173.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931948.png" srcset="/img/loading.gif" alt="image-20211015143825173"></p>
 <p>  下面是腾讯轻量应用服务器香港节点 34 元每月套餐的跑分结果，可以做个对比。不过对比也就图一乐，分高也不能说明性能就一定更强，因为都是虚拟出来的资源，也和跑分时宿主服务器上别的虚拟服务器资源抢占情况有关。</p>
-<p>  ![Image](VPS 基础配置 images/1c2g50GB.png)</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931949.png" srcset="/img/loading.gif" alt="Image"></p>
 </li>
 </ol>
 <h2 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h2><h3 id="更改-sshd-默认端口"><a href="#更改-sshd-默认端口" class="headerlink" title="更改 sshd 默认端口"></a>更改 sshd 默认端口</h3><ol>
@@ -380,14 +380,14 @@
 
 <p> 对新手来说 nano 比 vi 编辑器更加友好，常用的操作快捷键都列在最下面，如果没有耐心学习 vi，nano 也是个不错的选择。</p>
 </li>
-<li><p>找到 <code>#Port 22</code> 这一行，将 <code>22</code> 修改成修改成你想替换的端口，建议把它改成一个大于<code>1024</code>小于<code>65535</code>的整数，但是注意不要和其他常用软件的默认端口冲突，例如 MySQL 服务的 <code>3306</code> 端口。<code>#</code> 开头的表示注释，有一些注释代表了 sshd 所采用的默认值。因此改完端口号后别忘了去掉注释符号 <code>#</code>，否则并不会真正生效。<br>  ![image-20211015145006778](VPS 基础配置 images/image-20211015145006778.png)</p>
+<li><p>找到 <code>#Port 22</code> 这一行，将 <code>22</code> 修改成修改成你想替换的端口，建议把它改成一个大于<code>1024</code>小于<code>65535</code>的整数，但是注意不要和其他常用软件的默认端口冲突，例如 MySQL 服务的 <code>3306</code> 端口。<code>#</code> 开头的表示注释，有一些注释代表了 sshd 所采用的默认值。因此改完端口号后别忘了去掉注释符号 <code>#</code>，否则并不会真正生效。<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931950.png" srcset="/img/loading.gif" alt="image-20211015145006778"></p>
 </li>
 <li><p>   <code>ctrl + o</code> 然后回车确认保存配置文件，<code>ctrl + x</code> 退出 nano 编辑器。</p>
 </li>
 <li><p>重启 SSH 服务端程序使端口生效。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo service sshd restart<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>和之前放行宝塔 8888 端口一样，在服务器的控制台防火墙放行 2222端口，除此之外还要在宝塔面板的安全选项卡中放行 2222 端口。因为安装了宝塔后相当于有两层防火墙，一层为腾讯服务器自带的，一层是宝塔中的安全控制。<br>  ![image-20211015145909664](VPS 基础配置 images/image-20211015145909664.png)</p>
+<li><p>和之前放行宝塔 8888 端口一样，在服务器的控制台防火墙放行 2222端口，除此之外还要在宝塔面板的安全选项卡中放行 2222 端口。因为安装了宝塔后相当于有两层防火墙，一层为腾讯服务器自带的，一层是宝塔中的安全控制。<br>  <img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931951.png" srcset="/img/loading.gif" alt="image-20211015145909664"></p>
 </li>
 <li><p>在客户端打开一个新的 SSH 客户端来测试新端口能否连接成功。</p>
   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh root@kiku.vip -p 2222<br></code></pre></td></tr></table></figure>
@@ -431,10 +431,10 @@
 </li>
 </ol>
 <h3 id="更改宝塔的默认设置"><a href="#更改宝塔的默认设置" class="headerlink" title="更改宝塔的默认设置"></a>更改宝塔的默认设置</h3><p>修改宝塔面板的默认端口，也可以在该页面修改宝塔的入口地址和登录账号和密码。修改完端口后务必记得在服务器的控制台防火墙放行新的端口。</p>
-<p>![image-20211015173049867](VPS 基础配置 images/image-20211015173049867.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931952.png" srcset="/img/loading.gif" alt="image-20211015173049867"></p>
 <h2 id="创建快照"><a href="#创建快照" class="headerlink" title="创建快照"></a>创建快照</h2><p>如果以上都设置成功，建议在当前状态生成一份快照，备份 VPS 当前的状态，之后如果损坏了某些环境又修复不好，就可以直接回滚到快照，而不必重置系统再重新做一遍这些基本设置。</p>
 <p>大多数厂商都在控制台中提供了快照功能，以腾讯云为例，每个 VPS 可以创建两个免费快照。</p>
-<p>![image-20211016125916092](VPS 基础配置 images/image-20211016125916092.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040931953.png" srcset="/img/loading.gif" alt="image-20211016125916092"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li>  <a target="_blank" rel="noopener" href="https://blog.laoda.de/archives/how-to-secure-a-linux-server#toc-head-7">保护好你的小鸡！保姆级服务器安全教程！</a></li>
 <li>  <a target="_blank" rel="noopener" href="https://blog.laoda.de/archives/vps-choose">VPS服务器选购不完全指南</a></li>

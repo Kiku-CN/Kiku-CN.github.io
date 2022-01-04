@@ -267,14 +267,14 @@
 
 <h3 id="jQuery-选择器"><a href="#jQuery-选择器" class="headerlink" title="jQuery 选择器"></a>jQuery 选择器</h3><p>原生 JavaScript 获取元素方式可能存在兼容性问题，jQuery 顶级对象使用类似 CSS 选择器的方式快速获取元素，并且解决了兼容性问题。</p>
 <p>jQuery 基础选择器：</p>
-<p>![image-20210629110925369](jQuery 快速入门 images/image-20210629110925369.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040923683.png" srcset="/img/loading.gif" alt="image-20210629110925369"></p>
 <p>jQuery 层级选择器：</p>
-<p>![image-20210629110949061](jQuery 快速入门 images/image-20210629110949061.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040923684.png" srcset="/img/loading.gif" alt="image-20210629110949061"></p>
 <p>jQuery 筛选选择器：</p>
-<p>![image-20210629151630436](jQuery 快速入门 images/image-20210629151630436.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040923685.png" srcset="/img/loading.gif" alt="image-20210629151630436"></p>
 <p><strong>注意：和 CSS 伪类选择器有些许区别。</strong></p>
 <p>jQuery 筛选方法：</p>
-<p>![image-20210629151756361](jQuery 快速入门 images/image-20210629151756361.png)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040923686.png" srcset="/img/loading.gif" alt="image-20210629151756361"></p>
 <p><code>:checked</code> 选择器：匹配所有被选中的表单元素（复选框、单选框等）。</p>
 <h3 id="jQuery-排他思想和链式编程"><a href="#jQuery-排他思想和链式编程" class="headerlink" title="jQuery 排他思想和链式编程"></a>jQuery 排他思想和链式编程</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>);  			<span class="hljs-comment">// 给当前元素设置样式</span><br>$(<span class="hljs-built_in">this</span>).siblings().css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);	<span class="hljs-comment">// 清楚其余兄弟元素的样式</span><br><br>$(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;red&quot;</span>).siblings().css(<span class="hljs-string">&quot;color&quot;</span>, <span class="hljs-string">&quot;&quot;</span>); 	<span class="hljs-comment">// 链式编程</span><br></code></pre></td></tr></table></figure>
 
@@ -384,7 +384,7 @@
 <li><p>  <code>empty()</code>：删除元素的所有子节点，和 <code>html(&quot;&quot;)</code> 作用等价，都可以删除元素里面的内容，只不过 <code>html()</code> 方法在清空元素原来内容的同时还可以设置内容。</p>
 </li>
 </ul>
-<h3 id="jQuery-操作元素尺寸"><a href="#jQuery-操作元素尺寸" class="headerlink" title="jQuery 操作元素尺寸"></a>jQuery 操作元素尺寸</h3><p>![image-20210820171256963](jQuery 快速入门 images/image-20210820171256963.png)</p>
+<h3 id="jQuery-操作元素尺寸"><a href="#jQuery-操作元素尺寸" class="headerlink" title="jQuery 操作元素尺寸"></a>jQuery 操作元素尺寸</h3><p><img src="https://cdn.jsdelivr.net/gh/Kiku-CN/picsHost@img2/img/202201040923687.png" srcset="/img/loading.gif" alt="image-20210820171256963"></p>
 <p>以上方法的参数为空，则是获取相应值，返回的是数字型。可以传入参数设置相应值，参数为省略 px 单位的数字或者带单位的字符串。</p>
 <h3 id="jQuery-操作元素位置"><a href="#jQuery-操作元素位置" class="headerlink" title="jQuery 操作元素位置"></a>jQuery 操作元素位置</h3><ul>
 <li>  <code>offset()</code>：获取元素相对于文档（HTML 根元素）的偏移坐标对象，该对象有 2 个属性 <code>left</code>、<code>top</code> 。<code>offset().top</code> 用于获取距离文档顶部的距离，<code>offset().left</code> 用于获取距离文档左侧的距离。这两个属性是只读的，只能通过 <code>offset()</code> 方法传入一个带有 <code>top</code> 和 <code>left</code> 属性的对象来修改偏移距离，例如 <code>offset(&#123; top: 10, left: 30 &#125;);</code>。</li>
